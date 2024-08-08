@@ -43,13 +43,11 @@ Return the number of distinct ways to climb to the top of the staircase.
   4. Return `dp[n]` as the result.
   ```pseudo
   function climbStairs(n):
-    if n == 1:
-        return 1
     dp = array of size n + 1
     dp[1] = 1
     dp[2] = 2
     for i from 3 to n:
-        dp[i] = dp[i - 1] + dp[i - 2]
+      dp[i] = dp[i - 1] + dp[i - 2]
     return dp[n]
   ```
 
@@ -61,18 +59,16 @@ Return the number of distinct ways to climb to the top of the staircase.
 - **Space Complexity**: `O(1)`
 - **Description**: This is an optimized version of the dynamic programming approach. Instead of storing all previous results, it only keeps track of the last two results, which are enough to compute the next step.
 - **Algorithm**:
-  1. Initialize two variables, `prev1` and `prev2`, to store the number of ways to reach the previous step and the step before it, respectively.
-  2. Iterate from step 3 to `n`, updating the two variables at each step.
-  3. Return `prev1` after the loop, which contains the number of ways to reach step `n`.
+  1. Initialize two variables, `p1` and `p2`, to store the number of ways to reach the previous step and the step before it, respectively.
+  2. Iterate from step `0` to `n-2`, updating the two variables at each step.
+  3. Return `p1` after the loop, which contains the number of ways to reach step `n`.
   ```pseudo
   function climbStairs(n):
-    if n == 1:
-        return 1
-    prev1 = 2
-    prev2 = 1
-    for i from 3 to n:
-        current = prev1 + prev2
-        prev2 = prev1
-        prev1 = current
-    return prev1
+    p1 = 1
+    p2 = 1
+    for i from 0 to (n - 2):
+      tmp = p1
+      p1 = p1 + p2
+      p2 = tmp
+    return p1
   ```
