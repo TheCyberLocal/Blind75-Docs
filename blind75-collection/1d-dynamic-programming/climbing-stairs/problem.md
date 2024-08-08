@@ -35,20 +35,20 @@ Return the number of distinct ways to climb to the top of the staircase.
 
 - **Time Complexity**: `O(n)`
 - **Space Complexity**: `O(n)`
-- **Description**: This approach uses dynamic programming to break down the problem into subproblems, storing the results of subproblems to avoid redundant calculations. The idea is that the number of ways to reach the top can be derived from the number of ways to reach the previous step plus the number of ways to reach two steps below.
+- **Description**: This approach uses a dynamic programming array to store the number of ways to reach each step. Starting from the top, it iteratively calculates the number of ways to reach each step by summing the ways to reach the next two steps. This ensures that each step's value is built upon the values of the subsequent steps.
 - **Algorithm**:
-  1. Create an array `dp` where `dp[i]` represents the number of ways to reach step `i`.
-  2. Initialize `dp[1] = 1` and `dp[2] = 2` since there is 1 way to reach step 1 and 2 ways to reach step 2.
-  3. For each subsequent step `i`, set `dp[i] = dp[i-1] + dp[i-2]`.
-  4. Return `dp[n]` as the result.
+  1. Initialize an array `dp` of size `n + 1` to store the number of ways to reach each step.
+  2. Set the base cases: `dp[n] = 1` and `dp[n-1] = 1`, representing the number of ways to reach the top step and the step before it.
+  3. Iterate from step `n-2` to `0`, updating `dp[i]` based on the sum of the ways to reach the next two steps (`dp[i + 1]` and `dp[i + 2]`).
+  4. Return `dp[0]`, which contains the number of ways to reach the first step.
   ```pseudo
   function climbStairs(n):
     dp = array of size n + 1
-    dp[1] = 1
-    dp[2] = 2
-    for i from 3 to n:
-      dp[i] = dp[i - 1] + dp[i - 2]
-    return dp[n]
+    dp[n] = 1
+    dp[n-1] = 1
+    for i from (n - 2) to 0:
+      dp[i] = dp[i + 1] + dp[i + 2]
+    return dp[0]
   ```
 
 ---
@@ -57,16 +57,19 @@ Return the number of distinct ways to climb to the top of the staircase.
 
 - **Time Complexity**: `O(n)`
 - **Space Complexity**: `O(1)`
-- **Description**: This is an optimized version of the dynamic programming approach. Instead of storing all previous results, it only keeps track of the last two results, which are enough to compute the next step.
+- **Description**: This approach optimizes space by using only two variables to keep track of the number of ways to reach the current step and the previous step. It iteratively updates these variables to reflect the number of ways to reach the next step, reducing the space complexity to `O(1)`.
 - **Algorithm**:
-  1. Initialize two variables, `p1` and `p2`, to store the number of ways to reach the previous step and the step before it, respectively.
-  2. Iterate from step `0` to `n-2`, updating the two variables at each step.
-  3. Return `p1` after the loop, which contains the number of ways to reach step `n`.
+  1. Initialize two variables, `p1` and `p2`, to store the number of ways to reach the current step and the previous step, respectively. Both are initialized to 1.
+  2. Iterate `n-2` times, updating the two variables at each step:
+     - Temporarily store the current value of `p1` in `tmp`.
+     - Update `p1` to the sum of `p1` and `p2`.
+     - Update `p2` to the previous value of `p1` stored in `tmp`.
+  3. Return `p1`, which contains the number of ways to reach the `n`-th step.
   ```pseudo
   function climbStairs(n):
     p1 = 1
     p2 = 1
-    for i from 0 to (n - 2):
+    for (n - 2) times:
       tmp = p1
       p1 = p1 + p2
       p2 = tmp
