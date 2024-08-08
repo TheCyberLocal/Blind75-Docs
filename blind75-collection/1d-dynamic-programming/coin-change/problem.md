@@ -41,7 +41,7 @@ You may assume that you have an unlimited number of each coin.
 ### Approach 1: Simple Dynamic Programming
 
 - **Time Complexity**: `O(n * m)` where `n` is the amount and `m` is the number of coins.
-- **Space Complexity**: `O(n)`
+- **Space Complexity**: `O(n)` where `n` is the amount.
 - **Description**: This approach uses dynamic programming to find the minimum number of coins required. The idea is to use a `dp` array where `dp[i]` represents the minimum number of coins needed to make up the amount `i`.
 - **Algorithm**:
   1. Initialize a `dp` array of size `amount + 1` with `dp[0] = 0` and all other values set to a large number (indicating unreachable amounts).
