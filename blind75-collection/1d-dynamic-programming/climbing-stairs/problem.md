@@ -1,4 +1,4 @@
-# Problem: Climbing Stairs
+# Blind75: Climbing Stairs
 
 ### [⇦ Back to Problem Index](../../index.md)
 
@@ -10,24 +10,24 @@ Return the number of distinct ways to climb to the top of the staircase.
 
 **Example 1:**
 
-- **Input**: n = 2
-- **Output**: 2
+- **Input**: `n = 2`
+- **Output**: `2`
 - **Explanation**:
-  1. 1 + 1 = 2
-  2. 2 = 2
+  1. `1 + 1 = 2`
+  2. `2 = 2`
 
 **Example 2:**
 
-- **Input**: n = 3
-- **Output**: 3
+- **Input**: `n = 3`
+- **Output**: `3`
 - **Explanation**:
-  1. 1 + 1 + 1 = 3
-  2. 1 + 2 = 3
-  3. 2 + 1 = 3
+  1. `1 + 1 + 1 = 3`
+  2. `1 + 2 = 3`
+  3. `2 + 1 = 3`
 
 ### Constraints
 
-- 1 <= n <= 30
+- `1 <= n <= 30`
 
 ---
 
