@@ -56,24 +56,3 @@ You may assume that you have an unlimited number of each coin.
             dp[x] = min(dp[x], dp[x - coin] + 1)
     return dp[amount] if dp[amount] != amount + 1 else -1
   ```
-
----
-
-### Approach 2: Optimized Dynamic Programming
-
-- **Time Complexity**: `O(n * m)` where `n` is the amount and `m` is the number of coins.
-- **Space Complexity**: `O(n)`
-- **Description**: This optimized dynamic programming approach uses the same logic as the simple dynamic programming approach but optimizes space usage by reusing the `dp` array.
-- **Algorithm**:
-  1. Initialize a `dp` array similar to the simple DP approach.
-  2. Iterate over the coins and update the `dp` array in place.
-  3. The return logic remains the same as the simple DP approach.
-  ```pseudo
-  function coinChange(coins, amount):
-    dp = array of size amount + 1 initialized to amount + 1
-    dp[0] = 0
-    for each coin in coins:
-        for x from coin to amount:
-            dp[x] = min(dp[x], dp[x - coin] + 1)
-    return dp[amount] if dp[amount] != amount + 1 else -1
-  ```
