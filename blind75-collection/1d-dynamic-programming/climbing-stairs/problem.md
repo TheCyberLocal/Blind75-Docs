@@ -76,21 +76,3 @@ Return the number of distinct ways to climb to the top of the staircase.
         prev1 = current
     return prev1
   ```
-
----
-
-### Approach 3: Fibonacci Formula
-
-- **Time Complexity**: `O(1)`
-- **Space Complexity**: `O(1)`
-- **Description**: The problem can be related to the Fibonacci sequence, where the number of ways to climb `n` steps is equivalent to the `n`th Fibonacci number. This approach directly calculates the result using the closed-form expression (Binet’s formula).
-- **Algorithm**:
-  1. Use the Fibonacci formula: `Fib(n) = (phi^n - psi^n) / sqrt(5)` where `phi = (1 + sqrt(5)) / 2` and `psi = (1 - sqrt(5)) / 2`.
-  2. Compute the result using this formula, rounding to the nearest integer.
-  ```pseudo
-  function climbStairs(n):
-    phi = (1 + sqrt(5)) / 2
-    psi = (1 - sqrt(5)) / 2
-    result = round((phi^n - psi^n) / sqrt(5))
-    return result
-  ```
