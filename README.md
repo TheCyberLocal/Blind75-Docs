@@ -1,18 +1,18 @@
-# blind75-docs
+# Blind 75 Docs - *Under Development*
 
 ## 🗺️ Project Overview
 
-Blind 75 docs is a thorough and structured documentation for all the blind75 problems.
+Blind 75 Docs is an extensive documentation that covers all the Blind 75 problems on LeetCode. This project aims to provide a comprehensive resource for developers and learners to understand and solve these fundamental algorithm and data structure problems to enhance their problem-solving skills and prepare for interviews.
 
 ## 🗝️ Key Features
 
-- **Comprehensive:** This repo will cover all 75 of the blind 75 problems.
-- **Thorough:** This repo aims to explain each problem in detail along with well-documented solutions.
-- **Structured:** This repo provides and well-organized index of all 75 problems so you can easily find what you're looking for.
+- **Comprehensive:** This repository will include detailed documentation for every problem in the Blind 75 list.
+- **Detailed Explanations:** Each problem will be explained thoroughly, with step-by-step solutions and detailed commentary on the approach, logic, and reasoning behind each solution.
+- **Structured Index:** The repository will feature a well-organized index, categorizing problems by type (e.g., arrays, linked lists, etc.) to make it easy for users to find specific problems.
 
 ## 🎯 Project Mission
 
-The mission of blind75-docs is to enhance my understand of data structure and algorithm fundamentals with real-world examples and share my findings in a concise and easy-to-understand manner.
+The mission of Blind 75 Docs is to deepen my understanding of data structures and algorithms through practical examples. By documenting and sharing my findings, I aim to create a resource that is both educational and accessible, helping others to grasp these fundamental concepts in a clear and concise manner. This project is not only a personal learning journey but also a contribution to the developer community, providing a valuable source of knowledge for anyone looking to improve their problem-solving skills in computer science.
 
 ## 🌐 Socials
 
