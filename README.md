@@ -14,7 +14,7 @@ Blind 75 Docs is an extensive documentation that covers all the Blind 75 problem
 
 The mission of Blind 75 Docs is to deepen my understanding of data structures and algorithms through practical examples. By documenting and sharing my findings, I aim to create a resource that is both educational and accessible, helping others to grasp these fundamental concepts in a clear and concise manner. This project is not only a personal learning journey but also a contribution to the developer community, providing a valuable source of knowledge for anyone looking to improve their problem-solving skills in computer science.
 
-## 📑 [Blind75 Documentation Index](./index.md)
+## 📑 [Blind75 Documentation Index](./blind75-collection/index.md)
 
 ## 🌐 Socials
 

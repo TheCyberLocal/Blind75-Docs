@@ -1,6 +1,6 @@
 # 📑 Blind75 Documentation Index
 
-### [⇦ Back to Project Overview](./README.md)
+### [⇦ Back to Project Overview](../README.md)
 
 #### Index Coming Soon!
 
