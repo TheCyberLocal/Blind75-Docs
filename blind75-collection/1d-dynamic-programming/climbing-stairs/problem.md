@@ -33,8 +33,8 @@ Return the number of distinct ways to climb to the top of the staircase.
 
 ### Approach 1: Simple Dynamic Programming
 
-- **Time Complexity**: O(n)
-- **Space Complexity**: O(n)
+- **Time Complexity**: `O(n)`
+- **Space Complexity**: `O(n)`
 - **Description**: This approach uses dynamic programming to break down the problem into subproblems, storing the results of subproblems to avoid redundant calculations. The idea is that the number of ways to reach the top can be derived from the number of ways to reach the previous step plus the number of ways to reach two steps below.
 - **Algorithm**:
   1. Create an array `dp` where `dp[i]` represents the number of ways to reach step `i`.
@@ -57,8 +57,8 @@ Return the number of distinct ways to climb to the top of the staircase.
 
 ### Approach 2: Optimized Dynamic Programming
 
-- **Time Complexity**: O(n)
-- **Space Complexity**: O(1)
+- **Time Complexity**: `O(n)`
+- **Space Complexity**: `O(1)`
 - **Description**: This is an optimized version of the dynamic programming approach. Instead of storing all previous results, it only keeps track of the last two results, which are enough to compute the next step.
 - **Algorithm**:
   1. Initialize two variables, `prev1` and `prev2`, to store the number of ways to reach the previous step and the step before it, respectively.
@@ -81,8 +81,8 @@ Return the number of distinct ways to climb to the top of the staircase.
 
 ### Approach 3: Fibonacci Formula
 
-- **Time Complexity**: O(1)
-- **Space Complexity**: O(1)
+- **Time Complexity**: `O(1)`
+- **Space Complexity**: `O(1)`
 - **Description**: The problem can be related to the Fibonacci sequence, where the number of ways to climb `n` steps is equivalent to the `n`th Fibonacci number. This approach directly calculates the result using the closed-form expression (Binet’s formula).
 - **Algorithm**:
   1. Use the Fibonacci formula: `Fib(n) = (phi^n - psi^n) / sqrt(5)` where `phi = (1 + sqrt(5)) / 2` and `psi = (1 - sqrt(5)) / 2`.

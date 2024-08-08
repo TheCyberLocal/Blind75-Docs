@@ -31,8 +31,8 @@ Return the maximum amount of money you can rob without alerting the police.
 
 ### Approach 1: Simple Dynamic Programming
 
-- **Time Complexity**: O(n)
-- **Space Complexity**: O(n)
+- **Time Complexity**: `O(n)`
+- **Space Complexity**: `O(n)`
 - **Description**: This approach uses dynamic programming to determine the maximum money that can be robbed without triggering the alarm. We maintain an array `dp` where `dp[i]` represents the maximum money that can be robbed from the first `i` houses. For each house `i`, we have two choices: either rob the current house and add its value to the maximum amount obtained from `i-2` houses, or skip the current house and take the maximum amount from `i-1` houses. The result will be the maximum value in the `dp` array.
 - **Algorithm**:
   1. Create an array `dp` where `dp[i]` represents the maximum money that can be robbed from the first `i` houses.
@@ -58,8 +58,8 @@ function rob(nums):
 
 ### Approach 2: Optimized Dynamic Programming
 
-- **Time Complexity**: O(n)
-- **Space Complexity**: O(1)
+- **Time Complexity**: `O(n)`
+- **Space Complexity**: `O(1)`
 - **Description**: This approach optimizes space by using only two variables to keep track of the maximum amounts that can be robbed up to the previous house and the house before it. Instead of using an array, we update the variables as we iterate through the list, which reduces the space complexity to O(1).
 - **Algorithm**:
   1. Initialize two variables, `prev1` and `prev2`, to store the maximum money that can be robbed up to the previous house and the house before it, respectively.
@@ -85,8 +85,8 @@ function rob(nums):
 
 ### Approach 3: Mathematical Approach
 
-- **Time Complexity**: O(n)
-- **Space Complexity**: O(1)
+- **Time Complexity**: `O(n)`
+- **Space Complexity**: `O(1)`
 - **Description**: This approach is similar to the optimized dynamic programming but focuses on mathematical simplifications. Instead of explicitly using variables, it relies on the fact that at each step, the choice is between the current value plus the max obtained two steps before or the max obtained one step before.
 - **Algorithm**:
   1. Initialize two variables `prev1` and `prev2` to store intermediate results.
