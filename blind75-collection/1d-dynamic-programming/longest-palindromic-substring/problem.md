@@ -23,8 +23,8 @@ If there are multiple palindromic substrings that have the same length, return a
 
 ### Constraints
 
-- `1 <= s.length <= 1000`
-- `s` contains only digits and English letters.
+- `1 <= len(s) <= 1000`
+- `s` is alphanumeric.
 
 ---
 

@@ -44,7 +44,7 @@ function robHouses2(nums):
     if n == 1:
         return nums[0]
 
-    def robHouses(nums):
+    function robHouses(nums):
         p1, p2 = 0, 0
         for num in nums:
             p1, p2 = max(p2 + num, p1), p1
@@ -69,7 +69,7 @@ function robHouses2(nums):
   3. Return the maximum of `nums[0]`, `case1`, and `case2`. This ensures that if there is only one house, its value is compared against the two cases.
 ```pseudo
 function robHouses2(nums):
-    def robHouses(nums):
+    function robHouses(nums):
         p1, p2 = 0, 0
         for num in nums:
             p1, p2 = max(p2 + num, p1), p1
