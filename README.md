@@ -6,9 +6,9 @@ Blind 75 Docs is an extensive documentation that covers all the Blind 75 problem
 
 ## 🗝️ Key Features
 
-- **Comprehensive:** This repository will include detailed documentation for every problem in the Blind 75 list.
-- **Detailed Explanations:** Each problem will be explained thoroughly, with step-by-step solutions and detailed commentary on the approach, logic, and reasoning behind each solution.
-- **Structured Index:** The repository will feature a well-organized index, categorizing problems by type (e.g., arrays, linked lists, etc.) to make it easy for users to find specific problems.
+-   **Comprehensive:** This repository will include detailed documentation for every problem in the Blind 75 list.
+-   **Detailed Explanations:** Each problem will be explained thoroughly, with step-by-step solutions and detailed commentary on the approach, logic, and reasoning behind each solution.
+-   **Structured Index:** The repository will feature a well-organized index, categorizing problems by type (e.g., arrays, linked lists, etc.) to make it easy for users to find specific problems.
 
 ## 🎯 Project Mission
 
