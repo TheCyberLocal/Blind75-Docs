@@ -51,7 +51,7 @@ A subsequence is a sequence that can be derived from the given sequence by delet
 
 ---
 
-### Approach 2: Dynamic Programming with Reverse Iteration
+### Approach 2: Dynamic Programming with Reversed Iteration
 
 - **Time Complexity**: `O(n^2)`
 - **Space Complexity**: `O(n)`
