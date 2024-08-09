@@ -86,14 +86,14 @@ If there are multiple palindromic substrings that have the same length, return a
           right += 1
       return right - left - 1
 
-    start, end = 0, 0
+    start = end = 0
     for i from 0 to len(s):
         len1 = paliLen(i, i)
         len2 = paliLen(i, i + 1)
-        length = max(len1, len2)
-        if length > end - start:
-            start = floor(i - (length - 1) / 2)
-            end = floor(i + length / 2)
+        maxLen = max(len1, len2)
+        if maxLen > end - start:
+            start = floor(i - (maxLen - 1) / 2)
+            end = floor(i + maxLen / 2)
     return s[start:end + 1]
   ```
 
@@ -117,7 +117,7 @@ If there are multiple palindromic substrings that have the same length, return a
   function longestPalindrome(s):
     n = len(s)
     dp = 2D array of size n x n filled initialized to false
-    start, end = 0, 0
+    start = end = 0
     for i from 0 to n:
         dp[i][i] = true
     for length from 2 to n:
@@ -127,7 +127,6 @@ If there are multiple palindromic substrings that have the same length, return a
                 if length == 2 or dp[i + 1][j - 1]:
                     dp[i][j] = true
                     if length > end - start + 1:
-                        start = i
-                        end = j
+                        start = i, end = j
     return s[start:end + 1]
   ```

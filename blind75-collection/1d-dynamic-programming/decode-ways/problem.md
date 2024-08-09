@@ -60,7 +60,7 @@ Given a string `s` containing only digits, return the number of ways to decode i
     if s[0] == '0':
         return 0
     dp = array of size n + 1 initialized to 0
-    dp[0], dp[1] = 1, 1
+    dp[0] = dp[1] = 1
     for i from 2 to n:
         if s[i-1] != '0':
             dp[i] += dp[i-1]
@@ -89,7 +89,7 @@ Given a string `s` containing only digits, return the number of ways to decode i
     n = len(s)
     if s[0] == '0':
         return 0
-    p1, p2 = 1, 1
+    p1 = p2 = 1
     for i from 1 to (n - 1):
         current = 0
         if s[i] != '0':
