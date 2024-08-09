@@ -54,12 +54,12 @@ Given a string `s` containing only digits, return the number of ways to decode i
   ```pseudo
   function numDecodings(s):
     n = len(s)
-    if n == 0 or s[0] == '0':
+    if s[0] == '0':
         return 0
     dp = array of size n + 1 initialized to 0
     dp[0] = 1
     dp[1] = 1
-    for i from 2 to n + 1:
+    for i from 2 to n:
         if s[i-1] != '0':
             dp[i] += dp[i-1]
         if 10 <= int(s[i-2:i]) <= 26:
@@ -75,24 +75,25 @@ Given a string `s` containing only digits, return the number of ways to decode i
 - **Space Complexity**: `O(1)`
 - **Description**: This is an optimized version of the dynamic programming approach where only two variables are used to store the last two states instead of using a full array.
 - **Algorithm**:
-  1. Initialize two variables, `prev1` (for `dp[i-1]`) and `prev2` (for `dp[i-2]`), both starting as 1.
+  1. Initialize two variables, `p1` (for `dp[i-1]`) and `p2` (for `dp[i-2]`), both starting as 1.
   2. Iterate through the string from the second character to the end:
      - Calculate the current state based on the last single digit and the last two digits.
-     - Update `prev2` and `prev1` accordingly.
-  3. Return `prev1` after the loop.
+     - Update `p2` and `p1` accordingly.
+  3. Return `p1` after the loop.
   ```pseudo
   function numDecodings(s):
-    if len(s) == 0 or s[0] == '0':
+    n = len(s)
+    if s[0] == '0':
         return 0
-    prev2 = 1
-    prev1 = 1
-    for i from 1 to len(s):
+    p2 = 1
+    p1 = 1
+    for i from 1 to (n - 1):
         current = 0
         if s[i] != '0':
-            current = prev1
+            current = p1
         if 10 <= int(s[i-1:i+1]) <= 26:
-            current += prev2
-        prev2 = prev1
-        prev1 = current
-    return prev1
+            current += p2
+        p2 = p1
+        p1 = current
+    return p1
   ```
