@@ -32,7 +32,7 @@ You may assume that you have an unlimited number of each coin.
 
 ### Constraints
 
-- `1 <= coins.length <= 10`
+- `1 <= len(coins) <= 10`
 - `1 <= coins[i] <= 2^31 - 1`
 - `0 <= amount <= 1000`
 

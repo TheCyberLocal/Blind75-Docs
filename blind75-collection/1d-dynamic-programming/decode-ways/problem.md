@@ -34,7 +34,7 @@ Given a string `s` containing only digits, return the number of ways to decode i
 
 ### Constraints
 
-- `1 <= s.length <= 100`
+- `1 <= len(s) <= 100`
 - `s` consists of digits
 
 ---

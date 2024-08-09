@@ -24,7 +24,7 @@ Return the maximum amount of money you can rob without alerting the police.
 
 ### Constraints
 
-- `1 <= nums.length <= 100`
+- `1 <= len(nums) <= 100`
 - `0 <= nums[i] <= 100`
 
 ---
