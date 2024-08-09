@@ -30,6 +30,7 @@ Return the maximum amount of money you can rob without alerting the police.
 ---
 
 ### Approach 1: Divide and Conquer using House Robber I
+
 - **Time Complexity**: `O(n)`
 - **Space Complexity**: `O(1)`
 - **Description**: We solve the problem by leveraging the solution to House Robber I. Since the first and last houses are adjacent in this problem, we can divide the problem into two scenarios: one where the first house is not robbed and the second where the last house is not robbed. We then take the maximum of these two scenarios as our result.
@@ -38,6 +39,7 @@ Return the maximum amount of money you can rob without alerting the police.
   2. Define a helper function `robHouses` that solves House Robber I for a linear array. We'll use the simpler robHouses function for this problem.
   3. Call `robHouses` twice: once excluding the last house and once excluding the first house.
   4. Return the maximum of the two results.
+
 ```pseudo
 function robHouses2(nums):
     n = len(nums)
@@ -67,6 +69,7 @@ function robHouses2(nums):
   1. Define a helper function `robHouses` that solves House Robber I for a linear array, which returns the maximum money that can be robbed from a non-circular list of houses.
   2. Call `robHouses` twice: once excluding the last house and once excluding the first house.
   3. Return the maximum of `nums[0]`, `case1`, and `case2`. This ensures that if there is only one house, its value is compared against the two cases.
+
 ```pseudo
 function robHouses2(nums):
     function robHouses(nums):

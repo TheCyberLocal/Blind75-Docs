@@ -28,11 +28,48 @@ If there are multiple palindromic substrings that have the same length, return a
 
 ---
 
-### Approach 1: Expand Around Center
+### Approach 1: Expand Around Center and Store Result
 
 - **Time Complexity**: `O(n^2)`
 - **Space Complexity**: `O(1)`
-- **Description**: This approach considers each character in the string as the center of a palindrome and expands outward to check for the longest palindrome. The palindrome can have either one character (odd-length palindromes) or two characters (even-length palindromes) at the center.
+- **Description**: This approach identifies the longest palindrome by treating each character (and each pair of consecutive characters) as the potential center of a palindrome. It directly updates a result string with the current longest palindrome as it iterates through the centers.
+- **Algorithm**:
+
+  1. Initialize two variables `res` and `resLen` to track the longest palindromic substring and its length.
+  2. Define a helper function `expandAroundCenter(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
+  3. For each center index `i` in the string `s`, call `expandAroundCenter` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i+1`).
+  4. Update `res` and `resLen` if a longer palindrome is found during the expansion.
+  5. Return the longest palindromic substring stored in `res`.
+
+  ```pseudo
+  function LongestPalindrome(s):
+    res = ""
+    resLen = 0
+
+    function expandAroundCenter(l, r):
+      while l >= 0 and r < len(s) and s[l] == s[r]:
+        if (r - l + 1) > resLen:
+          res = s[l : r + 1]
+          resLen = r - l + 1
+        l, r = l - 1, r + 1
+
+    for i from 0 to (len(s) - 1):
+      # odd length
+      expandAroundCenter(i, i)
+
+      # even length
+      expandAroundCenter(i, i + 1)
+
+    return res
+  ```
+
+---
+
+### Approach 2: Expand Around Center and Track Indices
+
+- **Time Complexity**: `O(n^2)`
+- **Space Complexity**: `O(1)`
+- **Description**: This approach identifies the longest palindrome by treating each character (and each pair of consecutive characters) as the potential center of a palindrome. It tracks the longest palindrome indicies as it iterates through the centers.
 - **Algorithm**:
 
   1. Initialize two variables `start` and `end` to track the beginning and ending indices of the longest palindrome found.
@@ -43,26 +80,24 @@ If there are multiple palindromic substrings that have the same length, return a
 
   ```pseudo
   function longestPalindrome(s):
+    function expandAroundCenter(left, right):
+      while left >= 0 and right < len(s) and s[left] == s[right]:
+          left -= 1
+          right += 1
+      return right - left - 1
+
     start, end = 0, 0
     for i from 0 to len(s):
-        len1 = expandAroundCenter(s, i, i)
-        len2 = expandAroundCenter(s, i, i + 1)
+        len1 = expandAroundCenter(i, i)
+        len2 = expandAroundCenter(i, i + 1)
         length = max(len1, len2)
         if length > end - start:
-            start = i - (length - 1) / 2
-            end = i + length / 2
+            start = floor(i - (length - 1) / 2)
+            end = floor(i + length / 2)
     return s[start:end + 1]
-
-  function expandAroundCenter(s, left, right):
-    while left >= 0 and right < len(s) and s[left] == s[right]:
-        left -= 1
-        right += 1
-    return right - left - 1
   ```
 
----
-
-### Approach 2: Dynamic Programming
+### Approach 3: Dynamic Programming
 
 - **Time Complexity**: `O(n^2)`
 - **Space Complexity**: `O(n^2)`
@@ -77,7 +112,7 @@ If there are multiple palindromic substrings that have the same length, return a
   ```pseudo
   function longestPalindrome(s):
     n = len(s)
-    dp = 2D array of size n x n filled with False
+    dp = 2D array of size n x n filled initialized to False
     start, end = 0, 0
     for i from 0 to n:
         dp[i][i] = True
