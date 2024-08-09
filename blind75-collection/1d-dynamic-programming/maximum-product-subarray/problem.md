@@ -56,6 +56,8 @@ You can assume the output will fit into a 32-bit integer.
     return res
   ```
 
+---
+
 ### Approach 2: Reset on Zero
 
 - **Time Complexity**: `O(n)`

@@ -22,7 +22,7 @@ A palindrome is a string that reads the same forward and backward.
 
 ### Constraints
 
-- `1 <= s.length <= 1000`
+- `1 <= len(s) <= 1000`
 - `s` consists of lowercase English letters.
 
 ---
@@ -31,29 +31,22 @@ A palindrome is a string that reads the same forward and backward.
 
 - **Time Complexity**: `O(n^2)`
 - **Space Complexity**: `O(1)`
-- **Description**: This approach counts all palindromic substrings by expanding around each possible center of the palindrome. Since a palindrome can have either an odd or even length, we check for both cases by considering each character (and the space between characters) as the center of a potential palindrome.
+- **Description**:
 - **Algorithm**:
-
-  1. Initialize a variable `count` to store the number of palindromic substrings.
-  2. Iterate through each character in the string, treating it as the center of potential odd-length and even-length palindromes.
-  3. For each center, expand outward while the characters on both sides match, and increment `count` for each valid palindrome found.
-  4. Return `count` as the total number of palindromic substrings.
 
   ```pseudo
   function countSubstrings(s):
-    count = 0
+    function expandAroundCenter(l, r):
+      count = 0
+      while l >= 0 and r < len(s) and s[l] == s[r]:
+          count += 1
+          l, r = l - 1, r + 1
+      return count
 
+    res = 0
     for i from 0 to len(s) - 1:
-        count += expandAroundCenter(s, i, i)      // Odd-length palindromes
-        count += expandAroundCenter(s, i, i + 1)  // Even-length palindromes
+        res += expandAroundCenter(i, i)
+        res += expandAroundCenter(i, i + 1)
 
-    return count
-
-  function expandAroundCenter(s, left, right):
-    count = 0
-    while left >= 0 and right < len(s) and s[left] == s[right]:
-        count += 1
-        left -= 1
-        right += 1
-    return count
+    return res
   ```

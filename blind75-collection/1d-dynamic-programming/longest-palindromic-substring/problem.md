@@ -97,6 +97,8 @@ If there are multiple palindromic substrings that have the same length, return a
     return s[start:end + 1]
   ```
 
+---
+
 ### Approach 3: Dynamic Programming
 
 - **Time Complexity**: `O(n^2)`
