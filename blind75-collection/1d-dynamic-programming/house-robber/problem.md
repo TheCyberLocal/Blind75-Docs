@@ -42,7 +42,7 @@ Return the maximum amount of money you can rob without alerting the police.
   5. Return `dp[n-1]` as the result.
 
 ```pseudo
-function rob(nums):
+function robHouses(nums):
     n = len(nums)
     if n == 1:
         return nums[0]
@@ -67,7 +67,7 @@ function rob(nums):
   3. Return `p1` after the loop, which contains the maximum money that can be robbed from all houses.
 
 ```pseudo
-function rob(nums):
+function robHouses(nums):
     p1, p2 = 0, 0
     for num in nums:
         p1, p2 = max(p2 + num, p1), p1
