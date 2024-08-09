@@ -36,8 +36,8 @@ If there are multiple palindromic substrings that have the same length, return a
 - **Algorithm**:
 
   1. Initialize two variables `result` and `resLen` to track the longest palindromic substring and its length.
-  2. Define a helper function `expandAroundCenter(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
-  3. For each center index `i` in the string `s`, call `expandAroundCenter` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i+1`).
+  2. Define a helper function `countPali(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
+  3. For each center index `i` in the string `s`, call `countPali` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i+1`).
   4. Update `res` and `resLen` if a longer palindrome is found during the expansion.
   5. Return the longest palindromic substring stored in `res`.
 
@@ -46,7 +46,7 @@ If there are multiple palindromic substrings that have the same length, return a
     res = ""
     resLen = 0
 
-    function expandAroundCenter(l, r):
+    function countPali(l, r):
       while l >= 0 and r < len(s) and s[l] == s[r]:
         if (r - l + 1) > resLen:
           res = s[l : r + 1]
@@ -55,10 +55,10 @@ If there are multiple palindromic substrings that have the same length, return a
 
     for i from 0 to (len(s) - 1):
       # odd length
-      expandAroundCenter(i, i)
+      countPali(i, i)
 
       # even length
-      expandAroundCenter(i, i + 1)
+      countPali(i, i + 1)
 
     return res
   ```
@@ -80,7 +80,7 @@ If there are multiple palindromic substrings that have the same length, return a
 
   ```pseudo
   function longestPalindrome(s):
-    function expandAroundCenter(left, right):
+    function countPali(left, right):
       while left >= 0 and right < len(s) and s[left] == s[right]:
           left -= 1
           right += 1
@@ -88,8 +88,8 @@ If there are multiple palindromic substrings that have the same length, return a
 
     start, end = 0, 0
     for i from 0 to len(s):
-        len1 = expandAroundCenter(i, i)
-        len2 = expandAroundCenter(i, i + 1)
+        len1 = countPali(i, i)
+        len2 = countPali(i, i + 1)
         length = max(len1, len2)
         if length > end - start:
             start = floor(i - (length - 1) / 2)

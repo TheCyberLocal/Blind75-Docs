@@ -23,7 +23,7 @@ A palindrome is a string that reads the same forward and backward.
 ### Constraints
 
 - `1 <= len(s) <= 1000`
-- `s` consists of lowercase English letters.
+- `s` consists of lowercase letters.
 
 ---
 
@@ -36,7 +36,7 @@ A palindrome is a string that reads the same forward and backward.
 
   ```pseudo
   function countSubstrings(s):
-    function expandAroundCenter(l, r):
+    function countPali(l, r):
       count = 0
       while l >= 0 and r < len(s) and s[l] == s[r]:
           count += 1
@@ -45,8 +45,8 @@ A palindrome is a string that reads the same forward and backward.
 
     res = 0
     for i from 0 to len(s) - 1:
-        res += expandAroundCenter(i, i)
-        res += expandAroundCenter(i, i + 1)
+        res += countPali(i, i)
+        res += countPali(i, i + 1)
 
     return res
   ```
