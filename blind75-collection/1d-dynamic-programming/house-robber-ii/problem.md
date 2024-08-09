@@ -29,83 +29,37 @@ Return the maximum amount of money you can rob without alerting the police.
 
 ---
 
-### Approach 1: Simple Dynamic Programming
+### Approach 1: Divide and Conquer using House Robber I
 
 - **Time Complexity**: `O(n)`
-- **Space Complexity**: `O(n)`
-- **Description**: This approach uses dynamic programming to determine the maximum money that can be robbed without triggering the alarm. We maintain an array `dp` where `dp[i]` represents the maximum money that can be robbed from the first `i` houses. For each house `i`, we have two choices: either rob the current house and add its value to the maximum amount obtained from `i-2` houses, or skip the current house and take the maximum amount from `i-1` houses. The result will be the maximum value in the `dp` array.
+- **Space Complexity**: `O(1)`
+- **Description**: We solve the problem by leveraging the solution to House Robber I. Since the first and last houses are adjacent in this problem, we can divide the problem into two scenarios:
+
+  1. Rob houses from the first house to the second-to-last house.
+  2. Rob houses from the second house to the last house.
+
+  We then take the maximum of these two scenarios as our result.
+
 - **Algorithm**:
-  1. Define `n` as the length of `nums`.
-  2. Create an array `dp` where `dp[i]` represents the maximum money that can be robbed from the first `i` houses.
-  3. Initialize `dp[0] = nums[0]` and `dp[1] = max(nums[0], nums[1])`.
-  4. For each house `i` from 2 to `n-1`, set `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`.
-  5. Return `dp[n-1]` as the result.
+  1. If the length of `nums` is 1, return `nums[0]` because there is only one house to rob.
+  2. Define a helper function `robber1` that solves House Robber I for a linear array. We'll use the simpler robber1 function for this problem.
+  3. Call `robber1` twice: once excluding the last house and once excluding the first house.
+  4. Return the maximum of the two results.
 
 ```pseudo
 function rob(nums):
     n = len(nums)
     if n == 1:
         return nums[0]
-    dp = array of size n initialized to 0
-    dp[0] = nums[0]
-    dp[1] = max(nums[0], nums[1])
-    for i from 2 to (n - 1):
-        dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
-    return dp[n - 1]
+
+    def robber1(nums):
+        p1, p2 = 0, 0
+        for num in nums:
+            p1, p2 = max(p2 + num, p1), p1
+        return p1
+
+    case1 = robber1(nums[:n-2])
+    case2 = robber1(nums[1:])
+
+    return max(case1, case2)
 ```
-
----
-
-### Approach 2: Optimized Dynamic Programming
-
-- **Time Complexity**: `O(n)`
-- **Space Complexity**: `O(1)`
-- **Description**: This approach optimizes space by using only two variables to keep track of the maximum amounts that can be robbed up to the previous house and the house before it. Instead of using an array, we update the variables as we iterate through the list, which reduces the space complexity to O(1).
-- **Algorithm**:
-  1. Initialize two variables, `p1` and `p2`, to store the maximum money that can be robbed up to the previous house and the house before it, respectively.
-  2. Iterate through each house, updating the two variables as needed.
-  3. Return `p1` after the loop, which contains the maximum money that can be robbed from all houses.
-
-```pseudo
-function rob(nums):
-    p1, p2 = 0, 0
-    for num in nums:
-        p1, p2 = max(p2 + num, p1), p1
-    return p1
-```
-
-
-
-
-
-
-
-
-
-
-### Approach 1: Dynamic Programming with Two Passes
-
-- **Time Complexity**: `O(n)`
-- **Space Complexity**: `O(1)`
-- **Description**: The problem is a variation of the House Robber problem where houses are arranged in a circle. Where `n` is the length of `nums`, the key insight is to split the problem into two scenarios: one where you consider robbing houses from index `0` to `n-2` (ignoring the last house) and the other from index `1` to `n-1` (ignoring the first house). The maximum value from these two scenarios will be the answer.
-- **Algorithm**:
-
-  1. Define a helper function `rob_linear` to calculate the maximum amount for a linear arrangement of houses.
-  2. Compute the maximum value between robbing from `nums[0]` to `nums[n-2]` and robbing from `nums[1]` to `nums[n-1]`.
-  3. Return the maximum of these two results.
-
-  ```pseudo
-  function rob(nums):
-    if len(nums) == 1:
-        return nums[0]
-    return max(rob_linear(nums, 0, len(nums) - 2), rob_linear(nums, 1, len(nums) - 1))
-
-  function rob_linear(nums, start, end):
-    prev2 = 0
-    prev1 = 0
-    for i from start to end:
-        current = max(prev1, prev2 + nums[i])
-        prev2 = prev1
-        prev1 = current
-    return prev1
-  ```
