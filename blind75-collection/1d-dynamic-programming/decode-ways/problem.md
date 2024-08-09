@@ -4,7 +4,7 @@
 
 ## Textbook Problem
 
-A string consisting of uppercase English characters can be encoded to a number using the following mapping:
+A string consisting of uppercase letters can be encoded to a number using the following mapping:
 
 - `'A'` -> `"1"`
 - `'B'` -> `"2"`
