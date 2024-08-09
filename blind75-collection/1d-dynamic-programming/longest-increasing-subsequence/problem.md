@@ -62,6 +62,7 @@ A subsequence is a sequence that can be derived from the given sequence by delet
 
 ```pseudo
 function lengthOfLIS(nums):
+    n = len(nums)
     dp = array of size len(nums) initialized to 1
     for i from (n - 1) to 0:
         for j from (i + 1) to (n - 1):
