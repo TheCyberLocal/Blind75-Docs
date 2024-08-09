@@ -31,8 +31,21 @@ A palindrome is a string that reads the same forward and backward.
 
 - **Time Complexity**: `O(n^2)`
 - **Space Complexity**: `O(1)`
-- **Description**:
+- **Description**: This approach counts palindromic substrings by expanding around each character (and between each pair of characters) as the center. A palindrome can have either a single character as its center (odd-length palindromes) or two consecutive characters as its center (even-length palindromes). For each possible center, we expand outward as long as the characters on both sides are equal, counting the number of valid palindromic substrings. This method ensures that all possible palindromic substrings are considered.
 - **Algorithm**:
+
+  1. Define a helper function `countPali(l, r)` that takes two indices, `l` and `r`, and counts the number of palindromic substrings with the center between `s[l]` and `s[r]`.
+     - Initialize a counter `count` to `0`.
+     - Use a while loop to expand outward as long as `l` is non-negative, `r` is within bounds, and `s[l] == s[r]`.
+     - Increment the `count` each time a valid palindrome is found.
+     - Move `l` one step left and `r` one step right.
+     - Return the `count`.
+  2. Initialize a variable `res` to store the total number of palindromic substrings.
+  3. Iterate over each index `i` in the string `s`:
+     - Call `countPali(i, i)` to count odd-length palindromes centered at `i`.
+     - Call `countPali(i, i + 1)` to count even-length palindromes centered between `i` and `i + 1`.
+     - Add the results from these function calls to `res`.
+  4. Return `res` as the total number of palindromic substrings.
 
   ```pseudo
   function countSubstrings(s):
