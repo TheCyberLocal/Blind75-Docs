@@ -35,7 +35,7 @@ If there are multiple palindromic substrings that have the same length, return a
 - **Description**: This approach identifies the longest palindrome by treating each character (and each pair of consecutive characters) as the potential center of a palindrome. It directly updates a result string with the current longest palindrome as it iterates through the centers.
 - **Algorithm**:
 
-  1. Initialize two variables `res` and `resLen` to track the longest palindromic substring and its length.
+  1. Initialize two variables `result` and `resLen` to track the longest palindromic substring and its length.
   2. Define a helper function `expandAroundCenter(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
   3. For each center index `i` in the string `s`, call `expandAroundCenter` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i+1`).
   4. Update `res` and `resLen` if a longer palindrome is found during the expansion.
