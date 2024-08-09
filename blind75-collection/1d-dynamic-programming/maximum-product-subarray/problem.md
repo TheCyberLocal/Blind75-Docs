@@ -60,15 +60,14 @@ You can assume the output will fit into a 32-bit integer.
 
 - **Time Complexity**: `O(n)`
 - **Space Complexity**: `O(1)`
-- **Description**: This approach also maintains `max_prod` and `min_prod` to track the maximum and minimum products at each step. However, it differs from the first approach by handling zeros explicitly. Whenever a zero is encountered, both `max_prod` and `min_prod` are reset to 1, which effectively breaks the current subarray and starts fresh from the next element. This is necessary because multiplying by zero would reset any product to zero, and thus, a new subarray should be considered starting after the zero. The result is updated at each step with the maximum of the current `max_prod` and the previous `res`.
+- **Description**: This approach refines the dynamic programming method by focusing on the impact of negative numbers on the product. The main idea is to track both the maximum and minimum products up to each index, as a negative number could turn the smallest product into the largest one. Unlike the first approach, we don't explicitly reset on zeros but rather handle each element based on its value. Specifically, when encountering a negative number, we swap `max_prod` and `min_prod` before updating them, since multiplying by a negative number would flip the signs. This ensures that `max_prod` always holds the maximum possible product up to the current element.
 - **Algorithm**:
-  1. Initialize `res` with the maximum value in the array to account for the case where all elements are negative or zero.
+  1. Initialize `res` with the maximum value in the array to account for cases where the array might contain only negative numbers or zeros.
   2. Initialize `max_prod` and `min_prod` to 1.
   3. Iterate through each number in `nums`:
-     - If the current number is `0`, reset `max_prod` and `min_prod` to 1 and continue to the next element since a zero breaks the product subarray.
      - Calculate a temporary value `tmp` as the product of `max_prod` and the current number.
-     - Update `max_prod` to the maximum of `num`, `min_prod * num`, and `max_prod * num` to consider both positive and negative products.
-     - Update `min_prod` to the minimum of `num`, `min_prod * num`, and `tmp` to ensure we track the smallest product which may become the largest when multiplied by a negative number.
+     - Update `max_prod` to the minimum of `num`, `min_prod * num`, and `max_prod * num`. This accounts for the possibility that multiplying by a negative number could yield a higher product.
+     - Update `min_prod` to the maximum of `num`, `min_prod * num`, and `tmp` to ensure that `min_prod` correctly tracks the smallest product, which could become the largest when multiplied by another negative number.
      - Update `res` to be the maximum of `res` and `max_prod`.
   4. Return `res`, which contains the maximum product subarray.
 
@@ -78,10 +77,6 @@ function maxProduct(nums):
     max_prod, min_prod = 1, 1
 
     for num in nums:
-        if num == 0:
-            max_prod, min_prod = 1, 1
-            continue
-
         tmp = max_prod * num
         max_prod = min(num, min_prod * num, max_prod * num)
         min_prod = max(num, min_prod * num, tmp)
