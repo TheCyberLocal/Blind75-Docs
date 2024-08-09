@@ -27,9 +27,9 @@ You are allowed to reuse words in the dictionary an unlimited number of times. Y
 
 ### Constraints
 
-- `1 <= s.length <= 200`
-- `1 <= wordDict.length <= 100`
-- `1 <= wordDict[i].length <= 20`
+- `1 <= len(s) <= 200`
+- `1 <= len(wordDict) <= 100`
+- `1 <= len(wordDict[i]) <= 20`
 - `s` and `wordDict[i]` consist of only lowercase letters.
 
 ---
