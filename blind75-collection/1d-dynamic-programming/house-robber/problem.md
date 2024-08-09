@@ -46,7 +46,7 @@ function rob(nums):
     n = nums.length
     if n == 1:
         return nums[0]
-    dp = array of size n
+    dp = array of size n initialized to 0
     dp[0] = nums[0]
     dp[1] = max(nums[0], nums[1])
     for i from 2 to (n - 1):
