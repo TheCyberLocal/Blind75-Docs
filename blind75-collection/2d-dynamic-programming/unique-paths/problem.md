@@ -39,7 +39,7 @@ You may assume the output will fit in a 32-bit integer.
   4. Return `dp[m-1][n-1]` as the result, which represents the number of unique paths to the bottom-right corner.
 
   ```pseudo
-  function countPaths(m, n):
+  function uniquePaths(m, n):
       dp = 2D array of size m x n initialized to 1
 
       for i from 1 to m-1:
