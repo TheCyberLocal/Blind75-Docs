@@ -2,6 +2,8 @@
 
 ### [⇦ Back to Project Overview](../README.md)
 
+This project is being completed top-down, so please be patient for `Two Pointers - Valid Palindrome`. 😅
+
 ## 1D Dynamic Programming - _In progress_
 
 - [Climbing Stairs](./1d-dynamic-programming/climbing-stairs/problem.md)
@@ -15,16 +17,16 @@
 - [Palindromic Substrings](./1d-dynamic-programming/palindromic-substrings/problem.md)
 - [Word Break](./1d-dynamic-programming/word-break/problem.md)
 
-## 2D Dynamic Programming - _Empty_
+## 2D Dynamic Programming - _Void_
 
 - [Longest Common Subsequence](./2d-dynamic-programming/longest-common-subsequence/problem.md)
 - [Unique Paths](./2d-dynamic-programming/unique-paths/problem.md)
 
-## Advanced Graphs - _Empty_
+## Advanced Graphs - _Void_
 
 - [Alien Dictionary](./advanced-graphs/alien-dictionary/problem.md)
 
-## Arrays and Hashing - _Empty_
+## Arrays and Hashing - _Void_
 
 - [Contains Duplicate](./arrays-and-hashing/contains-duplicate/problem.md)
 - [Encode and Decode Strings](./arrays-and-hashing/encode-and-decode-strings/problem.md)
@@ -35,17 +37,17 @@
 - [Two Sum](./arrays-and-hashing/two-sum/problem.md)
 - [Valid Anagram](./arrays-and-hashing/valid-anagram/problem.md)
 
-## Backtracking - _Empty_
+## Backtracking - _Void_
 
 - [Combination Sum](./backtracking/combination-sum/problem.md)
 - [Word Search](./backtracking/word-search/problem.md)
 
-## Binary Search - _Empty_
+## Binary Search - _Void_
 
 - [Find Minimum in Rotated Sorted Array](./binary-search/find-minimum-in-rotated-sorted-array/problem.md)
 - [Search in Rotated Sorted Array](./binary-search/search-in-rotated-sorted-array/problem.md)
 
-## Bit Manipulation - _Empty_
+## Bit Manipulation - _Void_
 
 - [Counting Bits](./bit-manipulation/counting-bits/problem.md)
 - [Missing Number](./bit-manipulation/missing-number/problem.md)
@@ -53,7 +55,7 @@
 - [Reverse Bits](./bit-manipulation/reverse-bits/problem.md)
 - [Sum of Two Integers](./bit-manipulation/sum-of-two-integers/problem.md)
 
-## Graphs - _Empty_
+## Graphs - _Void_
 
 - [Clone Graph](./graphs/clone-graph/problem.md)
 - [Course Schedule](./graphs/course-schedule/problem.md)
@@ -62,16 +64,16 @@
 - [Number of Islands](./graphs/number-of-islands/problem.md)
 - [Pacific Atlantic Water Flow](./graphs/pacific-atlantic-water-flow/problem.md)
 
-## Greedy - _Empty_
+## Greedy - _Void_
 
 - [Jump Game](./greedy/jump-game/problem.md)
 - [Maximum Subarray](./greedy/maximum-subarray/problem.md)
 
-## Heap / Priority Queue - _Empty_
+## Heap / Priority Queue - _Void_
 
 - [Find Median from Data Stream](./heap-priority-queue/find-median-from-data-stream/problem.md)
 
-## Intervals - _Empty_
+## Intervals - _Void_
 
 - [Insert Interval](./intervals/insert-interval/problem.md)
 - [Meeting Rooms](./intervals/meeting-rooms/problem.md)
@@ -79,7 +81,7 @@
 - [Merge Intervals](./intervals/merge-intervals/problem.md)
 - [Non-overlapping Intervals](./intervals/non-overlapping-intervals/problem.md)
 
-## Linked List - _Empty_
+## Linked List - _Void_
 
 - [Linked List Cycle](./linked-list/linked-list-cycle/problem.md)
 - [Merge K Sorted Lists](./linked-list/merge-k-sorted-lists/problem.md)
@@ -88,24 +90,24 @@
 - [Reorder List](./linked-list/reorder-list/problem.md)
 - [Reverse Linked List](./linked-list/reverse-linked-list/problem.md)
 
-## Math and Geometry - _Empty_
+## Math and Geometry - _Void_
 
 - [Rotate Image](./math-and-geometry/rotate-image/problem.md)
 - [Set Matrix Zeroes](./math-and-geometry/set-matrix-zeroes/problem.md)
 - [Spiral Matrix](./math-and-geometry/spiral-matrix/problem.md)
 
-## Sliding Window - _Empty_
+## Sliding Window - _Void_
 
 - [Best Time to Buy and Sell Stock](./sliding-window/best-time-to-buy-and-sell-stock/problem.md)
 - [Longest Repeating Character Replacement](./sliding-window/longest-repeating-character-replacement/problem.md)
 - [Longest Substring without Repeating Characters](./sliding-window/longest-substring-without-repeating-characters/problem.md)
 - [Minimum Window Substring](./sliding-window/minimum-window-substring/problem.md)
 
-## Stack - _Empty_
+## Stack - _Void_
 
 - [Valid Parentheses](./stack/valid-parentheses/problem.md)
 
-## Trees - _Empty_
+## Trees - _Void_
 
 - [Binary Tree Level Order Traversal](./trees/binary-tree-level-order-traversal/problem.md)
 - [Binary Tree Maximum Path Sum](./trees/binary-tree-maximum-path-sum/problem.md)
@@ -119,13 +121,13 @@
 - [Subtree of Another Tree](./trees/subtree-of-another-tree/problem.md)
 - [Validate Binary Search Tree](./trees/validate-binary-search-tree/problem.md)
 
-## Tries - _Empty_
+## Tries - _Void_
 
 - [Design Add and Search Words Data Structure](./tries/design-add-and-search-words-data-structure/problem.md)
 - [Implement Trie (Prefix Tree)](./tries/implement-trie-prefix-tree/problem.md)
 - [Word Search II](./tries/word-search-ii/problem.md)
 
-## Two Pointers - _Empty_
+## Two Pointers - _Void_
 
 - [3Sum](./two-pointers/3sum/problem.md)
 - [Container with Most Water](./two-pointers/container-with-most-water/problem.md)
