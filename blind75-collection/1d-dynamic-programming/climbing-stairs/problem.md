@@ -44,8 +44,7 @@ Return the number of distinct ways to climb to the top of the staircase.
   ```pseudo
   function climbStairs(n):
     dp = array of size n + 1
-    dp[n] = 1
-    dp[n-1] = 1
+    dp[n], dp[n-1] = 1, 1
     for i from (n - 2) to 0:
       dp[i] = dp[i + 1] + dp[i + 2]
     return dp[0]
@@ -61,17 +60,13 @@ Return the number of distinct ways to climb to the top of the staircase.
 - **Algorithm**:
   1. Initialize two variables, `p1` and `p2`, to store the number of ways to reach the current step and the previous step, respectively. Both are initialized to 1.
   2. Iterate `n-2` times, updating the two variables at each step:
-     - Temporarily store the current value of `p1` in `tmp`.
      - Update `p1` to the sum of `p1` and `p2`.
-     - Update `p2` to the previous value of `p1` stored in `tmp`.
+     - Update `p2` to the previous value of `p1`.
   3. Return `p1`, which contains the number of ways to reach the `n`-th step.
   ```pseudo
   function climbStairs(n):
-    p1 = 1
-    p2 = 1
+    p1, p2 = 1, 1
     for (n - 2) times:
-      tmp = p1
-      p1 = p1 + p2
-      p2 = tmp
+      p1, p2 = p1 + p2, p1
     return p1
   ```
