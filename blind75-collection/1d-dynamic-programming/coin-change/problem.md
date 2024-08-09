@@ -44,9 +44,11 @@ You may assume that you have an unlimited number of each coin.
 - **Space Complexity**: `O(n)` where `n` is the amount.
 - **Description**: This approach uses dynamic programming to find the minimum number of coins required. The idea is to use a `dp` array where `dp[i]` represents the minimum number of coins needed to make up the amount `i`.
 - **Algorithm**:
+
   1. Initialize a `dp` array of size `amount + 1` with `dp[0] = 0` and all other values set to a large number (indicating unreachable amounts).
   2. For each coin, update the `dp` array such that `dp[x] = min(dp[x], dp[x - coin] + 1)` for all `x` from the coin value to the amount.
   3. Return `dp[amount]` if it is not the initialized large number; otherwise, return `-1`.
+
   ```pseudo
   function coinChange(coins, amount):
     dp = array of size amount + 1 initialized to amount + 1

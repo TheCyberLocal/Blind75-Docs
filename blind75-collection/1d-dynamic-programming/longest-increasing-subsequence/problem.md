@@ -32,10 +32,12 @@ A subsequence is a sequence that can be derived from the given sequence by delet
 - **Space Complexity**: `O(n)`
 - **Description**: This approach uses dynamic programming to build up the solution. For each element in the array, it checks all previous elements to determine if it can extend the subsequence. If so, it updates the length of the subsequence ending at that element.
 - **Algorithm**:
+
   1. Create an array `dp` where `dp[i]` represents the length of the longest increasing subsequence ending at index `i`.
   2. Initialize each `dp[i]` to `1` because the minimum subsequence length at any position is `1`.
   3. For each `i` from `1` to `n`, and for each `j` from `0` to `i-1`, if `nums[i] > nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
   4. The answer is the maximum value in the `dp` array.
+
   ```pseudo
   function lengthOfLIS(nums):
     n = len(nums)
@@ -55,6 +57,7 @@ A subsequence is a sequence that can be derived from the given sequence by delet
 - **Space Complexity**: `O(n)`
 - **Description**: This approach is similar to the first one but iterates in reverse order. For each element in the array, it checks all subsequent elements to determine if it can extend the subsequence. If so, it updates the length of the subsequence ending at that element.
 - **Algorithm**:
+
   1. Create an array `dp` where `dp[i]` represents the length of the longest increasing subsequence ending at index `i`.
   2. Initialize each `dp[i]` to `1` because the minimum subsequence length at any position is `1`.
   3. For each `i` from `n-1` to `0`, and for each `j` from `i+1` to `n-1`, if `nums[i] < nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
@@ -79,10 +82,12 @@ function lengthOfLIS(nums):
 - **Space Complexity**: `O(n)`
 - **Description**: This optimized approach uses dynamic programming combined with binary search. Instead of maintaining the `dp` array directly, we maintain a list `tails` where `tails[i]` is the smallest possible end value of an increasing subsequence of length `i+1`. This list is maintained in sorted order, and binary search is used to find the correct position to replace or extend the subsequence.
 - **Algorithm**:
+
   1. Create an empty list `tails`.
   2. For each element `num` in `nums`, perform a binary search on `tails` to find the smallest element greater than or equal to `num`.
   3. If such an element exists, replace it with `num`; otherwise, append `num` to `tails`.
   4. The length of `tails` is the length of the longest increasing subsequence.
+
   ```pseudo
   function lengthOfLIS(nums):
     tails = []

@@ -62,6 +62,7 @@ You can assume the output will fit into a 32-bit integer.
 - **Space Complexity**: `O(1)`
 - **Description**: This approach refines the dynamic programming method by focusing on the impact of negative numbers on the product. The main idea is to track both the maximum and minimum products up to each index, as a negative number could turn the smallest product into the largest one. Unlike the first approach, we don't explicitly reset on zeros but rather handle each element based on its value. Specifically, when encountering a negative number, we swap `max_prod` and `min_prod` before updating them, since multiplying by a negative number would flip the signs. This ensures that `max_prod` always holds the maximum possible product up to the current element.
 - **Algorithm**:
+
   1. Initialize `res` with the maximum value in the array to account for cases where the array might contain only negative numbers or zeros.
   2. Initialize `max_prod` and `min_prod` to 1.
   3. Iterate through each number in `nums`:

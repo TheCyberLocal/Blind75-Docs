@@ -103,12 +103,14 @@ If there are multiple palindromic substrings that have the same length, return a
 - **Space Complexity**: `O(n^2)`
 - **Description**: This approach uses dynamic programming to check whether a substring is a palindrome. The idea is to use a 2D table `dp` where `dp[i][j]` is `True` if the substring `s[i:j+1]` is a palindrome. The result is then the longest palindromic substring found in the table.
 - **Algorithm**:
+
   1. Initialize a 2D array `dp` of size `n x n` where `n` is the length of the string `s`.
   2. Set `dp[i][i]` to `True` since every single character is a palindrome.
   3. Check for two consecutive characters and update `dp[i][i+1]` if they are the same.
   4. Iterate over substrings of length greater than 2, updating `dp[i][j]` if `dp[i+1][j-1]` is `True` and `s[i] == s[j]`.
   5. Track the start and end indices of the longest palindrome found during the iterations.
   6. Return the substring of `s` from `start` to `end + 1`.
+
   ```pseudo
   function longestPalindrome(s):
     n = len(s)

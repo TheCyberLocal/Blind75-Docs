@@ -45,6 +45,7 @@ Given a string `s` containing only digits, return the number of ways to decode i
 - **Space Complexity**: `O(n)`
 - **Description**: This approach uses dynamic programming to keep track of the number of ways to decode the string up to each character. The key observation is that a valid decoding can be formed by considering either the last single digit or the last two digits as a letter if they form a valid character mapping.
 - **Algorithm**:
+
   1. Define `n` as `len(s)`.
   2. Initialize a `dp` array of size `n + 1`, where `dp[i]` represents the number of ways to decode the substring `s[0:i]`.
   3. Set `dp[0] = 1` (empty string has one way to decode) and `dp[1] = 1` if `s[0]` is not '0'.
@@ -52,6 +53,7 @@ Given a string `s` containing only digits, return the number of ways to decode i
      - If `s[i-1]` is a valid single digit, add `dp[i-1]` to `dp[i]`.
      - If `s[i-2:i]` is a valid two-digit number, add `dp[i-2]` to `dp[i]`.
   5. Return `dp[n]`.
+
   ```pseudo
   function numDecodings(s):
     n = len(s)
@@ -75,11 +77,13 @@ Given a string `s` containing only digits, return the number of ways to decode i
 - **Space Complexity**: `O(1)`
 - **Description**: This is an optimized version of the dynamic programming approach where only two variables are used to store the last two states instead of using a full array.
 - **Algorithm**:
+
   1. Initialize two variables, `p1` (for `dp[i-1]`) and `p2` (for `dp[i-2]`), both starting as 1.
   2. Iterate through the string from the second character to the end:
      - Calculate the current state based on the last single digit and the last two digits.
      - Update `p2` and `p1` accordingly.
   3. Return `p1` after the loop.
+
   ```pseudo
   function numDecodings(s):
     n = len(s)
