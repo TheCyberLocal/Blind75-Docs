@@ -86,3 +86,73 @@ function alienOrder(words):
 
     return order if len(order) == len(in_degree) else ""
 ```
+
+---
+
+### Approach 2: Depth-First Search (DFS) with Cycle Detection
+
+-   **Time Complexity**: `O(n)` where `n` is the total number of characters in all words.
+-   **Space Complexity**: `O(1)`
+-   **Description**: This approach uses a depth-first search (DFS) to determine the topological order of the characters while detecting cycles. Each character is treated as a node in a directed graph, and the adjacency list `adj` represents the edges between nodes (characters). The graph is built by comparing adjacent words, and a DFS is performed on each character to establish the order. During the DFS, a cycle is detected if we revisit a node that is part of the current path, indicating that no valid order exists.
+
+-   **Algorithm**:
+
+    1. Initialize an adjacency list `adj` using a dictionary where each character is mapped to a set of characters it precedes.
+    2. Construct the graph:
+        - Iterate through each pair of adjacent words `w1` and `w2`.
+        - Compare characters at each position up to the length of the shorter word.
+        - If the prefix of `w1` matches `w2` but `w1` is longer, return an empty string, as this indicates an invalid order.
+        - If a mismatch is found between characters `w1[j]` and `w2[j]`, add an edge from `w1[j]` to `w2[j]` in `adj`, and break out of the loop.
+    3. Initialize a `visited` dictionary to track the state of each character:
+        - `False` if the character has been fully processed.
+        - `True` if the character is currently in the DFS path.
+    4. Define a recursive DFS function:
+        - If the character is already in `visited` and part of the current path (`True`), a cycle is detected, so return `True`.
+        - Mark the character as part of the current path.
+        - Recursively visit all adjacent characters. If a cycle is found, return `True`.
+        - After processing all neighbors, mark the character as fully visited (`False`), and add it to the result list.
+    5. Perform DFS on each character in the adjacency list. If a cycle is detected, return an empty string.
+    6. Reverse the result list, as characters are added in reverse order during DFS, and return the joined string.
+
+```pseudo
+function alienOrder(words):
+    # Initialize the adjacency list
+    adj = {char: set() for word in words for char in word}
+
+    # Build the graph
+    for i from 0 to len(words) - 1:
+        w1, w2 = words[i], words[i + 1]
+        minLen = min(len(w1), len(w2))
+        if len(w1) > len(w2) and w1[:minLen] == w2[:minLen]:
+            return ""
+        for j from 0 to minLen:
+            if w1[j] != w2[j]:
+                adj[w1[j]].add(w2[j])
+                break
+
+    # Initialize visited dictionary and result list
+    visited = {}  # {char: bool} False visited, True current path
+    res = []
+
+    # Depth-first search function
+    function dfs(char):
+        if char in visited:
+            return visited[char]
+
+        visited[char] = True
+
+        for neighChar in adj[char]:
+            if dfs(neighChar):
+                return True
+
+        visited[char] = False
+        res.append(char)
+
+    # Perform DFS for each character in the adjacency list
+    for char in adj:
+        if dfs(char):
+            return ""
+
+    res.reverse()
+    return "".join(res)
+```
