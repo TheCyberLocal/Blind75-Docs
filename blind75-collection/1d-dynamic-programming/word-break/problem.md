@@ -36,7 +36,7 @@ You are allowed to reuse words in the dictionary an unlimited number of times. Y
 
 ### Approach 1: Dynamic Programming
 
--   **Time Complexity**: `O(n * m * o)` where `n` is `len(s)`, `m` is `len(wordDict)`, and `o` is the average word length in the dictionary.
+-   **Time Complexity**: `O(n * m)` where `n` is `len(s)` and `m` is the total number of characters in `wordDict`.
 -   **Space Complexity**: `O(n)` where `n` is `len(s)`.
 -   **Description**: This approach uses dynamic programming to determine whether the string can be segmented into words from the dictionary. The idea is to use a boolean array `dp` where `dp[i]` is `true` if the substring `s[0:i]` can be segmented into words from `wordDict`. The array is initialized with `dp[0] = true`, representing the empty string. Then, for each substring, we check if there is a word in the dictionary that ends at the current position and if the remaining part of the substring can be segmented as well.
 -   **Algorithm**:
@@ -64,7 +64,7 @@ function wordBreak(s, wordDict):
 
 ### Approach 2: Dynamic Programming (Reversed Iteration)
 
--   **Time Complexity**: `O(n * m * o)` where `n` is `len(s)`, `m` is `len(wordDict)`, and `o` is the average word length in the dictionary.
+-   **Time Complexity**: `O(n * m)` where `n` is `len(s)` and `m` is the total number of characters in `wordDict`.
 -   **Space Complexity**: `O(n)` where `n` is `len(s)`.
 -   **Description**: This approach uses dynamic programming to solve the problem by iterating through the string `s` in reverse order. The `dp` array keeps track of whether the substring starting from a given index `i` to the end of the string can be segmented into words from the dictionary. Starting from the end of the string (`dp[len(s)]`), which is initialized to `true`, the algorithm checks each word in the dictionary to see if it matches the substring starting at `i`. If a match is found and the remaining substring (from the end of the matched word onward) can be segmented (`dp[i + len(word)]` is `true`), then `dp[i]` is set to `true`. The process continues until the start of the string, and the result is `dp[0]`, which indicates whether the entire string can be segmented.
 -   **Algorithm**:
