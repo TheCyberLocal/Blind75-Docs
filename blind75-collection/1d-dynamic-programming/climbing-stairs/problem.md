@@ -74,3 +74,25 @@ function climbStairs(n):
         p1, p2 = p1 + p2, p1
     return p1
 ```
+
+---
+
+### Approach 3: Mathematics (Binet's Formula)
+
+-   **Time Complexity**: `O(1)`
+-   **Space Complexity**: `O(1)`
+-   **Description**: This approach leverages the fact that the problem of counting the number of ways to reach the top of the staircase is equivalent to finding the `n`-th Fibonacci number. The Fibonacci sequence can be calculated using a closed-form expression known as Binet's Formula. By directly applying this formula, we can compute the number of ways to climb the stairs in constant time.
+-   **Algorithm**:
+
+    1. Use Binet's Formula to calculate the `n`-th Fibonacci number: `F(n) = (phi^n - psi^n) / sqrt(5)`, where `phi` is the golden ratio and `psi` is its conjugate.
+    2. The number of distinct ways to climb to the top of the staircase is equivalent to `F(n + 1)` because the problem is one-based.
+    3. Return the result, rounded to the nearest integer.
+
+```pseudo
+function climbStairs(n):
+    function fib(n):
+        phi = (1 + sqrt(5)) / 2
+        psi = (1 - sqrt(5)) / 2
+        return round((phi^n - psi^n) / sqrt(5))
+    return fib(n + 1)
+```

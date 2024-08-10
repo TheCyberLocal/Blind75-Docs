@@ -84,7 +84,7 @@ function uniquePaths(m, n):
 
 ---
 
-### Approach 3: Mathematical Equation
+### Approach 3: Mathematics (Combinatorial Formula)
 
 -   **Time Complexity**: `O(1)`
 -   **Space Complexity**: `O(1)`
