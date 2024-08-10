@@ -22,11 +22,11 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Longest Common Subsequence](./2d-dynamic-programming/longest-common-subsequence/problem.md)
 -   [Unique Paths](./2d-dynamic-programming/unique-paths/problem.md)
 
-## Advanced Graphs - _In Progress_
+## Advanced Graphs
 
 -   [Alien Dictionary](./advanced-graphs/alien-dictionary/problem.md)
 
-## Arrays and Hashing - _Void_
+## Arrays and Hashing - _In Progress_
 
 -   [Contains Duplicate](./arrays-and-hashing/contains-duplicate/problem.md)
 -   [Encode and Decode Strings](./arrays-and-hashing/encode-and-decode-strings/problem.md)
