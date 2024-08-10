@@ -43,44 +43,46 @@ A string `a` is lexicographically smaller than a string `b` if either of the fol
 ### Approach 1: Topological Sorting (Kahn's Algorithm)
 
 -   **Time Complexity**: `O(n)` where `n` is the total number of characters in all words.
--   **Space Complexity**: `O(1)`.
+-   **Space Complexity**: `O(1)`
 -   **Description**: We treat each character as a node in a directed graph, where an edge from node `u` to node `v` means that character `u` comes before character `v`. We construct this graph by comparing adjacent words in the list. After constructing the graph, we perform a topological sort to determine a valid order of characters.
 -   **Algorithm**:
 
-    1. Initialize an adjacency list to represent the graph and a dictionary to store the in-degree of each character.
-    2. Compare adjacent words to find the first different character, which gives the ordering between the two characters.
-    3. Add the edge between the characters and update the in-degree of the destination character.
-    4. Perform topological sorting using Kahn's algorithm:
-        - Initialize a queue with all characters having an in-degree of `0`.
-        - Process each character in the queue, appending it to the result, and reduce the in-degree of its neighbors.
-        - If a neighbor's in-degree becomes `0`, add it to the queue.
-    5. If the result contains all unique characters, return it as the valid order; otherwise, return an empty string.
+    1. Initialize an empty adjacency list `graph` and a dictionary `in_degree` to store the in-degree of each character.
+    2. For each pair of adjacent words `word1` and `word2`:
+        - Compare the characters `char1` and `char2` at each position.
+        - If `char1 != char2`, add an edge from `char1` to `char2` in `graph` and increment `in_degree[char2]` by 1.
+        - Break the loop after finding the first different character.
+    3. Initialize a queue with all characters that have an in-degree of `0`.
+    4. Process the queue:
+        - Pop a character from the queue, append it to `order`.
+        - Decrease the in-degree of each neighbor. If a neighbor's in-degree becomes `0`, add it to the queue.
+    5. Return `order` if it contains all unique characters; otherwise, return an empty string.
 
 ```pseudo
 function alienOrder(words):
-    graph = empty adjacency list
+    graph = {}  # adjacency list
     in_degree = {char: 0 for char in all unique characters in words}
 
-    for each pair of adjacent words (word1, word2):
-        for each character pair (char1, char2):
+    for i from 0 to len(words) - 1:
+        word1, word2 = words[i], words[i + 1]
+        for j from 0 to min(len(word1), len(word2)):
+            char1, char2 = word1[j], word2[j]
             if char1 != char2:
-                add edge from char1 to char2 in graph
-                increase in_degree[char2] by 1
+                if char2 not in graph[char1]:
+                    graph[char1].append(char2)
+                    in_degree[char2] += 1
                 break
 
-    queue = all characters with in-degree 0
-    order = empty string
+    queue = [char for char in in_degree if in_degree[char] == 0]
+    order = ""
 
-    while queue is not empty:
-        char = queue.pop()
+    while queue:
+        char = queue.pop(0)
         order += char
-        for neighbor in graph[char]:
+        for neighbor in graph.get(char, []):
             in_degree[neighbor] -= 1
             if in_degree[neighbor] == 0:
-                queue.push(neighbor)
+                queue.append(neighbor)
 
-    if length of order == number of unique characters:
-        return order
-    else:
-        return empty string
+    return order if len(order) == len(in_degree) else ""
 ```
