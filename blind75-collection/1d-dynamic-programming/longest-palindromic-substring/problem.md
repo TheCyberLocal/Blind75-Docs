@@ -73,18 +73,18 @@ function LongestPalindrome(s):
 -   **Algorithm**:
 
     1. Initialize two variables `start` and `end` to track the beginning and ending indices of the longest palindrome found.
-    2. Iterate over the string `s`, considering each character as the center of the palindrome.
-    3. For each center, expand around it while the characters on both sides are equal.
-    4. Update the `start` and `end` indices if a longer palindrome is found.
-    5. Return the substring of `s` from `start` to `end + 1`.
+    2. Define a helper function `paliLen(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
+	3. Iterate over the string `s`, considering each character as the center of the palindrome.
+    4. For each center, expand around it while the characters on both sides are equal.
+    5. Update the `start` and `end` indices if a longer palindrome is found.
+    6. Return the substring of `s` from `start` to `end + 1`.
 
 ```pseudo
 function longestPalindrome(s):
-	function paliLen(left, right):
-		while left >= 0 and right < len(s) and s[left] == s[right]:
-			left -= 1
-			right += 1
-		return right - left - 1
+	function paliLen(l, r):
+		while l >= 0 and r < len(s) and s[l] == s[r]:
+			l, r = l - 1, r + 1
+		return r - l - 1
 
 	start = end = 0
 	for i from 0 to len(s):
