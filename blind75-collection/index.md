@@ -17,7 +17,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Palindromic Substrings](./1d-dynamic-programming/palindromic-substrings/problem.md)
 -   [Word Break](./1d-dynamic-programming/word-break/problem.md)
 
-## 2D Dynamic Programming - _Void_
+## 2D Dynamic Programming
 
 -   [Longest Common Subsequence](./2d-dynamic-programming/longest-common-subsequence/problem.md)
 -   [Unique Paths](./2d-dynamic-programming/unique-paths/problem.md)
