@@ -35,7 +35,7 @@ A subsequence is a sequence that can be derived from the given sequence by delet
 
     1. Create an array `dp` where `dp[i]` represents the length of the longest increasing subsequence ending at index `i`.
     2. Initialize each `dp[i]` to `1` because the minimum subsequence length at any position is `1`.
-    3. For each `i` from `1` to `n`, and for each `j` from `0` to `i-1`, if `nums[i] > nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
+    3. For each `i` from `1` to `n`, and for each `j` from `0` to `i - 1`, if `nums[i] > nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
     4. The answer is the maximum value in the `dp` array.
 
 ```pseudo
@@ -43,7 +43,7 @@ function lengthOfLIS(nums):
 	n = len(nums)
 	dp = array of size n initialized to 1
 	for i from 1 to n:
-		for j from 0 to i-1:
+		for j from 0 to i - 1:
 			if nums[i] > nums[j]:
 				dp[i] = max(dp[i], dp[j] + 1)
 	return max(dp)
@@ -60,7 +60,7 @@ function lengthOfLIS(nums):
 
     1. Create an array `dp` where `dp[i]` represents the length of the longest increasing subsequence ending at index `i`.
     2. Initialize each `dp[i]` to `1` because the minimum subsequence length at any position is `1`.
-    3. For each `i` from `n-1` to `0`, and for each `j` from `i+1` to `n-1`, if `nums[i] < nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
+    3. For each `i` from `n - 1` to `0`, and for each `j` from `i + 1` to `n - 1`, if `nums[i] < nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
     4. The answer is the maximum value in the `dp` array.
 
 ```pseudo
@@ -80,7 +80,7 @@ function lengthOfLIS(nums):
 
 -   **Time Complexity**: `O(n log n)`
 -   **Space Complexity**: `O(n)`
--   **Description**: This optimized approach uses dynamic programming combined with binary search. Instead of maintaining the `dp` array directly, we maintain a list `tails` where `tails[i]` is the smallest possible end value of an increasing subsequence of length `i+1`. This list is maintained in sorted order, and binary search is used to find the correct position to replace or extend the subsequence.
+-   **Description**: This optimized approach uses dynamic programming combined with binary search. Instead of maintaining the `dp` array directly, we maintain a list `tails` where `tails[i]` is the smallest possible end value of an increasing subsequence of length `i + 1`. This list is maintained in sorted order, and binary search is used to find the correct position to replace or extend the subsequence.
 -   **Algorithm**:
 
     1. Create an empty list `tails`.

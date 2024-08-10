@@ -34,23 +34,23 @@ You may assume the output will fit in a 32-bit integer.
 -   **Algorithm**:
 
     1. Initialize an array `row` of size `n` with all elements set to `1`. This represents the number of unique paths to each cell in the first row.
-    2. Iterate through each row from `1` to `m-1`:
+    2. Iterate through each row from `1` to `m - 1`:
         1. Create a new array `newRow` of size `n`, initialized to `1`.
-        2. For each column `j` from `1` to `n-1` update `newRow[j]` to be the sum of `newRow[j-1]` and `row[j]`.
+        2. For each column `j` from `1` to `n - 1` update `newRow[j]` to be the sum of `newRow[j - 1]` and `row[j]`.
         3. Replace `row` with `newRow`.
-    3. Return `row[n-1]`, which contains the number of unique paths to the bottom-right corner of the grid.
+    3. Return `row[n - 1]`, which contains the number of unique paths to the bottom-right corner of the grid.
 
 ```pseudo
 function uniquePaths(m, n):
     row = array of size n initialized to 1
 
-    for i from 0 to m-1:
+    for i from 0 to m - 1:
         newRow = array of size n initialized to 1
-        for j from 1 to n-1:
-            newRow[j] = newRow[j-1] + row[j]
+        for j from 1 to n - 1:
+            newRow[j] = newRow[j - 1] + row[j]
         row = newRow
 
-    return row[n-1]
+    return row[n - 1]
 ```
 
 ---
@@ -63,9 +63,9 @@ function uniquePaths(m, n):
 -   **Algorithm**:
 
     1. Initialize an array `row` of size `n` with all elements set to `1`. This represents the number of unique paths to each cell in the first row.
-    2. Iterate through each row from `0` to `m-1`:
+    2. Iterate through each row from `0` to `m - 1`:
         1. Create a new array `newRow` of size `n`, initialized to `1`.
-        2. For each column `j` from `n-2` to `0`:
+        2. For each column `j` from `n - 2` to `0`:
             - Update `newRow[j]` to be the sum of `newRow[j + 1]` and `row[j]`.
         3. Replace `row` with `newRow`.
     3. Return `row[0]`, which contains the number of unique paths to the bottom-right corner of the grid.
@@ -74,9 +74,9 @@ function uniquePaths(m, n):
 function uniquePaths(m, n):
     row = array of size n initialized to 1
 
-    for i from 0 to m-1:
+    for i from 0 to m - 1:
         newRow = array of size n initialized to 1
-        for j from n-2 to 0:
+        for j from n - 2 to 0:
             newRow[j] = newRow[j + 1] + row[j]
         row = newRow
     return row[0]
@@ -88,7 +88,7 @@ function uniquePaths(m, n):
 
 -   **Time Complexity**: `O(1)`
 -   **Space Complexity**: `O(1)`
--   **Description**: This approach leverages a combinatorial formula to calculate the number of unique paths in an `m x n` grid. The problem can be reduced to finding the number of ways to choose `(m-1)` down moves and `(n-1)` right moves out of the total `(m+n-2)` moves. This can be computed using the binomial coefficient, which can be calculated using factorials.
+-   **Description**: This approach leverages a combinatorial formula to calculate the number of unique paths in an `m x n` grid. The problem can be reduced to finding the number of ways to choose `(m - 1)` down moves and `(n - 1)` right moves out of the total `(m + n - 2)` moves. This can be computed using the binomial coefficient, which can be calculated using factorials.
 -   **Algorithm**:
 
     1. Define a helper function `factorial(n)` to compute the factorial of a number `n`.
@@ -102,7 +102,7 @@ function uniquePaths(m, n):
         if x == 0 or x == 1:
             return 1
         else:
-            return x * factorial(x-1)
+            return x * factorial(x - 1)
 
     numerator = factorial(m + n - 2)
     denominator = factorial(m - 1) * factorial(n - 1)

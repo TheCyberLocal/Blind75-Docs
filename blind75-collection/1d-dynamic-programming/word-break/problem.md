@@ -41,7 +41,7 @@ You are allowed to reuse words in the dictionary an unlimited number of times. Y
 -   **Description**: This approach uses dynamic programming to determine whether the string can be segmented into words from the dictionary. The idea is to use a boolean array `dp` where `dp[i]` is `true` if the substring `s[0:i]` can be segmented into words from `wordDict`. The array is initialized with `dp[0] = true`, representing the empty string. Then, for each substring, we check if there is a word in the dictionary that ends at the current position and if the remaining part of the substring can be segmented as well.
 -   **Algorithm**:
 
-    1. Initialize a boolean array `dp` of size `n+1` where `n` is the length of the string `s`. Set `dp[0] = true` because the empty string is always valid.
+    1. Initialize a boolean array `dp` of size `n + 1` where `n` is the length of the string `s`. Set `dp[0] = true` because the empty string is always valid.
     2. Iterate over the string from index `1` to `n`.
     3. For each index `i`, check all possible substrings `s[j:i]` where `0 <= j < i`. If `s[j:i]` is in `wordDict` and `dp[j]` is `true`, then set `dp[i] = true`.
     4. Return `dp[n]` as the result.
@@ -72,7 +72,7 @@ function wordBreak(s, wordDict):
     1. Initialize a boolean array `dp` of size `len(s) + 1` to `false`, and set `dp[len(s)] = true`.
     2. Iterate over the string `s` from the second last index to `0`.
     3. For each index `i`, check each word in `wordDict`:
-        - If the substring `s[i:i+len(word)]` matches the word and `i + len(word) <= len(s)`, set `dp[i] = dp[i + len(word)]`.
+        - If the substring `s[i:i + len(word)]` matches the word and `i + len(word) <= len(s)`, set `dp[i] = dp[i + len(word)]`.
         - If `dp[i]` is `true`, break the inner loop as no further checks are needed.
     4. Return `dp[0]` as the final result, indicating whether the entire string can be segmented into words from `wordDict`.
 
@@ -83,7 +83,7 @@ function wordBreak(s, wordDict):
 
     for i from (len(s) - 1) to 0:
         for word in wordDict:
-            if (i + len(word)) <= len(s) and s[i:i+len(word)] == word:
+            if (i + len(word)) <= len(s) and s[i:i + len(word)] == word:
                 dp[i] = dp[i + len(word)]
             if dp[i]:
                 break

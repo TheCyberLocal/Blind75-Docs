@@ -37,7 +37,7 @@ If there are multiple palindromic substrings that have the same length, return a
 
     1. Initialize two variables `result` and `resLen` to track the longest palindromic substring and its length.
     2. Define a helper function `paliLen(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
-    3. For each center index `i` in the string `s`, call `paliLen` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i+1`).
+    3. For each center index `i` in the string `s`, call `paliLen` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i + 1`).
     4. Update `res` and `resLen` if a longer palindrome is found during the expansion.
     5. Return the longest palindromic substring stored in `res`.
 
@@ -103,13 +103,13 @@ function longestPalindrome(s):
 
 -   **Time Complexity**: `O(n^2)`
 -   **Space Complexity**: `O(n^2)`
--   **Description**: This approach uses dynamic programming to check whether a substring is a palindrome. The idea is to use a 2D table `dp` where `dp[i][j]` is `true` if the substring `s[i:j+1]` is a palindrome. The result is then the longest palindromic substring found in the table.
+-   **Description**: This approach uses dynamic programming to check whether a substring is a palindrome. The idea is to use a 2D table `dp` where `dp[i][j]` is `true` if the substring `s[i:j + 1]` is a palindrome. The result is then the longest palindromic substring found in the table.
 -   **Algorithm**:
 
     1. Initialize a 2D array `dp` of size `n x n` where `n` is the length of the string `s`.
     2. Set `dp[i][i]` to `true` since every single character is a palindrome.
-    3. Check for two consecutive characters and update `dp[i][i+1]` if they are the same.
-    4. Iterate over substrings of length greater than 2, updating `dp[i][j]` if `dp[i+1][j-1]` is `true` and `s[i] == s[j]`.
+    3. Check for two consecutive characters and update `dp[i][i + 1]` if they are the same.
+    4. Iterate over substrings of length greater than 2, updating `dp[i][j]` if `dp[i + 1][j - 1]` is `true` and `s[i] == s[j]`.
     5. Track the start and end indices of the longest palindrome found during the iterations.
     6. Return the substring of `s` from `start` to `end + 1`.
 

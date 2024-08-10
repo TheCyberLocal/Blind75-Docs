@@ -39,14 +39,14 @@ Return the number of distinct ways to climb to the top of the staircase.
 -   **Algorithm**:
 
     1.  Initialize an array `dp` of size `n + 1` to store the number of ways to reach each step.
-    2.  Set the base cases: `dp[n] = 1` and `dp[n-1] = 1`, representing the number of ways to reach the top step and the step before it.
-    3.  Iterate from step `n-2` to `0`, updating `dp[i]` based on the sum of the ways to reach the next two steps (`dp[i + 1]` and `dp[i + 2]`).
+    2.  Set the base cases: `dp[n] = 1` and `dp[n - 1] = 1`, representing the number of ways to reach the top step and the step before it.
+    3.  Iterate from step `n - 2` to `0`, updating `dp[i]` based on the sum of the ways to reach the next two steps (`dp[i + 1]` and `dp[i + 2]`).
     4.  Return `dp[0]`, which contains the number of ways to reach the first step.
 
 ```pseudo
 function climbStairs(n):
     dp = array of size n + 1
-    dp[n] = dp[n-1] = 1
+    dp[n] = dp[n - 1] = 1
     for i from (n - 2) to 0:
         dp[i] = dp[i + 1] + dp[i + 2]
     return dp[0]
@@ -62,7 +62,7 @@ function climbStairs(n):
 -   **Algorithm**:
 
     1.  Initialize two variables, `p1` and `p2`, to store the number of ways to reach the current step and the previous step, respectively. Both are initialized to 1.
-    2.  Iterate `n-2` times, updating the two variables at each step:
+    2.  Iterate `n - 2` times, updating the two variables at each step:
         -   Update `p1` to the sum of `p1` and `p2`.
         -   Update `p2` to the previous value of `p1`.
     3.  Return `p1`, which contains the number of ways to reach the `n`-th step.

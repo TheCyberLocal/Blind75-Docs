@@ -53,7 +53,7 @@ function robHouses2(nums):
             p1, p2 = max(p2 + num, p1), p1
         return p1
 
-    case1 = robHouses(nums[:n-2])
+    case1 = robHouses(nums[:n - 2])
     case2 = robHouses(nums[1:])
 
     return max(case1, case2)
