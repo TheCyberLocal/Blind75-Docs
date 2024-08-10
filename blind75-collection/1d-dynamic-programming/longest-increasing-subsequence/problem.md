@@ -51,7 +51,7 @@ function lengthOfLIS(nums):
 
 ---
 
-### Approach 2: Dynamic Programming with Reversed Iteration
+### Approach 2: Dynamic Programming (Reversed Iteration)
 
 -   **Time Complexity**: `O(n^2)`
 -   **Space Complexity**: `O(n)`

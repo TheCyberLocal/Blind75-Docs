@@ -53,6 +53,8 @@ function uniquePaths(m, n):
     return row[n-1]
 ```
 
+---
+
 ### Approach 2: Dynamic Programming (Reversed Iteration)
 
 -   **Time Complexity**: `O(m * n)`
@@ -79,6 +81,8 @@ function uniquePaths(m, n):
         row = newRow
     return row[0]
 ```
+
+---
 
 ### Approach 3: Mathematical Equation
 

@@ -62,7 +62,7 @@ function wordBreak(s, wordDict):
 
 ---
 
-### Approach 2: Dynamic Programming with Reversed Iteration
+### Approach 2: Dynamic Programming (Reversed Iteration)
 
 -   **Time Complexity**: `O(n * m * o)` where `n` is `len(s)`, `m` is `len(wordDict)`, and `o` is the average word length in the dictionary.
 -   **Space Complexity**: `O(n)` where `n` is `len(s)`.
