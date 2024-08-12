@@ -49,7 +49,7 @@ function validAnagram(s, t):
 ### Approach 2: Count Frequency using Hash Maps
 
 -   **Time Complexity**: `O(n)` where `n` is the length of the strings.
--   **Space Complexity**: `O(1)` if considering the size of the hash maps to be constant due to the limited number of lowercase letters, otherwise `O(n)` for the hash maps.
+-   **Space Complexity**: `O(1)` since the hash maps require constant space for the 26 lowercase letters.
 -   **Description**: This approach uses hash maps to count the frequency of each character in both strings. The hash maps `countS` and `countT` store the frequency of each character in `s` and `t`, respectively. After populating the hash maps, we compare the frequencies. If they match for all characters, the strings are anagrams; otherwise, they are not.
 -   **Algorithm**:
 
