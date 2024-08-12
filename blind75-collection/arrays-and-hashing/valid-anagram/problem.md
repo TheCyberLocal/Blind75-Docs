@@ -20,11 +20,11 @@ An anagram is a string that contains the exact same characters as another string
 
 ### Constraints
 
--   `s` and `t` consist of lowercase English letters.
+-   `s` and `t` consist of lowercase letters.
 
 ---
 
-### Approach 1: Sorting
+### Approach 1: Sorted Comparison
 
 -   **Time Complexity**: `O(n log n)` where `n` is the length of the strings.
 -   **Space Complexity**: `O(1)` if sorting in place, otherwise `O(n)` for the sorted strings.
@@ -46,28 +46,35 @@ function validAnagram(s, t):
 
 ---
 
-### Approach 2: Frequency Count
+### Approach 2: Count Frequency using Hash Maps
 
 -   **Time Complexity**: `O(n)` where `n` is the length of the strings.
--   **Space Complexity**: `O(1)` since the frequency count array size is constant.
--   **Description**: Use a frequency count array to compare the occurrences of each character in both strings. If the counts match for all characters, return `true`. Otherwise, return `false`.
+-   **Space Complexity**: `O(1)` if considering the size of the hash maps to be constant due to the limited number of lowercase letters, otherwise `O(n)` for the hash maps.
+-   **Description**: This approach uses hash maps to count the frequency of each character in both strings. The hash maps `countS` and `countT` store the frequency of each character in `s` and `t`, respectively. After populating the hash maps, we compare the frequencies. If they match for all characters, the strings are anagrams; otherwise, they are not.
 -   **Algorithm**:
 
     1. If the lengths of `s` and `t` are different, return `false`.
-    2. Initialize an array `count` of size `26` to `0`.
+    2. Initialize two hash maps, `countS` and `countT`, to store the frequency of each character in `s` and `t`.
     3. Iterate through each character in `s` and `t`:
-        - Increment the count for the character in `s`.
-        - Decrement the count for the character in `t`.
-    4. If all counts are `0`, return `true`.
-    5. Otherwise, return `false`.
+        - For each character in `s`, increment its count in `countS`.
+        - For each character in `t`, increment its count in `countT`.
+    4. Iterate through the keys in `countS`:
+        - If the frequency of a character in `countS` does not match its frequency in `countT`, return `false`.
+    5. If all character frequencies match, return `true`.
 
 ```pseudo
 function validAnagram(s, t):
     if len(s) != len(t):
         return false
-    count = array of size 26 initialized to 0
+
+    countS, countT = {}, {}
     for i from 0 to len(s) - 1:
-        count[ord(s[i]) - ord('a')] += 1
-        count[ord(t[i]) - ord('a')] -= 1
-    return all(count[i] == 0 for i in range(26))
+        countS[s[i]] = countS.get(s[i], 0) + 1
+        countT[t[i]] = countT.get(t[i], 0) + 1
+
+    for c in countS:
+        if countS[c] != countT.get(c, 0):
+            return false
+
+    return countS == countT
 ```
