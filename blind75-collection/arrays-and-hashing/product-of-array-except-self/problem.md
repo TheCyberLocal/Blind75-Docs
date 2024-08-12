@@ -71,23 +71,25 @@ function productExceptSelf(nums):
     -   `O(n)` where `n` is the length of `nums`.
 -   **Space Complexity**:
     -   `O(1)` excluding the output array.
--   **Description**: We can optimize the space complexity by storing the result directly in the output array, first by filling it with the left products and then multiplying it by the right products.
+-   **Description**: This approach minimizes space complexity by using the `output` array to store the result directly. First, it fills the `output` array with the left products as it traverses from left to right. Then, it multiplies these values by the right products during a right-to-left traversal. This ensures that each element in `output[i]` contains the product of all elements in the array except `nums[i]`, without requiring additional arrays for left and right products.
+
 -   **Algorithm**:
 
-    1. Initialize an array `output` where `output[i]` contains the product of all elements before `i`.
-    2. Traverse the array from left to right, updating the `output` array with the left products.
-    3. Traverse the array from right to left, updating the `output` array with the right products.
-    4. Return the `output` array.
+    1. Initialize an array `output` of size `n` with all elements set to `1`.
+    2. Traverse the array from left to right:
+        - For each index `i` from `1` to `n - 1`, update `output[i]` to be the product of `output[i - 1]` and `nums[i - 1]`.
+    3. Initialize a variable `product` to `1`.
+    4. Traverse the array from right to left:
+        - For each index `i` from `n - 1` to `0`, update `output[i]` by multiplying it with `product`, then update `product` by multiplying it with `nums[i]`.
+    5. Return the `output` array.
 
 ```pseudo
 function productExceptSelf(nums):
     n = len(nums)
     output = array of size n initialized to 1
 
-    product = 1
-    for i from 0 to n - 1:
-        output[i] = product
-        product *= nums[i]
+    for i from 1 to n - 1:
+        output[i] = output[i - 1] * nums[i - 1]
 
     product = 1
     for i from n - 1 to 0:
