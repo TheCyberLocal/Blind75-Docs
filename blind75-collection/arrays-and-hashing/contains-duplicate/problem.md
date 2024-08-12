@@ -18,7 +18,7 @@ Given an integer array `nums`, return `true` if any value appears more than once
 
 ### Constraints
 
--   `1 <= nums.length <= 10^5`
+-   `1 <= len(nums) <= 10^5`
 -   `-10^9 <= nums[i] <= 10^9`
 
 ---

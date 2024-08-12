@@ -27,7 +27,7 @@ You must write an algorithm that runs in `O(n)` time.
 
 ### Constraints
 
--   `0 <= nums.length <= 1000`
+-   `0 <= len(nums) <= 1000`
 -   `-10^9 <= nums[i] <= 10^9`
 
 ---

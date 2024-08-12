@@ -28,8 +28,8 @@ An anagram is a string that contains the exact same characters as another string
 
 ### Constraints
 
--   `1 <= strs.length <= 1000`
--   `0 <= strs[i].length <= 100`
+-   `1 <= len(strs) <= 1000`
+-   `0 <= len(strs[i]) <= 100`
 -   `strs[i]` is made up of lowercase letters.
 
 ---

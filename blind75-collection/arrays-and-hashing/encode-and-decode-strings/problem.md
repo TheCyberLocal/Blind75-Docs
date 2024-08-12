@@ -24,8 +24,8 @@ Implement both `encode` and `decode` methods.
 
 ### Constraints
 
--   `0 <= strs.length < 100`
--   `0 <= strs[i].length < 200`
+-   `0 <= len(strs) < 100`
+-   `0 <= len(strs[i]) < 200`
 -   `strs[i]` contains only UTF-8 characters.
 
 ---

@@ -24,7 +24,7 @@ Each product is guaranteed to fit in a 32-bit integer.
 
 ### Constraints
 
--   `2 <= nums.length <= 1000`
+-   `2 <= len(nums) <= 1000`
 -   `-20 <= nums[i] <= 20`
 
 ### Approach 1: Left and Right Product Lists

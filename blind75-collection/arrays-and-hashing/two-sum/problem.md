@@ -34,7 +34,7 @@ Return the answer with the smaller index first.
 
 ### Constraints
 
--   `2 <= nums.length <= 1000`
+-   `2 <= len(nums) <= 1000`
 -   `-10^7 <= nums[i] <= 10^7`
 -   `-10^7 <= target <= 10^7`
 
