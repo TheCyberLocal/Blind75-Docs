@@ -1,4 +1,4 @@
-# Blind75: Top K Elements in List
+# Blind75: Top K Frequent Elements
 
 ### [⇦ Back to Problem Index](../../index.md)
 
@@ -47,48 +47,21 @@ You may return the output in any order.
 
 ```pseudo
 function topKFrequent(nums, k):
-    frequencyMap = {}
+    count = {}
     for num in nums:
-        frequencyMap[num] = frequencyMap.get(num, 0) + 1
+        if count[num]:
+            count[num] += 1
+        else:
+            count[num] = 1
 
-    buckets = [[] for _ in range(len(nums) + 1)]
-    for num, freq in frequencyMap.items():
+    buckets = array of size len(nums) initialized to []
+    for num, freq in count.items():
         buckets[freq].append(num)
 
     result = []
-    for i in range(len(buckets) - 1, -1, -1):
-        for num in buckets[i]:
+    for i len(buckets) - 1 to 0:
+        for num in buckets[i - 1]:
             result.append(num)
             if len(result) == k:
                 return result
-```
-
----
-
-### Approach 2: Min-Heap
-
--   **Time Complexity**: `O(n log k)` where `n` is the number of elements in `nums`.
--   **Space Complexity**: `O(n + k)` for storing the frequency map and the heap.
--   **Description**: We can use a min-heap to keep track of the top `k` frequent elements. By pushing elements into the heap based on their frequency and maintaining the heap size to `k`, we can efficiently find the top `k` frequent elements.
-
--   **Algorithm**:
-    1. Create a frequency map to count the occurrences of each element in `nums`.
-    2. Initialize an empty min-heap.
-    3. Iterate over the frequency map and push each element along with its frequency into the heap. If the heap size exceeds `k`, pop the smallest element.
-    4. After processing all elements, the heap will contain the `k` most frequent elements.
-    5. Extract the elements from the heap and return them as the result.
-
-```pseudo
-function topKFrequent(nums, k):
-    frequencyMap = {}
-    for num in nums:
-        frequencyMap[num] = frequencyMap.get(num, 0) + 1
-
-    minHeap = []
-    for num, freq in frequencyMap.items():
-        heapQ.push(minHeap, (freq, num))
-        if len(minHeap) > k:
-            heapQ.pop(minHeap)
-
-    return [num for freq, num in minHeap]
 ```
