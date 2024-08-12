@@ -34,37 +34,30 @@ You must write an algorithm that runs in `O(n)` time.
 
 ### Approach 1: Hash Set with Linear Scan
 
--   **Time Complexity**:
-    -   `O(n)` where `n` is the length of `nums`.
--   **Space Complexity**:
-    -   `O(n)` for the hash set.
--   **Description**: We can solve this problem efficiently by using a hash set. The key observation is that a number is the start of a sequence if the previous number is not in the set. By iterating through each number and counting the length of the sequence starting from that number, we can find the longest consecutive sequence.
+-   **Time Complexity**: `O(n)` where `n` is the length of `nums`.
+-   **Space Complexity**: `O(n)` for the hash set.
+-   **Description**: This approach utilizes a hash set to allow `O(1)` lookups, which helps efficiently identify the start of each sequence. By iterating through the set and determining the length of each sequence that begins with a number, the algorithm finds the longest consecutive sequence in linear time.
 -   **Algorithm**:
 
     1. Convert the array `nums` into a set `numSet` for `O(1)` lookups.
-    2. Initialize `longestStreak` to 0.
-    3. For each number in `nums`, if it's the start of a sequence (i.e., `num - 1` is not in `numSet`), find the length of the consecutive sequence starting from that number.
-    4. Update `longestStreak` if the current sequence is longer.
-    5. Return `longestStreak`.
+    2. Initialize `longest` to 0.
+    3. Iterate through each number `num` in `numSet`:
+        - If `num - 1` is not in `numSet`, it indicates the start of a new sequence.
+        - Set `length` to 1.
+        - While `num + length` exists in `numSet`, increment `length`.
+        - Update `longest` with the maximum of `length` and `longest`.
+    4. Return `longest` as the length of the longest consecutive sequence.
 
 ```pseudo
 function longestConsecutive(nums):
-    if not nums:
-        return 0
-
     numSet = set(nums)
-    longestStreak = 0
+    longest = 0
 
-    for num in nums:
+    for num in numSet:
         if num - 1 not in numSet:
-            currentNum = num
-            currentStreak = 1
-
-            while currentNum + 1 in numSet:
-                currentNum += 1
-                currentStreak += 1
-
-            longestStreak = max(longestStreak, currentStreak)
-
-    return longestStreak
+            length = 1
+            while (num + length) in numSet:
+                length += 1
+            longest = max(length, longest)
+    return longest
 ```
