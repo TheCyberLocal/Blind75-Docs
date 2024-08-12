@@ -1,4 +1,4 @@
-# Blind75: Product of Array Except Self
+# Blind75: Prod of Array Except Self
 
 ### [⇦ Back to Problem Index](../../index.md)
 
@@ -27,7 +27,9 @@ Each product is guaranteed to fit in a 32-bit integer.
 -   `2 <= len(nums) <= 1000`
 -   `-20 <= nums[i] <= 20`
 
-### Approach 1: Left and Right Product Lists
+---
+
+### Approach 1: Left and Right Prod Lists
 
 -   **Time Complexity**:
     -   `O(n)` where `n` is the length of `nums`.
@@ -45,21 +47,23 @@ Each product is guaranteed to fit in a 32-bit integer.
 ```pseudo
 function productExceptSelf(nums):
     n = len(nums)
-    left = [1] * n
-    right = [1] * n
-    output = [1] * n
+    left = array of size n initialized to 1
+    right = array of size n initialized to 1
+    output = array of size n initialized to 1
 
-    for i in range(1, n):
-        left[i] = left[i-1] * nums[i-1]
+    for i from i to n - 1:
+        left[i] = left[i - 1] * nums[i - 1]
 
-    for i in range(n-2, -1, -1):
-        right[i] = right[i+1] * nums[i+1]
+    for i from n - 2 to 0:
+        right[i] = right[i + 1] * nums[i + 1]
 
-    for i in range(n):
+    for i from 0 to n - 1:
         output[i] = left[i] * right[i]
 
     return output
 ```
+
+---
 
 ### Approach 2: Optimized Space Approach
 
@@ -78,17 +82,17 @@ function productExceptSelf(nums):
 ```pseudo
 function productExceptSelf(nums):
     n = len(nums)
-    output = [1] * n
+    output = array of size n initialized to 1
 
-    leftProduct = 1
-    for i in range(n):
-        output[i] = leftProduct
-        leftProduct *= nums[i]
+    product = 1
+    for i from 0 to n - 1:
+        output[i] = product
+        product *= nums[i]
 
-    rightProduct = 1
-    for i in range(n-1, -1, -1):
-        output[i] *= rightProduct
-        rightProduct *= nums[i]
+    product = 1
+    for i from n - 1 to 0:
+        output[i] *= product
+        product *= nums[i]
 
     return output
 ```
