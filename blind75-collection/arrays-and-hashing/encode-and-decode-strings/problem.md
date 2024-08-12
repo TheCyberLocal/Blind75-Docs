@@ -10,17 +10,13 @@ Implement both `encode` and `decode` methods.
 
 **Example 1:**
 
--   **Input**:
-    -   `["neet","code","love","you"]`
--   **Output**:
-    -   `["neet","code","love","you"]`
+-   **Input**: `["neet","code","love","you"]`
+-   **Output**: `["neet","code","love","you"]`
 
 **Example 2:**
 
--   **Input**:
-    -   `["we","say",":","yes"]`
--   **Output**:
-    -   `["we","say",":","yes"]`
+-   **Input**: `["we","say",":","yes"]`
+-   **Output**: `["we","say",":","yes"]`
 
 ### Constraints
 

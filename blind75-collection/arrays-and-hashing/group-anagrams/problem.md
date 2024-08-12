@@ -10,20 +10,17 @@ An anagram is a string that contains the exact same characters as another string
 
 **Example 1:**
 
--   **Input**:
-    -   `strs = ["act","pots","tops","cat","stop","hat"]`
+-   **Input**: `strs = ["act","pots","tops","cat","stop","hat"]`
 -   **Output**: `[["hat"],["act", "cat"],["stop", "pots", "tops"]]`
 
 **Example 2:**
 
--   **Input**:
-    -   `strs = ["x"]`
+-   **Input**: `strs = ["x"]`
 -   **Output**: `[["x"]]`
 
 **Example 3:**
 
--   **Input**:
-    -   `strs = [""]`
+-   **Input**: `strs = [""]`
 -   **Output**: `[[""]]`
 
 ### Constraints
