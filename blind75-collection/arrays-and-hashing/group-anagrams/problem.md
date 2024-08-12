@@ -33,7 +33,7 @@ An anagram is a string that contains the exact same characters as another string
 
 ### Approach 1: Categorize by Sorted String
 
--   **Time Complexity**: `O(n * k log k)` where `n` is the number of strings and `k` is the maximum length of a string.
+-   **Time Complexity**: `O(n * k log k)` where `n` is the number of strings and `k` is the average string length.
 -   **Space Complexity**: `O(n * k)` for storing the grouped anagrams.
 -   **Description**: We sort each string in the list, and use the sorted string as a key in a hash map to group anagrams together. Strings that are anagrams of each other will have the same sorted string and thus be placed in the same group.
 -   **Algorithm**:
@@ -60,7 +60,7 @@ function groupAnagrams(strs):
 
 ### Approach 2: Categorize by Character Count
 
--   **Time Complexity**: `O(n * k)` where `n` is the number of strings and `k` is the maximum length of a string.
+-   **Time Complexity**: `O(n * k)` where `n` is the number of strings and `k` is the average string length.
 -   **Space Complexity**: `O(n * k)` for storing the grouped anagrams.
 -   **Description**: Instead of sorting the string, we can use the character count as a key. Each string can be represented by the count of each character, and this count array can serve as the key to group anagrams together.
 -   **Algorithm**:

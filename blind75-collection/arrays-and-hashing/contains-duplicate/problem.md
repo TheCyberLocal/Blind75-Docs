@@ -62,7 +62,7 @@ function containsDuplicate(nums):
 
 ```pseudo
 function containsDuplicate(nums):
-    nums.sort()
+    nums.sort() # In-place sort
     for i from 0 to len(nums) - 1:
         if nums[i] == nums[i + 1]:
             return true
