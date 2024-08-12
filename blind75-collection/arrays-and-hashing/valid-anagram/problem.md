@@ -69,11 +69,11 @@ function validAnagram(s, t):
 
     countS, countT = {}, {}
     for i from 0 to len(s) - 1:
-        countS[s[i]] = countS.get(s[i], 0) + 1
-        countT[t[i]] = countT.get(t[i], 0) + 1
+        countS[s[i]] = (countS[s[i]] if s[i] in countS else 0) + 1
+        countT[t[i]] = (countT[t[i]] if t[i] in countT else 0) + 1
 
     for c in countS:
-        if countS[c] != countT.get(c, 0):
+        if countS[c] != (countT[c] if t[i] in countT else 0):
             return false
 
     return countS == countT
