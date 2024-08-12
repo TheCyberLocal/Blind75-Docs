@@ -79,7 +79,7 @@ function alienOrder(words):
     while queue:
         char = queue.pop(0)
         order += char
-        for neighbor in graph.get(char, []):
+        for neighbor in (graph[char] if char in graph else []):
             inDegree[neighbor] -= 1
             if inDegree[neighbor] == 0:
                 queue.append(neighbor)
