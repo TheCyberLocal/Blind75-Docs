@@ -47,19 +47,19 @@ Return the answer with the smaller index first.
 -   **Description**: We traverse the array and use a hash map to store the difference between the `target` and each element (`target - nums[i]`) along with the corresponding index. As we continue traversing, if we find an element that is in the hash map, it means we've found the two numbers that sum to the target.
 -   **Algorithm**:
 
-    1. Initialize an empty hash map `num_to_index`.
+    1. Initialize an empty hash map `numToIndex`.
     2. Iterate through the array `nums` with index `i`:
         - Calculate the complement `complement = target - nums[i]`.
-        - If `complement` is in `num_to_index`, return `[num_to_index[complement], i]`.
-        - Otherwise, store the index of `nums[i]` in `num_to_index`.
+        - If `complement` is in `numToIndex`, return `[numToIndex[complement], i]`.
+        - Otherwise, store the index of `nums[i]` in `numToIndex`.
     3. The function will return the pair `[i, j]` as soon as it finds the correct indices.
 
 ```pseudo
 function twoSum(nums, target):
-    num_to_index = {}
+    numToIndex = {}
     for i from 0 to len(nums) - 1:
         complement = target - nums[i]
-        if complement in num_to_index:
-            return [num_to_index[complement], i]
-        num_to_index[nums[i]] = i
+        if complement in numToIndex:
+            return [numToIndex[complement], i]
+        numToIndex[nums[i]] = i
 ```
