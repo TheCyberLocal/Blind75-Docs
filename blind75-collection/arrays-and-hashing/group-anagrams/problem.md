@@ -77,7 +77,7 @@ function groupAnagrams(strs):
 function groupAnagrams(strs):
     anagramMap = {}
     for s in strs:
-        count = [0] * 26
+        count = array of size 26 initialized to 0
         for char in s:
             count[ord(char) - ord('a')] += 1
         key = tuple(count)

@@ -65,7 +65,7 @@ function validAnagram(s, t):
 function validAnagram(s, t):
     if len(s) != len(t):
         return false
-    count = [0] * 26
+    count = array of size 26 initialized to 0
     for i from 0 to len(s) - 1:
         count[ord(s[i]) - ord('a')] += 1
         count[ord(t[i]) - ord('a')] -= 1
