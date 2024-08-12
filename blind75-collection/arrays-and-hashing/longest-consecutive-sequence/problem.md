@@ -1,96 +1,70 @@
-# Blind75: Product of Array Except Self
+# Blind75: Longest Consecutive Sequence
 
 ### [⇦ Back to Problem Index](../../index.md)
 
 ## Textbook Problem
 
-Given an integer array `nums`, return an array `output` where `output[i]` is the product of all the elements of `nums` except `nums[i]`.
+Given an array of integers `nums`, return the length of the longest consecutive sequence of elements.
 
-Each product is guaranteed to fit in a 32-bit integer.
+A consecutive sequence is a sequence of elements in which each element is exactly `1` greater than the previous element.
+
+You must write an algorithm that runs in `O(n)` time.
 
 **Example 1:**
 
 -   **Input**:
-    -   `nums = [1,2,4,6]`
+    -   `nums = [2,20,4,10,3,4,5]`
 -   **Output**:
-    -   `[48,24,12,8]`
+    -   `4`
+-   **Explanation**: The longest consecutive sequence is `[2, 3, 4, 5]`.
 
 **Example 2:**
 
 -   **Input**:
-    -   `nums = [-1,0,1,2,3]`
+    -   `nums = [0,3,2,5,4,6,1,1]`
 -   **Output**:
-    -   `[0,-6,0,0,0]`
+    -   `7`
 
 ### Constraints
 
--   `2 <= nums.length <= 1000`
--   `-20 <= nums[i] <= 20`
+-   `0 <= nums.length <= 1000`
+-   `-10^9 <= nums[i] <= 10^9`
 
 ---
 
-### Approach 1: Left and Right Product Lists
+### Approach 1: Hash Set with Linear Scan
 
 -   **Time Complexity**:
     -   `O(n)` where `n` is the length of `nums`.
 -   **Space Complexity**:
-    -   `O(n)` for the `left` and `right` product arrays.
--   **Description**: We can solve this problem by computing two arrays: `left` and `right`. The `left[i]` array contains the product of all elements to the left of `nums[i]`, and `right[i]` contains the product of all elements to the right of `nums[i]`. The final `output[i]` is simply `left[i] * right[i]`.
+    -   `O(n)` for the hash set.
+-   **Description**: We can solve this problem efficiently by using a hash set. The key observation is that a number is the start of a sequence if the previous number is not in the set. By iterating through each number and counting the length of the sequence starting from that number, we can find the longest consecutive sequence.
 -   **Algorithm**:
 
-    1. Initialize two arrays `left` and `right`, both of the same length as `nums`.
-    2. Populate the `left` array such that `left[i]` contains the product of all elements before `i`.
-    3. Populate the `right` array such that `right[i]` contains the product of all elements after `i`.
-    4. For each index `i`, compute `output[i]` as the product of `left[i]` and `right[i]`.
-    5. Return the `output` array.
+    1. Convert the array `nums` into a set `num_set` for `O(1)` lookups.
+    2. Initialize `longest_streak` to 0.
+    3. For each number in `nums`, if it's the start of a sequence (i.e., `num - 1` is not in `num_set`), find the length of the consecutive sequence starting from that number.
+    4. Update `longest_streak` if the current sequence is longer.
+    5. Return `longest_streak`.
 
 ```pseudo
-function productExceptSelf(nums):
-    n = len(nums)
-    left = [1] * n
-    right = [1] * n
-    output = [1] * n
+function longestConsecutive(nums):
+    if not nums:
+        return 0
 
-    for i in range(1, n):
-        left[i] = left[i-1] * nums[i-1]
+    num_set = set(nums)
+    longest_streak = 0
 
-    for i in range(n-2, -1, -1):
-        right[i] = right[i+1] * nums[i+1]
+    for num in nums:
+        if num - 1 not in num_set:
+            current_num = num
+            current_streak = 1
 
-    for i in range(n):
-        output[i] = left[i] * right[i]
+            while current_num + 1 in num_set:
+                current_num += 1
+                current_streak += 1
 
-    return output
-```
+            longest_streak = max(longest_streak, current_streak)
 
-### Approach 2: Optimized Space Approach
-
--   **Time Complexity**:
-    -   `O(n)` where `n` is the length of `nums`.
--   **Space Complexity**:
-    -   `O(1)` excluding the output array.
--   **Description**: We can optimize the space complexity by storing the result directly in the output array, first by filling it with the left products and then multiplying it by the right products.
--   **Algorithm**:
-
-    1. Initialize an array `output` where `output[i]` contains the product of all elements before `i`.
-    2. Traverse the array from left to right, updating the `output` array with the left products.
-    3. Traverse the array from right to left, updating the `output` array with the right products.
-    4. Return the `output` array.
-
-```pseudo
-function productExceptSelf(nums):
-    n = len(nums)
-    output = [1] * n
-
-    left_product = 1
-    for i in range(n):
-        output[i] = left_product
-        left_product *= nums[i]
-
-    right_product = 1
-    for i in range(n-1, -1, -1):
-        output[i] *= right_product
-        right_product *= nums[i]
-
-    return output
+    return longest_streak
 ```
