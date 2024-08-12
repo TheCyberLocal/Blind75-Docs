@@ -26,7 +26,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 
 -   [Alien Dictionary](./advanced-graphs/alien-dictionary/problem.md)
 
-## Arrays and Hashing - _In Progress_
+## Arrays and Hashing
 
 -   [Contains Duplicate](./arrays-and-hashing/contains-duplicate/problem.md)
 -   [Encode and Decode Strings](./arrays-and-hashing/encode-and-decode-strings/problem.md)
@@ -37,7 +37,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Two Sum](./arrays-and-hashing/two-sum/problem.md)
 -   [Valid Anagram](./arrays-and-hashing/valid-anagram/problem.md)
 
-## Backtracking - _Void_
+## Backtracking - _In Progress_
 
 -   [Combination Sum](./backtracking/combination-sum/problem.md)
 -   [Word Search](./backtracking/word-search/problem.md)
