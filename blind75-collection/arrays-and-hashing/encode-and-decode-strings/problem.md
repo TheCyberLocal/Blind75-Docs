@@ -32,42 +32,41 @@ Implement both `encode` and `decode` methods.
 
 ### Approach 1: Length-Prefix Encoding
 
--   **Time Complexity**:
-    -   `O(n)` for both encoding and decoding where `n` is the total number of characters across all strings.
--   **Space Complexity**:
-    -   `O(n)` for storing the encoded and decoded strings.
--   **Description**: We use a length-prefix encoding scheme where each string is encoded as the length of the string followed by a special delimiter and then the string itself. During decoding, we read the length, extract the corresponding string, and continue until the entire encoded string is processed.
+-   **Time Complexity**: `O(n)` for both encoding and decoding where `n` is the total number of characters across all strings.
+-   **Space Complexity**: `O(n)` for storing the encoded and decoded strings.
+-   **Description**: We use a length-prefix encoding scheme where each string is encoded as the length of the string followed by a special delimiter and then the string itself. The delimiter is avoids confusion when an encoded string begins with an integer. During decoding, we read the length, extract the corresponding string, and continue until the entire encoded string is processed.
 -   **Algorithm**:
 
     **Encoding**:
 
-    1. Initialize an empty encoded string `encoded_str`.
-    2. For each string `s` in the input list, append the length of `s`, a delimiter (e.g., `'#'`), and `s` itself to `encoded_str`.
-    3. Return `encoded_str`.
+    1. Initialize an empty encoded string `cipher`.
+    2. For each string `s` in the input list, append the length of `s`, a delimiter (e.g., `'#'`), and `s` itself to `cipher`.
+    3. Return `cipher`.
 
     **Decoding**:
 
-    1. Initialize an empty list `decoded_list`.
-    2. Iterate over `encoded_str`, reading the length prefix and the corresponding string.
-    3. Extract the string based on the length, append it to `decoded_list`, and continue until the entire string is decoded.
-    4. Return `decoded_list`.
+    1. Initialize an empty list `strs`.
+    2. Iterate over `cipher`, reading the length prefix and the corresponding string.
+    3. Extract the string based on the length, append it to `strs`, and continue until the entire string is decoded.
+    4. Return `strs`.
 
 ```pseudo
 function encode(strs):
-    encoded_str = ""
+    cipher = ""
     for s in strs:
-        encoded_str += str(len(s)) + "#" + s
-    return encoded_str
+        cipher += str(len(s)) + "#" + s
+    return cipher
 
-function decode(encoded_str):
-    decoded_list = []
+function decode(cipher):
+    strs = []
     i = 0
-    while i < len(encoded_str):
+
+    while i < len(cipher):
         j = i
-        while encoded_str[j] != "#":
+        while cipher[j] != "#":
             j += 1
-        length = int(encoded_str[i:j])
-        decoded_list.append(encoded_str[j+1:j+1+length])
+        length = int(cipher[i:j])
+        strs.append(cipher[j + 1:j + 1 + length])
         i = j + 1 + length
-    return decoded_list
+    return strs
 ```
