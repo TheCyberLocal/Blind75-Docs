@@ -56,14 +56,14 @@ function containsDuplicate(nums):
 -   **Algorithm**:
 
     1. Sort the array `nums`.
-    2. Iterate through the array from index `0` to `len(nums) - 2`:
+    2. Iterate through the array from index `0` to `len(nums) - 1`:
         - If `nums[i] == nums[i + 1]`, return `true`.
     3. If no duplicates are found, return `false`.
 
 ```pseudo
 function containsDuplicate(nums):
     nums.sort()
-    for i from 0 to len(nums) - 2:
+    for i from 0 to len(nums) - 1:
         if nums[i] == nums[i + 1]:
             return true
     return false
