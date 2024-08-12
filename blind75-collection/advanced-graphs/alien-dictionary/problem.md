@@ -1,10 +1,10 @@
-# Blind75: Foreign Dictionary
+# Blind75: Alien Dictionary
 
 ### [⇦ Back to Problem Index](../../index.md)
 
 ## Textbook Problem
 
-There is a foreign language that uses the Latin alphabet, but the order among letters is not "a", "b", "c" ... "z" as in English.
+There is an alien language that uses the Latin alphabet, but the order among letters is not "a", "b", "c" ... "z" as in English.
 
 You receive a list of non-empty strings `words` from the dictionary, where the words are sorted lexicographically based on the rules of this new language.
 
@@ -47,10 +47,10 @@ A string `a` is lexicographically smaller than a string `b` if either of the fol
 -   **Description**: We treat each character as a node in a directed graph, where an edge from node `u` to node `v` means that character `u` comes before character `v`. We construct this graph by comparing adjacent words in the list. After constructing the graph, we perform a topological sort to determine a valid order of characters.
 -   **Algorithm**:
 
-    1. Initialize an empty adjacency list `graph` and a dictionary `in_degree` to store the in-degree of each character.
+    1. Initialize an empty adjacency list `graph` and a dictionary `inDegree` to store the in-degree of each character.
     2. For each pair of adjacent words `word1` and `word2`:
         - Compare the characters `char1` and `char2` at each position.
-        - If `char1 != char2`, add an edge from `char1` to `char2` in `graph` and increment `in_degree[char2]` by 1.
+        - If `char1 != char2`, add an edge from `char1` to `char2` in `graph` and increment `inDegree[char2]` by 1.
         - Break the loop after finding the first different character.
     3. Initialize a queue with all characters that have an in-degree of `0`.
     4. Process the queue:
@@ -61,7 +61,7 @@ A string `a` is lexicographically smaller than a string `b` if either of the fol
 ```pseudo
 function alienOrder(words):
     graph = {}  # adjacency list
-    in_degree = {char: 0 for char in all unique characters in words}
+    inDegree = {char: 0 for char in all unique characters in words}
 
     for i from 0 to len(words) - 1:
         word1, word2 = words[i], words[i + 1]
@@ -70,21 +70,21 @@ function alienOrder(words):
             if char1 != char2:
                 if char2 not in graph[char1]:
                     graph[char1].append(char2)
-                    in_degree[char2] += 1
+                    inDegree[char2] += 1
                 break
 
-    queue = [char for char in in_degree if in_degree[char] == 0]
+    queue = [char for char in inDegree if inDegree[char] == 0]
     order = ""
 
     while queue:
         char = queue.pop(0)
         order += char
         for neighbor in graph.get(char, []):
-            in_degree[neighbor] -= 1
-            if in_degree[neighbor] == 0:
+            inDegree[neighbor] -= 1
+            if inDegree[neighbor] == 0:
                 queue.append(neighbor)
 
-    return order if len(order) == len(in_degree) else ""
+    return order if len(order) == len(inDegree) else ""
 ```
 
 ---
