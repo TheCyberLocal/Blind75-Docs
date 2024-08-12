@@ -47,12 +47,12 @@ You may return the output in any order.
 
 ```pseudo
 function topKFrequent(nums, k):
-    frequency_map = {}
+    frequencyMap = {}
     for num in nums:
-        frequency_map[num] = frequency_map.get(num, 0) + 1
+        frequencyMap[num] = frequencyMap.get(num, 0) + 1
 
     buckets = [[] for _ in range(len(nums) + 1)]
-    for num, freq in frequency_map.items():
+    for num, freq in frequencyMap.items():
         buckets[freq].append(num)
 
     result = []
@@ -80,15 +80,15 @@ function topKFrequent(nums, k):
 
 ```pseudo
 function topKFrequent(nums, k):
-    frequency_map = {}
+    frequencyMap = {}
     for num in nums:
-        frequency_map[num] = frequency_map.get(num, 0) + 1
+        frequencyMap[num] = frequencyMap.get(num, 0) + 1
 
-    min_heap = []
-    for num, freq in frequency_map.items():
-        heapq.heappush(min_heap, (freq, num))
-        if len(min_heap) > k:
-            heapq.heappop(min_heap)
+    minHeap = []
+    for num, freq in frequencyMap.items():
+        heapQ.push(minHeap, (freq, num))
+        if len(minHeap) > k:
+            heapQ.pop(minHeap)
 
-    return [num for freq, num in min_heap]
+    return [num for freq, num in minHeap]
 ```
