@@ -41,30 +41,30 @@ You must write an algorithm that runs in `O(n)` time.
 -   **Description**: We can solve this problem efficiently by using a hash set. The key observation is that a number is the start of a sequence if the previous number is not in the set. By iterating through each number and counting the length of the sequence starting from that number, we can find the longest consecutive sequence.
 -   **Algorithm**:
 
-    1. Convert the array `nums` into a set `num_set` for `O(1)` lookups.
-    2. Initialize `longest_streak` to 0.
-    3. For each number in `nums`, if it's the start of a sequence (i.e., `num - 1` is not in `num_set`), find the length of the consecutive sequence starting from that number.
-    4. Update `longest_streak` if the current sequence is longer.
-    5. Return `longest_streak`.
+    1. Convert the array `nums` into a set `numSet` for `O(1)` lookups.
+    2. Initialize `longestStreak` to 0.
+    3. For each number in `nums`, if it's the start of a sequence (i.e., `num - 1` is not in `numSet`), find the length of the consecutive sequence starting from that number.
+    4. Update `longestStreak` if the current sequence is longer.
+    5. Return `longestStreak`.
 
 ```pseudo
 function longestConsecutive(nums):
     if not nums:
         return 0
 
-    num_set = set(nums)
-    longest_streak = 0
+    numSet = set(nums)
+    longestStreak = 0
 
     for num in nums:
-        if num - 1 not in num_set:
-            current_num = num
-            current_streak = 1
+        if num - 1 not in numSet:
+            currentNum = num
+            currentStreak = 1
 
-            while current_num + 1 in num_set:
-                current_num += 1
-                current_streak += 1
+            while currentNum + 1 in numSet:
+                currentNum += 1
+                currentStreak += 1
 
-            longest_streak = max(longest_streak, current_streak)
+            longestStreak = max(longestStreak, currentStreak)
 
-    return longest_streak
+    return longestStreak
 ```
