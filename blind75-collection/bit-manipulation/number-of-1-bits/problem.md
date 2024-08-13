@@ -41,7 +41,7 @@ You may assume `n` is a non-negative integer which fits within `32-bits`.
 function hammingWeight(n):
     count = 0
     while n:
-        n = n & (n - 1)
+        n &= (n - 1)
         count += 1
     return count
 ```
@@ -67,6 +67,6 @@ function hammingWeight(n):
 	while n:
 		if n & 1 == 1:
 			count += 1
-		n = n >> 1
+		n >>= 1
 	return count
 ```
