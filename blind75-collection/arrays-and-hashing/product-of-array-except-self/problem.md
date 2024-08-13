@@ -10,17 +10,13 @@ Each product is guaranteed to fit in a 32-bit integer.
 
 **Example 1:**
 
--   **Input**:
-    -   `nums = [1,2,4,6]`
--   **Output**:
-    -   `[48,24,12,8]`
+-   **Input**: `nums = [1,2,4,6]`
+-   **Output**: `[48,24,12,8]`
 
 **Example 2:**
 
--   **Input**:
-    -   `nums = [-1,0,1,2,3]`
--   **Output**:
-    -   `[0,-6,0,0,0]`
+-   **Input**: `nums = [-1,0,1,2,3]`
+-   **Output**: `[0,-6,0,0,0]`
 
 ### Constraints
 
@@ -31,10 +27,8 @@ Each product is guaranteed to fit in a 32-bit integer.
 
 ### Approach 1: Left and Right Prod Lists
 
--   **Time Complexity**:
-    -   `O(n)` where `n` is the length of `nums`.
--   **Space Complexity**:
-    -   `O(n)` for the `left` and `right` product arrays.
+-   **Time Complexity**: `O(n)` where `n` is the length of `nums`.
+-   **Space Complexity**: `O(n)` for the `left` and `right` product arrays.
 -   **Description**: We can solve this problem by computing two arrays: `left` and `right`. The `left[i]` array contains the product of all elements to the left of `nums[i]`, and `right[i]` contains the product of all elements to the right of `nums[i]`. The final `output[i]` is simply `left[i] * right[i]`.
 -   **Algorithm**:
 
@@ -67,10 +61,8 @@ function productExceptSelf(nums):
 
 ### Approach 2: Optimized Space Approach
 
--   **Time Complexity**:
-    -   `O(n)` where `n` is the length of `nums`.
--   **Space Complexity**:
-    -   `O(1)` excluding the output array.
+-   **Time Complexity**: `O(n)` where `n` is the length of `nums`.
+-   **Space Complexity**: `O(1)` excluding the output array.
 -   **Description**: This approach minimizes space complexity by using the `output` array to store the result directly. First, it fills the `output` array with the left products as it traverses from left to right. Then, it multiplies these values by the right products during a right-to-left traversal. This ensures that each element in `output[i]` contains the product of all elements in the array except `nums[i]`, without requiring additional arrays for left and right products.
 
 -   **Algorithm**:
