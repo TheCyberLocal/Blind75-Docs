@@ -62,39 +62,11 @@ function findMissing(nums):
 	n = len(nums)
 	xorSum = 0
 
-	for i in range(n + 1):
+	for i from 0 to n:
 		xorSum ^= i
 
 	for num in nums:
 		xorSum ^= num
 
 	return xorSum
-```
-
----
-
-### Approach 3: Dynamic Programming
-
--   **Time Complexity**: `O(n)` where `n` is the length of the array.
--   **Space Complexity**: `O(n)` for the DP array to track presence of each number.
--   **Description**: Use a DP array as a hash table to track which numbers from `0` to `n` are present in `nums`. Iterate over `nums` and mark corresponding indices in the DP array as `true`. Finally, find the index in the DP array that is still `false`, which corresponds to the missing number.
--   **Algorithm**:
-
-    1.  Initialize a boolean DP array `present` of size `n + 1` with all elements set to `false`.
-    2.  Iterate over each element `num` in `nums`:
-        -   Mark `present[num] = true`.
-    3.  Iterate over the DP array from index `0` to `n`:
-        -   If `present[i]` is `false`, return `i` as the missing number.
-
-```pseudo
-function findMissing(nums):
-	n = len(nums)
-	present = array of size n + 1 initialized to false
-
-	for num in nums:
-		present[num] = true
-
-	for i in range(n + 1):
-		if not present[i]:
-			return i
 ```
