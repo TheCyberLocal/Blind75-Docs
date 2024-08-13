@@ -48,9 +48,9 @@ A string `a` is lexicographically smaller than a string `b` if either of the fol
 -   **Algorithm**:
 
     1. Initialize an empty adjacency list `graph` and a dictionary `inDegree` to store the in-degree of each character.
-    2. For each pair of adjacent words `word1` and `word2`:
-        - Compare the characters `char1` and `char2` at each position.
-        - If `char1 != char2`, add an edge from `char1` to `char2` in `graph` and increment `inDegree[char2]` by 1.
+    2. For each pair of adjacent words `w1` and `w2`:
+        - Compare the characters `c1` and `c2` at each position.
+        - If `c1 != c2`, add an edge from `c1` to `c2` in `graph` and increment `inDegree[c2]` by 1.
         - Break the loop after finding the first different character.
     3. Initialize a queue with all characters that have an in-degree of `0`.
     4. Process the queue:
@@ -64,13 +64,13 @@ function alienOrder(words):
     inDegree = {char: 0 for char in all unique characters in words}
 
     for i from 0 to len(words) - 1:
-        word1, word2 = words[i], words[i + 1]
-        for j from 0 to min(len(word1), len(word2)):
-            char1, char2 = word1[j], word2[j]
-            if char1 != char2:
-                if char2 not in graph[char1]:
-                    graph[char1].append(char2)
-                    inDegree[char2] += 1
+        w1, w2 = words[i], words[i + 1]
+        for j from 0 to min(len(w1), len(w2)):
+            c1, c2 = w1[j], w2[j]
+            if c1 != c2:
+                if c2 not in graph[c1]:
+                    graph[c1].append(c2)
+                    inDegree[c2] += 1
                 break
 
     queue = [char for char in inDegree if inDegree[char] == 0]
