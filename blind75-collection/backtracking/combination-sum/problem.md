@@ -63,7 +63,7 @@ function combSum(nums, target):
             return
         if remain < 0:
             return
-        for i in range(start, len(nums)):
+        for i from start to len(nums) - 1:
             comb.append(nums[i])
             dfs(remain - nums[i], comb, i)
             comb.pop()
