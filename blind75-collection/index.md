@@ -37,17 +37,17 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Two Sum](./arrays-and-hashing/two-sum/problem.md)
 -   [Valid Anagram](./arrays-and-hashing/valid-anagram/problem.md)
 
-## Backtracking - _In Progress_
+## Backtracking
 
 -   [Combination Sum](./backtracking/combination-sum/problem.md)
 -   [Word Search](./backtracking/word-search/problem.md)
 
-## Binary Search - _Void_
+## Binary Search
 
 -   [Find Minimum in Rotated Sorted Array](./binary-search/find-minimum-in-rotated-sorted-array/problem.md)
 -   [Search in Rotated Sorted Array](./binary-search/search-in-rotated-sorted-array/problem.md)
 
-## Bit Manipulation - _Void_
+## Bit Manipulation - _In Progress_
 
 -   [Counting Bits](./bit-manipulation/counting-bits/problem.md)
 -   [Missing Number](./bit-manipulation/missing-number/problem.md)
