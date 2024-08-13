@@ -116,7 +116,7 @@ function exist(board, word):
 			return true
 		if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
 			return false
-		if (1 << (row * cols + col)) & visited != 0:
+		if (1 << (row * cols + col)) & visited:
 			return false
 		if memo[row][col][idx] != None:
 			return memo[row][col][idx]
