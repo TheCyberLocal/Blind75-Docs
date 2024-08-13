@@ -13,9 +13,9 @@ For the word to be present, it must be possible to form it with a path in the `b
 -   **Input**:
     ```
     board = [
-      ["A","B","C","D"],
-      ["S","A","A","T"],
-      ["A","C","A","E"]
+		["A","B","C","D"],
+		["S","A","A","T"],
+		["A","C","A","E"]
     ],
     word = "CAT"
     ```
@@ -27,9 +27,9 @@ For the word to be present, it must be possible to form it with a path in the `b
 -   **Input**:
     ```
     board = [
-      ["A","B","C","D"],
-      ["S","A","A","T"],
-      ["A","C","A","E"]
+		["A","B","C","D"],
+		["S","A","A","T"],
+		["A","C","A","E"]
     ],
     word = "BAT"
     ```
@@ -43,8 +43,8 @@ For the word to be present, it must be possible to form it with a path in the `b
 
 ### Approach 1: Backtracking
 
--   **Time Complexity**: `O(M * N * 4^L)` where `M` and `N` are the dimensions of the board and `L` is the length of the word.
--   **Space Complexity**: `O(L)` for the recursion stack where `L` is the length of the word.
+-   **Time Complexity**: `O(m * n * 4^l)` where `m` and `n` are the dimensions of the board and `l` is the length of the word.
+-   **Space Complexity**: `O(l)` for the recursion stack where `l` is the length of the word.
 -   **Description**: Use a backtracking approach to explore all possible paths in the grid that could form the `word`. Start from each cell, explore all four directions (up, down, left, right), and backtrack if the current path does not lead to a solution.
 -   **Algorithm**:
 
@@ -59,8 +59,9 @@ For the word to be present, it must be possible to form it with a path in the `b
 
 ```pseudo
 function exist(board, word):
-	for row in range(len(board)):
-		for col in range(len(board[0])):
+	rows, cols = len(board), len(board[0])
+	for row from 0 to rows - 1:
+		for col from 0 to cols - 1:
 			if backtrack(row, col, 0):
 				return true
 	return false
@@ -68,7 +69,7 @@ function exist(board, word):
 function backtrack(row, col, idx):
 	if idx == len(word):
 		return true
-	if row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) or board[row][col] != word[idx]:
+	if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
 		return false
 	temp = board[row][col]
 	board[row][col] = '#'
