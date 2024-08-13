@@ -13,9 +13,9 @@ For the word to be present, it must be possible to form it with a path in the `b
 -   **Input**:
     ```
     board = [
-		["A","B","C","D"],
-		["S","A","A","T"],
-		["A","C","A","E"]
+    	["A","B","C","D"],
+    	["S","A","A","T"],
+    	["A","C","A","E"]
     ],
     word = "CAT"
     ```
@@ -27,9 +27,9 @@ For the word to be present, it must be possible to form it with a path in the `b
 -   **Input**:
     ```
     board = [
-		["A","B","C","D"],
-		["S","A","A","T"],
-		["A","C","A","E"]
+    	["A","B","C","D"],
+    	["S","A","A","T"],
+    	["A","C","A","E"]
     ],
     word = "BAT"
     ```
@@ -59,23 +59,81 @@ For the word to be present, it must be possible to form it with a path in the `b
 
 ```pseudo
 function exist(board, word):
+	function backtrack(row, col, idx):
+		if idx == len(word):
+			return true
+		if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
+			return false
+		tmp = board[row][col]
+		board[row][col] = '#'
+		for (r, c) in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+			if backtrack(row + r, col + c, idx + 1):
+				return true
+		board[row][col] = tmp
+		return false
+
 	rows, cols = len(board), len(board[0])
 	for row from 0 to rows - 1:
 		for col from 0 to cols - 1:
 			if backtrack(row, col, 0):
 				return true
 	return false
+```
 
-function backtrack(row, col, idx):
-	if idx == len(word):
-		return true
-	if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
-		return false
-	temp = board[row][col]
-	board[row][col] = '#'
-	for (dr, dc) in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
-		if backtrack(row + dr, col + dc, idx + 1):
+---
+
+### Approach 2: Optimized Dynamic Programming with Bitmasking
+
+-   **Time Complexity**: `O(m * n * l)` where `m` and `n` are the dimensions of the board and `l` is the length of the word.
+-   **Space Complexity**: `O(m * n * l)` for the memoization table.
+-   **Description**: This approach leverages dynamic programming with memoization and bitmasking to optimize the search process. We use a 3D DP table where `dp[row][col][idx]` represents whether it's possible to match the substring `word[idx:]` starting from position `(row, col)` on the board.
+
+    Bitmasking is used to track visited cells, allowing us to efficiently handle the constraint that each cell can be used only once in forming the word.
+
+-   **Algorithm**:
+
+    1. Initialize a 3D memoization table `dp` with dimensions `(rows, cols, len(word))` set to `None`.
+    2. Define a recursive function `dp(row, col, idx, visited)` that:
+        - Returns `True` if `idx` is equal to `len(word)` (meaning the entire word has been matched).
+        - Returns `False` if the current position is out of bounds, or if the current cell is not equal to `word[idx]`, or if the cell has already been visited.
+        - If `dp[row][col][idx]` is not `None`, return the stored result to avoid redundant calculations.
+        - Mark the current cell as visited by updating the `visited` bitmask.
+        - Recursively explore all four directions (up, down, left, right).
+        - Restore the current state and store the result in `dp[row][col][idx]`.
+    3. Iterate over every cell in the grid, initiating the DP search from each cell.
+    4. Return `True` if any path forms the word; otherwise, return `False`.
+
+```pseudo
+function exist(board, word):
+	rows, cols = len(board), len(board[0])
+	memo = array of size (rows, cols, len(word)) initialized to None
+	visited = 0
+
+	function dp(row, col, idx, visited):
+		if idx == len(word):
 			return true
-	board[row][col] = temp
+		if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
+			return false
+		if (1 << (row * cols + col)) & visited != 0:
+			return false
+		if memo[row][col][idx] != None:
+			return memo[row][col][idx]
+
+		visited |= (1 << (row * cols + col))
+
+		for (dr, dc) in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+			if dp(row + dr, col + dc, idx + 1, visited):
+				memo[row][col][idx] = true
+				return true
+
+		visited &= ~(1 << (row * cols + col))
+		memo[row][col][idx] = false
+		return false
+
+	for row from 0 to rows - 1:
+		for col from 0 to cols - 1:
+			if dp(row, col, 0, visited):
+				return true
+
 	return false
 ```
