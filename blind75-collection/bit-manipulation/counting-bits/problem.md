@@ -23,6 +23,8 @@ Return an array `output` where `output[i]` is the number of `1`'s in the binary 
 
 -   `0 <= n <= 1000`
 
+---
+
 ### Approach 1: Dynamic Programming with Bit Manipulation
 
 -   **Time Complexity**: `O(n)` where `n` is the input number.

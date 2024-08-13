@@ -35,6 +35,8 @@ You may return the combinations in any order, and the order of the numbers in ea
 -   `2 <= nums[i] <= 30`
 -   `2 <= target <= 30`
 
+---
+
 ### Approach 1: Recursive Backtracking
 
 -   **Time Complexity**: `O(2^(target / min(n)))` where `n` is the length of `nums` and `target` is the target sum.

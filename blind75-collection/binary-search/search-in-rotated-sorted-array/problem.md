@@ -31,6 +31,8 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 -   `-1000 <= nums[i] <= 1000`
 -   `-1000 <= target <= 1000`
 
+---
+
 ### Approach 1: Binary Search
 
 -   **Time Complexity**: `O(log n)` where `n` is the number of elements in the array.

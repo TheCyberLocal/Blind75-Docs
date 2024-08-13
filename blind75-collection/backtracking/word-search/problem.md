@@ -41,6 +41,8 @@ For the word to be present, it must be possible to form it with a path in the `b
 -   `1 <= len(word) <= 10`
 -   `board` and `word` consist only of alphabetical characters.
 
+---
+
 ### Approach 1: Backtracking
 
 -   **Time Complexity**: `O(m * n * 4^l)` where `m` and `n` are the dimensions of the board and `l` is the length of the word.

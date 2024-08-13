@@ -21,6 +21,8 @@ Given an array `nums` containing `n` integers in the range `[0, n]` without any 
 
 -   `1 <= len(nums) <= 1000`
 
+---
+
 ### Approach 1: Summation Formula
 
 -   **Time Complexity**: `O(n)` where `n` is the length of the array.
