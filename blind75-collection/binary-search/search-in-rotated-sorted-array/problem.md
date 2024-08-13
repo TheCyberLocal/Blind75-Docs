@@ -40,7 +40,7 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 
     1.  Initialize `l` to `0` and `r` to `len(nums) - 1`.
     2.  While `l` is less than or equal to `r`:
-        -   Calculate the middle index `mid = floor((l + r) / 2)`.
+        -   Calculate the middle index `mid = (l + r) // 2`.
         -   If `nums[mid]` equals `target`, return `mid`.
         -   If `nums[l]` to `nums[mid]` is sorted:
             -   If `target` is within this range, set `r = mid - 1`.
@@ -55,7 +55,7 @@ function search(nums, target):
 	l, r = 0, len(nums) - 1
 
 	while l <= r:
-		mid = floor((l + r) / 2)
+		mid = (l + r) // 2
 		if nums[mid] == target:
 			return mid
 		if nums[l] <= nums[mid]:

@@ -106,5 +106,5 @@ function uniquePaths(m, n):
 
     numerator = factorial(m + n - 2)
     denominator = factorial(m - 1) * factorial(n - 1)
-    return floor(numerator / denominator)
+    return numerator // denominator
 ```

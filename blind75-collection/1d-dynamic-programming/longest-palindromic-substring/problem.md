@@ -92,8 +92,8 @@ function longestPalindrome(s):
 		len2 = paliLen(i, i + 1)
 		maxLen = max(len1, len2)
 		if maxLen > end - start:
-			start = floor(i - (maxLen - 1) / 2)
-			end = floor(i + maxLen / 2)
+			start = i - (maxLen - 1) // 2
+			end = i + maxLen // 2
 	return s[start:end + 1]
 ```
 

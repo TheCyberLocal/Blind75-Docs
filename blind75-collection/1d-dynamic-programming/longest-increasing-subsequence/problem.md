@@ -94,7 +94,7 @@ function lengthOfLIS(nums):
 	for num in nums:
 		l, r = 0, len(tails)
 		while l < r:
-			mid = floor((l + r) / 2)
+			mid = (l + r) // 2
 			if tails[mid] < num:
 				l = mid + 1
 			else:

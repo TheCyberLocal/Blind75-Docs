@@ -44,7 +44,7 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 
     1.  Initialize `l` to `0` and `r` to `len(nums) - 1`.
     2.  While `l` is less than `r`:
-        -   Calculate the middle index `mid = floor((l + r) / 2)`.
+        -   Calculate the middle index `mid = (l + r) // 2`.
         -   If `nums[mid]` is greater than `nums[r]`, the minimum is in the right half, so set `l = mid + 1`.
         -   Otherwise, the minimum is in the left half, so set `r = mid`.
     3.  Return `nums[l]`, as it will point to the minimum element.
@@ -54,7 +54,7 @@ function findMin(nums):
 	l, r = 0, len(nums) - 1
 
 	while l < r:
-		mid = floor((l + r) / 2)
+		mid = (l + r) // 2
 		if nums[mid] > nums[r]:
 			l = mid + 1
 		else:
