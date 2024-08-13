@@ -38,36 +38,36 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 -   **Description**: Utilize binary search by identifying which part of the array (left or right) is sorted. Check if the `target` is within the sorted range; if so, adjust the search to that range, otherwise search in the other half.
 -   **Algorithm**:
 
-    1.  Initialize `left` to `0` and `right` to `len(nums) - 1`.
-    2.  While `left` is less than or equal to `right`:
-        -   Calculate the middle index `mid = floor((left + right) / 2)`.
+    1.  Initialize `l` to `0` and `r` to `len(nums) - 1`.
+    2.  While `l` is less than or equal to `r`:
+        -   Calculate the middle index `mid = floor((l + r) / 2)`.
         -   If `nums[mid]` equals `target`, return `mid`.
-        -   If `nums[left]` to `nums[mid]` is sorted:
-            -   If `target` is within this range, set `right = mid - 1`.
-            -   Otherwise, set `left = mid + 1`.
-        -   Otherwise, the `mid` to `right` part is sorted:
-            -   If `target` is within this range, set `left = mid + 1`.
-            -   Otherwise, set `right = mid - 1`.
+        -   If `nums[l]` to `nums[mid]` is sorted:
+            -   If `target` is within this range, set `r = mid - 1`.
+            -   Otherwise, set `l = mid + 1`.
+        -   Otherwise, the `mid` to `r` part is sorted:
+            -   If `target` is within this range, set `l = mid + 1`.
+            -   Otherwise, set `r = mid - 1`.
     3.  If the loop ends without finding the `target`, return `-1`.
 
 ```pseudo
 function search(nums, target):
-	left, right = 0, len(nums) - 1
+	l, r = 0, len(nums) - 1
 
-	while left <= right:
-		mid = floor((left + right) / 2)
+	while l <= r:
+		mid = floor((l + r) / 2)
 		if nums[mid] == target:
 			return mid
-		if nums[left] <= nums[mid]:
-			if nums[left] <= target < nums[mid]:
-				right = mid - 1
+		if nums[l] <= nums[mid]:
+			if nums[l] <= target < nums[mid]:
+				r = mid - 1
 			else:
-				left = mid + 1
+				l = mid + 1
 		else:
-			if nums[mid] < target <= nums[right]:
-				left = mid + 1
+			if nums[mid] < target <= nums[r]:
+				l = mid + 1
 			else:
-				right = mid - 1
+				r = mid - 1
 
 	return -1
 ```

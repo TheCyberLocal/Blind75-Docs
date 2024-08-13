@@ -92,16 +92,16 @@ function lengthOfLIS(nums):
 function lengthOfLIS(nums):
 	tails = []
 	for num in nums:
-		left, right = 0, len(tails)
-		while left < right:
-			mid = floor((left + right) / 2)
+		l, r = 0, len(tails)
+		while l < r:
+			mid = floor((l + r) / 2)
 			if tails[mid] < num:
-				left = mid + 1
+				l = mid + 1
 			else:
-				right = mid
-		if right >= len(tails):
+				r = mid
+		if r >= len(tails):
 			tails.append(num)
 		else:
-			tails[right] = num
+			tails[r] = num
 	return len(tails)
 ```

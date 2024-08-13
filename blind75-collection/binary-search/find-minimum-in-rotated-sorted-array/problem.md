@@ -42,23 +42,23 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 -   **Description**: Use binary search by comparing the middle element with the last element, decide whether the minimum is in the left or right half of the array. This is possible since we can derive that given any two indices of the array, if the left index is greater than the right, the pivot is between them; otherwise, it is not. If the pivot is between them, we know we are in a fully sorted segment, so return the leftmost index.
 -   **Algorithm**:
 
-    1.  Initialize `left` to `0` and `right` to `len(nums) - 1`.
-    2.  While `left` is less than `right`:
-        -   Calculate the middle index `mid = floor((left + right) / 2)`.
-        -   If `nums[mid]` is greater than `nums[right]`, the minimum is in the right half, so set `left = mid + 1`.
-        -   Otherwise, the minimum is in the left half, so set `right = mid`.
-    3.  Return `nums[left]`, as it will point to the minimum element.
+    1.  Initialize `l` to `0` and `r` to `len(nums) - 1`.
+    2.  While `l` is less than `r`:
+        -   Calculate the middle index `mid = floor((l + r) / 2)`.
+        -   If `nums[mid]` is greater than `nums[r]`, the minimum is in the right half, so set `l = mid + 1`.
+        -   Otherwise, the minimum is in the left half, so set `r = mid`.
+    3.  Return `nums[l]`, as it will point to the minimum element.
 
 ```pseudo
 function findMin(nums):
-	left, right = 0, len(nums) - 1
+	l, r = 0, len(nums) - 1
 
-	while left < right:
-		mid = floor((left + right) / 2)
-		if nums[mid] > nums[right]:
-			left = mid + 1
+	while l < r:
+		mid = floor((l + r) / 2)
+		if nums[mid] > nums[r]:
+			l = mid + 1
 		else:
-			right = mid
+			r = mid
 
-	return nums[left]
+	return nums[l]
 ```
