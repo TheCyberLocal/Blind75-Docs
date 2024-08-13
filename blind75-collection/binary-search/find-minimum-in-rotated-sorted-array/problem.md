@@ -39,7 +39,7 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 
 -   **Time Complexity**: `O(log n)` where `n` is the number of elements in the array.
 -   **Space Complexity**: `O(1)` as no additional space is required.
--   **Description**: Use binary search to efficiently locate the minimum element in the rotated sorted array. By comparing the middle element with the last element, decide whether the minimum is in the left or right half of the array.
+-   **Description**: Use binary search by comparing the middle element with the last element, decide whether the minimum is in the left or right half of the array. This is possible since we can derive that given any two indices of the array, if the left index is greater than the right, the pivot is between them; otherwise, it is not. If the pivot is between them, we know we are in a fully sorted segment, so return the leftmost index.
 -   **Algorithm**:
 
     1.  Initialize `left` to `0` and `right` to `len(nums) - 1`.
@@ -51,8 +51,7 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 
 ```pseudo
 function findMin(nums):
-	left = 0
-	right = len(nums) - 1
+	left, right = 0, len(nums) - 1
 
 	while left < right:
 		mid = floor((left + right) / 2)
