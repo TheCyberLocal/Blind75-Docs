@@ -4,7 +4,7 @@
 
 ## Textbook Problem
 
-You are given an unsigned integer `n`. Return the number of `1` bits in its binary representation.
+You are given an unsigned integer `n`. Return the number of `1` bits in its binary representation. This is also known as the Hamming weight.
 
 You may assume `n` is a non-negative integer which fits within `32-bits`.
 
@@ -22,7 +22,33 @@ You may assume `n` is a non-negative integer which fits within `32-bits`.
 
 -   `0 <= n <= 2^32 - 1`
 
-### Approach 1: Bit Manipulation
+---
+
+### Approach 1: Brian Kernighan's Algorithm
+
+-   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
+-   **Space Complexity**: `O(1)` as no extra space is used.
+-   **Description**: Brian Kernighan's Algorithm is an efficient way to count the number of `1` bits in an integer. The key insight is that subtracting `1` from a number flips all the bits after the rightmost `1` bit, including the `1` bit itself. By performing `n = n & (n - 1)`, we effectively remove the rightmost `1` bit from `n`. This process continues until `n` becomes `0`, and the number of iterations is equal to the number of `1` bits in the original number.
+-   **Algorithm**:
+
+    1. Initialize a counter `count = 0`.
+    2. While `n` is not `0`:
+        - Perform `n = n & (n - 1)` to remove the rightmost `1` bit.
+        - Increment `count`.
+    3. Return `count`.
+
+```pseudo
+function hammingWeight(n):
+    count = 0
+    while n:
+        n = n & (n - 1)
+        count += 1
+    return count
+```
+
+---
+
+### Approach 2: Bitwise Iteration
 
 -   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
 -   **Space Complexity**: `O(1)` as no extra space is used.
@@ -38,7 +64,7 @@ You may assume `n` is a non-negative integer which fits within `32-bits`.
 ```pseudo
 function hammingWeight(n):
 	count = 0
-	while n != 0:
+	while n:
 		if n & 1 == 1:
 			count += 1
 		n = n >> 1
