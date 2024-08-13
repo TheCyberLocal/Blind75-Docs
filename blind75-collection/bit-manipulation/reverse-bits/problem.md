@@ -16,26 +16,52 @@ Given a 32-bit unsigned integer `n`, reverse the bits of the binary representati
 
 -   `0 <= n <= 2^32 - 1`
 
-### Approach 1: Bit Manipulation
+---
+
+### Approach 1: Direct Bit Placement
+
+-   **Time Complexity**: `O(1)` because the loop iterates exactly 32 times (constant number of bits).
+-   **Space Complexity**: `O(1)` as no extra space proportional to input size is used.
+-   **Description**: Instead of shifting the result bit by bit, this approach directly places each bit from the original position to its reversed position.
+-   **Algorithm**:
+
+    1.  Initialize `res = 0`.
+    2.  For `i` from `0` to `31`:
+        -   Extract the bit at position `i` from `n`.
+        -   Place this bit at position `31 - i` in `res`.
+    3.  Return `res`.
+
+```pseudo
+function reverseBits(n):
+    res = 0
+    for i from 0 to 31:
+        bit = (n >> i) & 1
+        res += (bit << (31 - i))
+    return res
+```
+
+---
+
+### Approach 2: Iterative Bitwise Reversal
 
 -   **Time Complexity**: `O(1)` because the loop iterates exactly 32 times (constant number of bits).
 -   **Space Complexity**: `O(1)` as no extra space proportional to input size is used.
 -   **Description**: Reverse the bits of `n` by iterating over each bit from the least significant to the most significant and constructing the reversed number by shifting and setting bits accordingly.
 -   **Algorithm**:
 
-    1.  Initialize `result = 0`.
+    1.  Initialize `res = 0`.
     2.  For `i` from `0` to `31`:
-        -   Left shift `result` by `1`.
-        -   Add the least significant bit of `n` to `result`.
+        -   Left shift `res` by `1`.
+        -   Add the least significant bit of `n` to `res`.
         -   Right shift `n` by `1`.
-    3.  Return `result`.
+    3.  Return `res`.
 
 ```pseudo
 function reverseBits(n):
-	result = 0
-	for i = 0 to 31:
-		result = result << 1
-		result = result | (n & 1)
-		n = n >> 1
-	return result
+	res = 0
+	for i from 0 to 31:
+		res <<= 1
+		res |= (n & 1)
+		n >>= 1
+	return res
 ```
