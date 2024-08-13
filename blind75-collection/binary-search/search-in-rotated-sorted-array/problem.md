@@ -34,7 +34,7 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 ### Approach 1: Modified Binary Search
 
 -   **Time Complexity**: `O(log n)` where `n` is the number of elements in the array.
--   **Space Complexity**: `O(1)` as no additional space is required.
+-   **Space Complexity**: `O(1)`
 -   **Description**: Utilize binary search by identifying which part of the array (left or right) is sorted. Check if the `target` is within the sorted range; if so, adjust the search to that range, otherwise search in the other half.
 -   **Algorithm**:
 

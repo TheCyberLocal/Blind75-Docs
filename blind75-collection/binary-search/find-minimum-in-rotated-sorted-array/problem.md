@@ -38,7 +38,7 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 ### Approach 1: Binary Search
 
 -   **Time Complexity**: `O(log n)` where `n` is the number of elements in the array.
--   **Space Complexity**: `O(1)` as no additional space is required.
+-   **Space Complexity**: `O(1)`
 -   **Description**: Use binary search by comparing the middle element with the last element, decide whether the minimum is in the left or right half of the array. This is possible since we can derive that given any two indices of the array, if the left index is greater than the right, the pivot is between them; otherwise, it is not. If the pivot is between them, we know we are in a fully sorted segment, so return the leftmost index.
 -   **Algorithm**:
 

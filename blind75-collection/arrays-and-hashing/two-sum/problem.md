@@ -69,7 +69,7 @@ function twoSum(nums, target):
 ### Approach 2: Exhaustive Pairwise Check
 
 -   **Time Complexity**: `O(n^2)` where `n` is the number of elements in the array.
--   **Space Complexity**: `O(1)` as no additional space is required.
+-   **Space Complexity**: `O(1)`
 -   **Description**: This approach involves iterating through each element in the array and then iterating through all other elements to check if their sum equals the target. The brute force method systematically checks every possible pair of elements until it finds the two that sum to the target. While not the most efficient in terms of time, it has the advantage of not requiring extra space.
 -   **Algorithm**:
 
