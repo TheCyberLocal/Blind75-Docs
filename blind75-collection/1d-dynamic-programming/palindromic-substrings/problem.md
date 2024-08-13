@@ -23,7 +23,7 @@ A palindrome is a string that reads the same forward and backward.
 ### Constraints
 
 -   `1 <= len(s) <= 1000`
--   `s` consists of lowercase letters.
+-   `s` consists only of lowercase letters.
 
 ---
 

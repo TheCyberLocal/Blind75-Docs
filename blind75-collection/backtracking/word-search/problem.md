@@ -39,7 +39,7 @@ For the word to be present, it must be possible to form it with a path in the `b
 
 -   `1 <= len(board), len(board[i]) <= 5`
 -   `1 <= len(word) <= 10`
--   `board` and `word` consist of only alphabetical characters.
+-   `board` and `word` consist only of alphabetical characters.
 
 ### Approach 1: Backtracking
 

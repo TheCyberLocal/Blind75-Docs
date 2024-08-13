@@ -20,7 +20,7 @@ An anagram is a string that contains the exact same characters as another string
 
 ### Constraints
 
--   `s` and `t` consist of lowercase letters.
+-   `s` and `t` consist only of lowercase letters.
 
 ---
 

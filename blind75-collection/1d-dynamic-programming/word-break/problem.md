@@ -30,7 +30,7 @@ You are allowed to reuse words in the dictionary an unlimited number of times. Y
 -   `1 <= len(s) <= 200`
 -   `1 <= len(wordDict) <= 100`
 -   `1 <= len(wordDict[i]) <= 20`
--   `s` and `wordDict[i]` consist of only lowercase letters.
+-   `s` and `wordDict[i]` consist only of lowercase letters.
 
 ---
 

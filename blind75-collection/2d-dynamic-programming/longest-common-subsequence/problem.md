@@ -29,7 +29,7 @@ A common subsequence of two strings is a subsequence that exists in both strings
 ### Constraints
 
 -   `1 <= len(text1), len(text2) <= 1000`
--   `text1` and `text2` consist of only lowercase letters.
+-   `text1` and `text2` consist only of lowercase letters.
 
 ---
 
