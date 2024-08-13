@@ -47,7 +47,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Find Minimum in Rotated Sorted Array](./binary-search/find-minimum-in-rotated-sorted-array/problem.md)
 -   [Search in Rotated Sorted Array](./binary-search/search-in-rotated-sorted-array/problem.md)
 
-## Bit Manipulation - _In Progress_
+## Bit Manipulation
 
 -   [Counting Bits](./bit-manipulation/counting-bits/problem.md)
 -   [Missing Number](./bit-manipulation/missing-number/problem.md)
@@ -55,7 +55,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Reverse Bits](./bit-manipulation/reverse-bits/problem.md)
 -   [Sum of Two Integers](./bit-manipulation/sum-of-two-integers/problem.md)
 
-## Graphs - _Void_
+## Graphs - _In Progress_
 
 -   [Clone Graph](./graphs/clone-graph/problem.md)
 -   [Course Schedule](./graphs/course-schedule/problem.md)
