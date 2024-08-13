@@ -90,7 +90,7 @@ function combSum(nums, target):
 
 ```pseudo
 function combSum(nums, target):
-    dp = array of size target + 1 with each element as an empty list
+    dp = array of size target + 1 initialized to []
     dp[0].append([])
 
     for num in nums:
