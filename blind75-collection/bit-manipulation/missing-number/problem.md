@@ -70,3 +70,27 @@ function findMissing(nums):
 
 	return xorSum
 ```
+
+---
+
+### Approach 3: Counting with XOR and Summation
+
+-   **Time Complexity**: `O(n)` where `n` is the number of elements in the array.
+-   **Space Complexity**: `O(1)` since only a few variables are used.
+-   **Description**: This approach calculates the missing number in a series by using the sum formula for the first `n` natural numbers and comparing it with the sum of the array's elements. The difference gives the missing number.
+-   **Algorithm**:
+
+    1. Initialize a variable `res` to `len(nums)`.
+    2. Iterate over the array:
+        - For each index `i`, update `res` as `res += i - nums[i]`.
+    3. Return `res` which will hold the missing number after the loop.
+
+```pseudo
+function findMissing(nums):
+    res = len(nums)
+
+    for i from 0 to len(nums):
+        res += i - nums[i]
+
+    return res
+```
