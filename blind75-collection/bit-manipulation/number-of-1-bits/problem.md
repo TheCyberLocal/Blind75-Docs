@@ -27,7 +27,7 @@ You may assume `n` is a non-negative integer which fits within `32-bits`.
 ### Approach 1: Brian Kernighan's Algorithm
 
 -   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
--   **Space Complexity**: `O(1)` as no extra space is used.
+-   **Space Complexity**: `O(1)` for constant space usage.
 -   **Description**: Brian Kernighan's Algorithm is an efficient way to count the number of `1` bits in an integer. The key insight is that subtracting `1` from a number flips all the bits after the rightmost `1` bit, including the `1` bit itself. By performing `n = n & (n - 1)`, we effectively remove the rightmost `1` bit from `n`. This process continues until `n` becomes `0`, and the number of iterations is equal to the number of `1` bits in the original number.
 -   **Algorithm**:
 
@@ -51,7 +51,7 @@ function hammingWeight(n):
 ### Approach 2: Bitwise Iteration
 
 -   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
--   **Space Complexity**: `O(1)` as no extra space is used.
+-   **Space Complexity**: `O(1)` for constant space usage.
 -   **Description**: Count the number of `1` bits by iterating through the binary representation of `n` and checking if the least significant bit is `1`. Shift `n` right by `1` in each iteration.
 -   **Algorithm**:
 

@@ -20,8 +20,8 @@ Given a 32-bit unsigned integer `n`, reverse the bits of the binary representati
 
 ### Approach 1: Direct Bit Placement
 
--   **Time Complexity**: `O(1)` because the loop iterates exactly 32 times (constant number of bits).
--   **Space Complexity**: `O(1)` as no extra space proportional to input size is used.
+-   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
+-   **Space Complexity**: `O(1)` for constant space usage.
 -   **Description**: Instead of shifting the result bit by bit, this approach directly places each bit from the original position to its reversed position.
 -   **Algorithm**:
 
@@ -44,8 +44,8 @@ function reverseBits(n):
 
 ### Approach 2: Iterative Bitwise Reversal
 
--   **Time Complexity**: `O(1)` because the loop iterates exactly 32 times (constant number of bits).
--   **Space Complexity**: `O(1)` as no extra space proportional to input size is used.
+-   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
+-   **Space Complexity**: `O(1)` for constant space usage.
 -   **Description**: Reverse the bits of `n` by iterating over each bit from the least significant to the most significant and constructing the reversed number by shifting and setting bits accordingly.
 -   **Algorithm**:
 

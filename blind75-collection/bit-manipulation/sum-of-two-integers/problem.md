@@ -22,8 +22,8 @@ Given two integers `a` and `b`, return the sum of the two integers without using
 
 ### Approach 1: Bit Manipulation
 
--   **Time Complexity**: `O(1)` because the number of bits is fixed (typically 32 for integers).
--   **Space Complexity**: `O(1)` since no additional space is required.
+-   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
+-   **Space Complexity**: `O(1)` for constant space usage.
 -   **Description**: Use bitwise operations to simulate the addition of two integers. The key idea is to use the XOR operation to add the bits without considering the carry, and the AND operation followed by a left shift to calculate the carry.
 -   **Algorithm**:
 
