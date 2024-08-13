@@ -35,7 +35,7 @@ Given two integers `a` and `b`, return the sum of the two integers without using
 
 ```pseudo
 function sumTwoIntegers(a, b):
-	while b != 0:
+	while b:
 		carry = (a & b) << 1
 		a = a ^ b
 		b = carry
