@@ -34,7 +34,7 @@ Given two integers `a` and `b`, return the sum of the two integers without using
     2.  Return `a` as the result.
 
 ```pseudo
-function sumTwoIntegers(a, b):
+function getSum(a, b):
 	while b:
 		carry = (a & b) << 1
 		a = a ^ b
