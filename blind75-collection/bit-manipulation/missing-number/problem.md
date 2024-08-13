@@ -89,7 +89,7 @@ function findMissing(nums):
 ```pseudo
 function findMissing(nums):
 	n = len(nums)
-	present = [false] * (n + 1)
+	present = array of size n + 1 initialized to false
 
 	for num in nums:
 		present[num] = true
