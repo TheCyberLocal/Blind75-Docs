@@ -52,8 +52,7 @@ A solution that runs in `O(n)` time is trivial. Can you write an algorithm that 
 
 ```pseudo
 function search(nums, target):
-	left = 0
-	right = len(nums) - 1
+	left, right = 0, len(nums) - 1
 
 	while left <= right:
 		mid = floor((left + right) / 2)
