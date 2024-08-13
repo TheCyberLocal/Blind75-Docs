@@ -94,14 +94,14 @@ function exist(board, word):
 
     1. Initialize a 3D memoization table `dp` with dimensions `(rows, cols, len(word))` set to `None`.
     2. Define a recursive function `dp(row, col, idx, visited)` that:
-        - Returns `True` if `idx` is equal to `len(word)` (meaning the entire word has been matched).
-        - Returns `False` if the current position is out of bounds, or if the current cell is not equal to `word[idx]`, or if the cell has already been visited.
+        - Returns `true` if `idx` is equal to `len(word)` (meaning the entire word has been matched).
+        - Returns `false` if the current position is out of bounds, or if the current cell is not equal to `word[idx]`, or if the cell has already been visited.
         - If `dp[row][col][idx]` is not `None`, return the stored result to avoid redundant calculations.
         - Mark the current cell as visited by updating the `visited` bitmask.
         - Recursively explore all four directions (up, down, left, right).
         - Restore the current state and store the result in `dp[row][col][idx]`.
     3. Iterate over every cell in the grid, initiating the DP search from each cell.
-    4. Return `True` if any path forms the word; otherwise, return `False`.
+    4. Return `true` if any path forms the word; otherwise, return `false`.
 
 ```pseudo
 function exist(board, word):

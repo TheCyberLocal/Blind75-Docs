@@ -104,13 +104,13 @@ function alienOrder(words):
         - If the prefix of `w1` matches `w2` but `w1` is longer, return an empty string, as this indicates an invalid order.
         - If a mismatch is found between characters `w1[j]` and `w2[j]`, add an edge from `w1[j]` to `w2[j]` in `adj`, and break out of the loop.
     3. Initialize a `visited` dictionary to track the state of each character:
-        - `False` if the character has been fully processed.
-        - `True` if the character is currently in the DFS path.
+        - `false` if the character has been fully processed.
+        - `true` if the character is currently in the DFS path.
     4. Define a recursive DFS function:
-        - If the character is already in `visited` and part of the current path (`True`), a cycle is detected, so return `True`.
+        - If the character is already in `visited` and part of the current path (`true`), a cycle is detected, so return `true`.
         - Mark the character as part of the current path.
-        - Recursively visit all adjacent characters. If a cycle is found, return `True`.
-        - After processing all neighbors, mark the character as fully visited (`False`), and add it to the result list.
+        - Recursively visit all adjacent characters. If a cycle is found, return `true`.
+        - After processing all neighbors, mark the character as fully visited (`false`), and add it to the result list.
     5. Perform DFS on each character in the adjacency list. If a cycle is detected, return an empty string.
     6. Reverse the result list, as characters are added in reverse order during DFS, and return the joined string.
 
@@ -131,7 +131,7 @@ function alienOrder(words):
                 break
 
     # Initialize visited dictionary and result list
-    visited = {}  # {char: bool} False visited, True current path
+    visited = {}  # {char: bool} false visited, true current path
     res = []
 
     # Depth-first search function
@@ -139,13 +139,13 @@ function alienOrder(words):
         if char in visited:
             return visited[char]
 
-        visited[char] = True
+        visited[char] = true
 
         for neighChar in adj[char]:
             if dfs(neighChar):
-                return True
+                return true
 
-        visited[char] = False
+        visited[char] = false
         res.append(char)
 
     # Perform DFS for each character in the adjacency list
