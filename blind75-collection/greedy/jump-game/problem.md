@@ -41,12 +41,14 @@ Return `true` if you can reach the last index starting from index `0`, or `false
 
 ```pseudo
 function canJump(nums):
+	n = len(nums)
 	farthest = 0
-	for i in initialize range of len(nums):
+
+	for i from 0 to n - 1:
 		if i > farthest:
 			return false
 		farthest = max(farthest, i + nums[i])
-	return farthest >= len(nums) - 1
+	return farthest >= n - 1
 ```
 
 ---
@@ -68,9 +70,10 @@ function canJump(nums):
 	n = len(nums)
 	dp = initialize array of false with length n
 	dp[0] = true
-	for i in initialize range of n:
+
+	for i from 0 to n - 1:
 		if dp[i]:
-			for j in range(i + 1, min(i + nums[i] + 1, n)):
+			for j from i + 1 to min(i + nums[i], n - 1):
 				dp[j] = true
 	return dp[-1]
 ```
@@ -97,7 +100,7 @@ function canJump(nums):
 		if i >= len(nums) - 1:
 			return true
 		farthestJump = min(i + nums[i], len(nums) - 1)
-		for j in range(i + 1, farthestJump + 1):
+		for j from i + 1 to farthestJump:
 			if canJumpFromPosition(j):
 			 return true
 		return false
