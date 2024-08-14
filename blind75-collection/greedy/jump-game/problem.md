@@ -50,30 +50,3 @@ function canJump(nums):
 		farthest = max(farthest, i + nums[i])
 	return farthest >= n - 1
 ```
-
----
-
-### Approach 2: Dynamic Programming
-
--   **Time Complexity:** `O(n^2)` where `n` is the length of the array.
--   **Space Complexity:** `O(n)`
--   **Description:** This approach uses a DP array where `dp[i]` indicates whether it is possible to reach the `i`th index. Start from the first index and try to update the DP array for all reachable indices.
--   **Algorithm:**
-
-    1. Initialize a DP array `dp` with `false`, except `dp[0] = true`.
-    2. Iterate through each index `i`:
-        - If `dp[i]` is `true`, update all positions from `i + 1` to `i + nums[i]` to `true`.
-    3. Return the value at `dp[-1]`.
-
-```pseudo
-function canJump(nums):
-	n = len(nums)
-	dp = initialize array of false with length n
-	dp[0] = true
-
-	for i from 0 to n - 1:
-		if dp[i]:
-			for j from i + 1 to min(i + nums[i], n - 1):
-				dp[j] = true
-	return dp[-1]
-```

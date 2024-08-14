@@ -10,28 +10,28 @@ A subarray is a contiguous non-empty sequence of elements within an array.
 
 **Example 1:**
 
-- **Input:** `nums = [2, -3, 4, -2, 2, 1, -1, 4]`
-- **Output:** `8`
-- **Explanation:** The subarray `[4, -2, 2, 1, -1, 4]` has the largest sum `8`.
+-   **Input:** `nums = [2, -3, 4, -2, 2, 1, -1, 4]`
+-   **Output:** `8`
+-   **Explanation:** The subarray `[4, -2, 2, 1, -1, 4]` has the largest sum `8`.
 
 **Example 2:**
 
-- **Input:** `nums = [-1]`
-- **Output:** `-1`
+-   **Input:** `nums = [-1]`
+-   **Output:** `-1`
 
 ### Constraints
 
-- `1 <= nums.length <= 1000`
-- `-1000 <= nums[i] <= 1000`
+-   `1 <= nums.length <= 1000`
+-   `-1000 <= nums[i] <= 1000`
 
 ---
 
 ### Approach 1: Kadane's Algorithm
 
-- **Time Complexity:** `O(n)` where `n` is the length of the array.
-- **Space Complexity:** `O(1)`
-- **Description:** Kadane's algorithm is a dynamic programming approach to solve this problem in linear time. It iterates through the array, and at each position, it calculates the maximum subarray sum that ends at that position by taking the maximum of the current element or the sum of the current element and the maximum subarray sum ending at the previous position. The global maximum is updated accordingly.
-- **Algorithm:**
+-   **Time Complexity:** `O(n)` where `n` is the length of the array.
+-   **Space Complexity:** `O(1)`
+-   **Description:** Kadane's algorithm is a dynamic programming approach to solve this problem in linear time. It iterates through the array, and at each position, it calculates the maximum subarray sum that ends at that position by taking the maximum of the current element or the sum of the current element and the maximum subarray sum ending at the previous position. The global maximum is updated accordingly.
+-   **Algorithm:**
 
     1. Initialize two variables: `maxSum` to hold the global maximum sum and `currentSum` to hold the current subarray sum. Set both to the first element of the array.
     2. Iterate through the array starting from the second element:
@@ -53,10 +53,10 @@ function maxSubArray(nums):
 
 ### Approach 2: Divide and Conquer
 
-- **Time Complexity:** `O(n log n)` where `n` is the length of the array.
-- **Space Complexity:** `O(log n)` due to recursion stack space.
-- **Description:** This approach divides the array into two halves and finds the maximum subarray sum for the left half, right half, and a subarray that crosses the midpoint. The final result is the maximum of these three sums.
-- **Algorithm:**
+-   **Time Complexity:** `O(n log n)` where `n` is the length of the array.
+-   **Space Complexity:** `O(log n)` due to recursion stack space.
+-   **Description:** This approach divides the array into two halves and finds the maximum subarray sum for the left half, right half, and a subarray that crosses the midpoint. The final result is the maximum of these three sums.
+-   **Algorithm:**
 
     1. If the array contains only one element, return that element.
     2. Find the midpoint of the array and recursively find the maximum subarray sum for the left and right halves.
@@ -94,10 +94,10 @@ function maxSubArray(nums):
 
 ### Approach 3: Dynamic Programming (Bottom-Up)
 
-- **Time Complexity:** `O(n)` where `n` is the length of the array.
-- **Space Complexity:** `O(n)`
-- **Description:** Similar to Kadane's algorithm but uses an auxiliary DP array to store the maximum subarray sum ending at each position. This approach explicitly constructs the DP table to track the maximum subarray sum.
-- **Algorithm:**
+-   **Time Complexity:** `O(n)` where `n` is the length of the array.
+-   **Space Complexity:** `O(n)`
+-   **Description:** Similar to Kadane's algorithm but uses an auxiliary DP array to store the maximum subarray sum ending at each position. This approach explicitly constructs the DP table to track the maximum subarray sum.
+-   **Algorithm:**
 
     1. Initialize a DP array `dp` with the same length as `nums`. Set `dp[0]` to `nums[0]`.
     2. Iterate through the array starting from the second element:
