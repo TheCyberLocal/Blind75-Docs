@@ -48,7 +48,7 @@ Return `true` if it is possible to finish all courses, otherwise return `false`.
 ```pseudo
 function canFinish(numCourses, prerequisites):
 	graph = {i: [] for i in range(numCourses)}
-	indegree = [0] * numCourses
+	indegree = an array of size numCourses initialized to 0
 
 	for course, prereq in prerequisites:
 		graph[prereq].append(course)

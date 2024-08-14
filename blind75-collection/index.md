@@ -60,7 +60,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Clone Graph](./graphs/clone-graph/problem.md)
 -   [Course Schedule](./graphs/course-schedule/problem.md)
 -   [Graph Valid Tree](./graphs/graph-valid-tree/problem.md)
--   [Number of Connected Components in an Undirected Graph](./graphs/number-of-connected-components-in-an-undirected-graph/problem.md)
+-   [Count Connected Components](./graphs/count-connected-components/problem.md)
 -   [Number of Islands](./graphs/number-of-islands/problem.md)
 -   [Pacific Atlantic Water Flow](./graphs/pacific-atlantic-water-flow/problem.md)
 
