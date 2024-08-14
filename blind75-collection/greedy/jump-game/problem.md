@@ -77,32 +77,3 @@ function canJump(nums):
 				dp[j] = true
 	return dp[-1]
 ```
-
----
-
-### Approach 3: Backtracking
-
--   **Time Complexity:** `O(2^n)` where `n` is the length of the array.
--   **Space Complexity:** `O(n)` for the recursion stack.
--   **Description:** This approach tries to jump to every possible position using backtracking. Starting from the first index, recursively check whether we can reach the last index by trying every possible jump.
--   **Algorithm:**
-
-    1. Define a recursive function `canJumpFromPosition(i)`:
-        - If `i` is the last index, return `true`.
-        - Iterate over all possible jumps from the current index `i`.
-        - Recursively check if it is possible to reach the last index from each of these jumps.
-        - If any of these returns `true`, return `true`.
-    2. Start the recursion from index `0`.
-
-```pseudo
-function canJump(nums):
-	function canJumpFromPosition(i):
-		if i >= len(nums) - 1:
-			return true
-		farthestJump = min(i + nums[i], len(nums) - 1)
-		for j from i + 1 to farthestJump:
-			if canJumpFromPosition(j):
-			 return true
-		return false
-	return canJumpFromPosition(0)
-```
