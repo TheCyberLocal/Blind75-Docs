@@ -38,8 +38,8 @@ Given `n` nodes labeled from `0` to `n - 1` and a list of undirected edges (each
     2.  Initialize the `parent` array where each node is its own parent.
     3.  Initialize the `rank` array to store the rank (height) of each tree.
     4.  Define the `find(x)` function to find the root of `x`.
-    5.  Define the `union(x, y)` function to unite the sets containing `x` and `y`.
-        -   Find the roots of `x` and `y`.
+    5.  Define the `union(n1, n2)` function to unite the sets containing `n1` and `n2`.
+        -   Find the roots (parents) of `n1` and `n2`.
         -   If they have the same root, a cycle exists, so return `false`.
         -   Otherwise, unite the sets based on rank and update the parent and rank arrays.
     6.  Iterate through the edges, applying `union` on each pair.
@@ -58,19 +58,19 @@ function validTree(n, edges):
 			parent[x] = find(parent[x])
 		return parent[x]
 
-	function union(x, y):
-		rootX = find(x)
-		rootY = find(y)
-		if rootX == rootY:
+	function union(n1, n2):
+		p1 = find(n1)
+		p2 = find(n2)
+		if p1 == p2:
 			return false
 
-		if rank[rootX] > rank[rootY]:
-			parent[rootY] = rootX
-		else if rank[rootX] < rank[rootY]:
-			parent[rootX] = rootY
+		if rank[p1] > rank[p2]:
+			parent[p2] = p1
+		else if rank[p1] < rank[p2]:
+			parent[p1] = p2
 		else:
-			parent[rootY] = rootX
-			rank[rootX] += 1
+			parent[p2] = p1
+			rank[p1] += 1
 
 		return true
 
@@ -105,16 +105,16 @@ function validTree(n, edges):
 	if len(edges) != n - 1:
 		return false
 
-	graph = a map of keys from 0 to n - 1 initialized to []
+	adj = a map of keys from 0 to n - 1 initialized to []
 	visited = set()
 
 	for x, y in edges:
-		graph[x].append(y)
-		graph[y].append(x)
+		adj[x].append(y)
+		adj[y].append(x)
 
 	function dfs(node, parent):
 		visited.add(node)
-		for neighbor in graph[node]:
+		for neighbor in adj[node]:
 			if neighbor == parent:
 				continue
 			if neighbor in visited or not dfs(neighbor, node):
