@@ -15,7 +15,6 @@ Find all cells where water can flow from that cell to both the Pacific and Atlan
 **Example 1:**
 
 -   **Input:**
-
     ```
     heights = [
         [4, 2, 7, 3, 4],
@@ -23,17 +22,11 @@ Find all cells where water can flow from that cell to both the Pacific and Atlan
         [6, 3, 5, 3, 6]
     ]
     ```
-
 -   **Output:** `[[0, 2], [0, 4], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [2, 0]]`
 
 **Example 2:**
 
--   **Input:**
-
-    ```
-    heights = [[1], [1]]
-    ```
-
+-   **Input:** `heights = [[1], [1]]`
 -   **Output:** `[[0, 0], [1, 0]]`
 
 ### Constraints
@@ -46,14 +39,14 @@ Find all cells where water can flow from that cell to both the Pacific and Atlan
 ### Approach 1: Depth-First Search (DFS)
 
 -   **Time Complexity:** `O(m * n)`, where `m` is the number of rows and `n` is the number of columns.
--   **Space Complexity:** `O(m * n)` in the worst case for the recursive stack.
--   **Description:** The idea is to use DFS starting from the ocean edges and moving inwards. We'll mark the cells that can flow into each ocean and then find the intersection of these cells.
+-   **Space Complexity:** `O(m * n)` for maintaining the visited sets.
+-   **Description:** We use DFS starting from the ocean borders but optimize by using an early termination strategy. If a cell has already been determined to be able to reach both oceans, further exploration from that cell is unnecessary. This reduces redundant computations.
 -   **Algorithm:**
 
-    1. Create two matrices to track which cells can flow to the Pacific and Atlantic oceans.
-    2. Perform DFS for each cell on the Pacific and Atlantic borders.
-    3. For each DFS, mark the cells that can flow to the respective ocean.
-    4. The final result is the intersection of cells marked for both oceans.
+    1. Create two sets to track cells that can flow to the Pacific and Atlantic oceans.
+    2. Perform DFS starting from the cells adjacent to the Pacific and Atlantic oceans, respectively, marking reachable cells.
+    3. For each DFS, if a cell has already been marked as reachable to both oceans, terminate further exploration from that cell.
+    4. The final result is the intersection of the cells marked for both oceans.
 
 ```pseudo
 function pacificAtlantic(heights):
@@ -61,14 +54,14 @@ function pacificAtlantic(heights):
 		return []
 
 	rows, cols = len(heights), len(heights[0])
-	pacificReachable = initialize a matrix of False with dimensions (rows, cols)
-	atlanticReachable = initialize a matrix of False with dimensions (rows, cols)
+	pacificReachable = set()
+	atlanticReachable = set()
 
-	def dfs(r, c, reachable):
-		reachable[r][c] = True
+	function dfs(r, c, reachable):
+		reachable.add((r, c))
 		for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
 			newR, newC = r + dr, c + dc
-			if 0 <= newR < rows and 0 <= newC < cols and not reachable[newR][newC] and heights[newR][newC] >= heights[r][c]:
+			if 0 <= newR < rows and 0 <= newC < cols and (newR, newC) not in reachable and heights[newR][newC] >= heights[r][c]:
 				dfs(newR, newC, reachable)
 
 	for i in initialize range of rows:
@@ -79,13 +72,13 @@ function pacificAtlantic(heights):
 		dfs(0, j, pacificReachable)
 		dfs(rows - 1, j, atlanticReachable)
 
-	result = []
+	res = []
 	for r in initialize range of rows:
 		for c in initialize range of cols:
-			if pacificReachable[r][c] and atlanticReachable[r][c]:
-				result.append([r, c])
+			if (r, c) in pacificReachable and (r, c) in atlanticReachable:
+				res.append([r, c])
 
-	return result
+	return res
 ```
 
 ---
@@ -125,56 +118,11 @@ function pacificAtlantic(heights):
 	bfs(pacificQueue, pacificReachable)
 	bfs(atlanticQueue, atlanticReachable)
 
-	result = []
+	res = []
 	for r in initialize range of rows:
 		for c in initialize range of cols:
 			if pacificReachable[r][c] and atlanticReachable[r][c]:
-				result.append([r, c])
+				res.append([r, c])
 
-	return result
-```
-
----
-
-### Approach 3: Matrix Reduction
-
--   **Time Complexity:** `O(m * n)`, where `m` is the number of rows and `n` is the number of columns.
--   **Space Complexity:** `O(m * n)` for maintaining the reachable matrices.
--   **Description:** The Matrix Reduction approach involves reducing the problem to finding cells that are reachable from both oceans by using similar methods as DFS or BFS but focusing on reducing the matrix to areas of interest iteratively.
--   **Algorithm:**
-
-    1. Create matrices to track cells that can flow to each ocean.
-    2. Start from the borders and reduce the matrix by marking cells that can flow to the oceans.
-    3. Continue reducing until all possible flows are found.
-    4. The final cells that can reach both oceans are your answer.
-
-```pseudo
-function pacificAtlantic(heights):
-	if not heights or not heights[0]:
-		return []
-
-	rows, cols = len(heights), len(heights[0])
-	pacificReachable = initialize a matrix of False with dimensions (rows, cols)
-	atlanticReachable = initialize a matrix of False with dimensions (rows, cols)
-
-	def reduceMatrix(r, c, ocean):
-		if ocean == "pacific":
-			return r == 0 or c == 0 or (r > 0 and pacificReachable[r - 1][c]) or (c > 0 and pacificReachable[r][c - 1])
-		else:
-			return r == rows - 1 or c == cols - 1 or (r < rows - 1 and atlanticReachable[r + 1][c]) or (c < cols - 1 and atlanticReachable[r][c + 1])
-
-	for r in initialize range of rows:
-		for c in initialize range of cols:
-			if reduceMatrix(r, c, "pacific"):
-				pacificReachable[r][c] = True
-			if reduceMatrix(r, c, "atlantic"):
-				atlanticReachable[r][c] = True
-
-	result = []
-	for r in initialize range of rows:
-		for c in initialize range of cols:
-			if pacificReachable[r][c] and atlanticReachable[r][c]:
-				result.append([r, c])
-
-	return result
+	return res
 ```
