@@ -25,6 +25,8 @@ Return the total number of connected components in that graph.
 -   `1 <= n <= 100`
 -   `0 <= len(edges) <= n * (n - 1) / 2`
 
+---
+
 ### Approach 1: Depth-First Search (DFS)
 
 -   **Time Complexity**: `O(V + E)` where `V` is the number of nodes and `E` is the number of edges.
@@ -64,6 +66,8 @@ function countComponents(n, edges):
 
 	return count
 ```
+
+---
 
 ### Approach 2: Union-Find
 
