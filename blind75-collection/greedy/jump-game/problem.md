@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 You are given an integer array `nums` where each element `nums[i]` indicates your maximum jump length at that position.
 
@@ -58,20 +58,20 @@ function canJump(nums):
 -   **Description:** This approach uses a DP array where `dp[i]` indicates whether it is possible to reach the `i`th index. Start from the first index and try to update the DP array for all reachable indices.
 -   **Algorithm:**
 
-    1. Initialize a DP array `dp` with `False`, except `dp[0] = True`.
+    1. Initialize a DP array `dp` with `false`, except `dp[0] = true`.
     2. Iterate through each index `i`:
-        - If `dp[i]` is `True`, update all positions from `i + 1` to `i + nums[i]` to `True`.
+        - If `dp[i]` is `true`, update all positions from `i + 1` to `i + nums[i]` to `true`.
     3. Return the value at `dp[-1]`.
 
 ```pseudo
 function canJump(nums):
 	n = len(nums)
-	dp = initialize array of False with length n
-	dp[0] = True
+	dp = initialize array of false with length n
+	dp[0] = true
 	for i in initialize range of n:
 		if dp[i]:
 			for j in range(i + 1, min(i + nums[i] + 1, n)):
-				dp[j] = True
+				dp[j] = true
 	return dp[-1]
 ```
 
@@ -85,21 +85,21 @@ function canJump(nums):
 -   **Algorithm:**
 
     1. Define a recursive function `canJumpFromPosition(i)`:
-        - If `i` is the last index, return `True`.
+        - If `i` is the last index, return `true`.
         - Iterate over all possible jumps from the current index `i`.
         - Recursively check if it is possible to reach the last index from each of these jumps.
-        - If any of these returns `True`, return `True`.
+        - If any of these returns `true`, return `true`.
     2. Start the recursion from index `0`.
 
 ```pseudo
 function canJump(nums):
 	function canJumpFromPosition(i):
 		if i >= len(nums) - 1:
-			return True
+			return true
 		farthestJump = min(i + nums[i], len(nums) - 1)
 		for j in range(i + 1, farthestJump + 1):
 			if canJumpFromPosition(j):
-			 return True
-		return False
+			 return true
+		return false
 	return canJumpFromPosition(0)
 ```

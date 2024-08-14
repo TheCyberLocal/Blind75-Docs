@@ -101,15 +101,15 @@ function pacificAtlantic(heights):
 		return []
 
 	rows, cols = len(heights), len(heights[0])
-	pacificReachable = initialize a matrix of False with dimensions (rows, cols)
-	atlanticReachable = initialize a matrix of False with dimensions (rows, cols)
+	pacificReachable = initialize a matrix of false with dimensions (rows, cols)
+	atlanticReachable = initialize a matrix of false with dimensions (rows, cols)
 	pacificQueue = initialize a queue with all cells along the Pacific border
 	atlanticQueue = initialize a queue with all cells along the Atlantic border
 
 	def bfs(queue, reachable):
 		while queue:
 			r, c = queue.pop(0)
-			reachable[r][c] = True
+			reachable[r][c] = true
 			for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
 				newR, newC = r + dr, c + dc
 				if 0 <= newR < rows and 0 <= newC < cols and not reachable[newR][newC] and heights[newR][newC] >= heights[r][c]:
