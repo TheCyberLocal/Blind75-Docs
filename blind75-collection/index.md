@@ -55,7 +55,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Reverse Bits](./bit-manipulation/reverse-bits/problem.md)
 -   [Sum of Two Integers](./bit-manipulation/sum-of-two-integers/problem.md)
 
-## Graphs - _In Progress_
+## Graphs
 
 -   [Clone Graph](./graphs/clone-graph/problem.md)
 -   [Count Connected Components](./graphs/count-connected-components/problem.md)
@@ -64,7 +64,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Graph Valid Tree](./graphs/graph-valid-tree/problem.md)
 -   [Pacific Atlantic Water Flow](./graphs/pacific-atlantic-water-flow/problem.md)
 
-## Greedy - _Void_
+## Greedy - _In Progress_
 
 -   [Jump Game](./greedy/jump-game/problem.md)
 -   [Maximum Subarray](./greedy/maximum-subarray/problem.md)
