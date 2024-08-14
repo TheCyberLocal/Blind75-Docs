@@ -51,7 +51,7 @@ The input node will always be the first node in the graph and have 1 as the valu
 
     1.  If the input node is `none`, return `none`.
     2.  Create a HashMap `visited` to store the mapping of original nodes to their copies.
-    3.  Define a recursive function `clone(node)`:
+    3.  Define a recursive function `dfs(node)`:
         -   If `node` is already in `visited`, return the corresponding copy.
         -   Create a new node with the same value as `node`.
         -   Add the new node to `visited`.
@@ -66,7 +66,7 @@ function cloneGraph(node):
 
 	visited = {}
 
-	function clone(node):
+	function dfs(node):
 		if node in visited:
 			return visited[node]
 
@@ -74,7 +74,7 @@ function cloneGraph(node):
 		visited[node] = cloneNode
 
 		for neighbor in node.neighbors:
-			cloneNode.neighbors.append(clone(neighbor))
+			cloneNode.neighbors.append(dfs(neighbor))
 		return cloneNode
 
 	return clone(node)
