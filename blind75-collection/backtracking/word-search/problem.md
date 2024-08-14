@@ -94,11 +94,11 @@ function exist(board, word):
 
 -   **Algorithm**:
 
-    1. Initialize a 3D memoization table `dp` with dimensions `(rows, cols, len(word))` set to `None`.
+    1. Initialize a 3D memoization table `dp` with dimensions `(rows, cols, len(word))` set to `none`.
     2. Define a recursive function `dp(row, col, idx, visited)` that:
         - Returns `true` if `idx` is equal to `len(word)` (meaning the entire word has been matched).
         - Returns `false` if the current position is out of bounds, or if the current cell is not equal to `word[idx]`, or if the cell has already been visited.
-        - If `dp[row][col][idx]` is not `None`, return the stored result to avoid redundant calculations.
+        - If `dp[row][col][idx]` is not `none`, return the stored result to avoid redundant calculations.
         - Mark the current cell as visited by updating the `visited` bitmask.
         - Recursively explore all four directions (up, down, left, right).
         - Restore the current state and store the result in `dp[row][col][idx]`.
@@ -108,7 +108,7 @@ function exist(board, word):
 ```pseudo
 function exist(board, word):
 	rows, cols = len(board), len(board[0])
-	memo = array of size (rows, cols, len(word)) initialized to None
+	memo = array of size (rows, cols, len(word)) initialized to none
 	visited = 0
 
 	function dp(row, col, idx, visited):
@@ -118,7 +118,7 @@ function exist(board, word):
 			return false
 		if (1 << (row * cols + col)) & visited:
 			return false
-		if memo[row][col][idx] != None:
+		if memo[row][col][idx] != none:
 			return memo[row][col][idx]
 
 		visited |= (1 << (row * cols + col))
