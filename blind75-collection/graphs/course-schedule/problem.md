@@ -117,7 +117,7 @@ function canFinish(numCourses, prerequisites):
 		visited[node] = 2
 		return false
 
-	for i in range(numCourses):
+	for i from 0 to numCourses - 1:
 		if visited[i] == 0 and dfs(i):
 			return false
 
