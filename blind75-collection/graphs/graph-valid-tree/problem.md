@@ -32,16 +32,16 @@ Given `n` nodes labeled from `0` to `n - 1` and a list of undirected edges (each
 -   **Description**: To check if the graph is a valid tree, we can use the Union-Find data structure to detect cycles. A valid tree has exactly `n-1` edges and is fully connected without any cycles. Union-Find helps efficiently check for cycles as we try to unify nodes.
 -   **Algorithm**:
 
-	1. If the number of edges is not equal to `n - 1`, return `false`.
-	2. Initialize the `parent` array where each node is its own parent.
-	3. Initialize the `rank` array to store the rank (height) of each tree.
-	4. Define the `find(x)` function to find the root of `x`.
-	5. Define the `union(x, y)` function to unite the sets containing `x` and `y`.
-		- Find the roots of `x` and `y`.
-		- If they have the same root, a cycle exists, so return `false`.
-		- Otherwise, unite the sets based on rank and update the parent and rank arrays.
-	6. Iterate through the edges, applying `union` on each pair.
-	7. If no cycle is detected, return `true`.
+    1.  If the number of edges is not equal to `n - 1`, return `false`.
+    2.  Initialize the `parent` array where each node is its own parent.
+    3.  Initialize the `rank` array to store the rank (height) of each tree.
+    4.  Define the `find(x)` function to find the root of `x`.
+    5.  Define the `union(x, y)` function to unite the sets containing `x` and `y`.
+        -   Find the roots of `x` and `y`.
+        -   If they have the same root, a cycle exists, so return `false`.
+        -   Otherwise, unite the sets based on rank and update the parent and rank arrays.
+    6.  Iterate through the edges, applying `union` on each pair.
+    7.  If no cycle is detected, return `true`.
 
 ```pseudo
 function validTree(n, edges):
@@ -64,7 +64,7 @@ function validTree(n, edges):
 
 		if rank[rootX] > rank[rootY]:
 			parent[rootY] = rootX
-		elif rank[rootX] < rank[rootY]:
+		else if rank[rootX] < rank[rootY]:
 			parent[rootX] = rootY
 		else:
 			parent[rootY] = rootX
@@ -86,15 +86,15 @@ function validTree(n, edges):
 -   **Description**: Using DFS, we can explore the graph and ensure that it is fully connected and acyclic. We use a visited set to track visited nodes and avoid revisiting them.
 -   **Algorithm**:
 
-	1. If the number of edges is not equal to `n - 1`, return `false`.
-	2. Build the adjacency list from the edges.
-	3. Define a recursive `dfs(node, parent)` function:
-		- Mark `node` as visited.
-		- Recursively visit all its neighbors.
-		- If a visited neighbor is not the parent, a cycle is detected, so return `false`.
-	4. Start DFS from node `0`.
-	5. After the DFS, check if all nodes are visited.
-	6. If all nodes are visited and no cycles were detected, return `true`.
+    1.  If the number of edges is not equal to `n - 1`, return `false`.
+    2.  Build the adjacency list from the edges.
+    3.  Define a recursive `dfs(node, parent)` function:
+        -   Mark `node` as visited.
+        -   Recursively visit all its neighbors.
+        -   If a visited neighbor is not the parent, a cycle is detected, so return `false`.
+    4.  Start DFS from node `0`.
+    5.  After the DFS, check if all nodes are visited.
+    6.  If all nodes are visited and no cycles were detected, return `true`.
 
 ```pseudo
 function validTree(n, edges):
