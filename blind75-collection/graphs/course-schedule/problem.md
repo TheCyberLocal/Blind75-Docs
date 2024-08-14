@@ -30,6 +30,8 @@ Return `true` if it is possible to finish all courses, otherwise return `false`.
 -   `0 <= len(prerequisites) <= 1000`
 -   All prerequisite pairs are unique.
 
+---
+
 ### Approach 1: Topological Sort using Kahn's Algorithm
 
 -   **Time Complexity**: `O(V + E)` where `V` is the number of courses (nodes) and `E` is the number of prerequisite pairs (edges).
@@ -72,6 +74,8 @@ function canFinish(numCourses, prerequisites):
 
 	return processedCourses == numCourses
 ```
+
+---
 
 ### Approach 2: Depth-First Search (DFS) to Detect Cycles
 

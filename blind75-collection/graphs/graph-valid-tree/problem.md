@@ -25,6 +25,8 @@ Given `n` nodes labeled from `0` to `n - 1` and a list of undirected edges (each
 -   `1 <= n <= 100`
 -   `0 <= len(edges) <= n * (n - 1) / 2`
 
+---
+
 ### Approach 1: Union-Find
 
 -   **Time Complexity**: `O(V + E)` where `V` is the number of nodes and `E` is the number of edges.
@@ -78,6 +80,8 @@ function validTree(n, edges):
 
 	return true
 ```
+
+---
 
 ### Approach 2: Depth-First Search (DFS)
 
