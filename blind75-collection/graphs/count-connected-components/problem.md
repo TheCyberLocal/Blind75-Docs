@@ -59,7 +59,7 @@ function countComponents(n, edges):
 			if neighbor not in visited:
 				dfs(neighbor)
 
-	for i in range(n):
+	for i from 0 to n - 1:
 		if i not in visited:
 			dfs(i)
 			count += 1
