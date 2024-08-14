@@ -89,26 +89,3 @@ function maxSubArray(nums):
 
 	return helper(0, len(nums) - 1)
 ```
-
----
-
-### Approach 3: Dynamic Programming (Bottom-Up)
-
--   **Time Complexity:** `O(n)` where `n` is the length of the array.
--   **Space Complexity:** `O(n)`
--   **Description:** Similar to Kadane's algorithm but uses an auxiliary DP array to store the maximum subarray sum ending at each position. This approach explicitly constructs the DP table to track the maximum subarray sum.
--   **Algorithm:**
-
-    1. Initialize a DP array `dp` with the same length as `nums`. Set `dp[0]` to `nums[0]`.
-    2. Iterate through the array starting from the second element:
-        - Set `dp[i]` to the maximum of `nums[i]` and `dp[i - 1] + nums[i]`.
-    3. Return the maximum value in the DP array.
-
-```pseudo
-function maxSubArray(nums):
-	dp = initialize array of length len(nums)
-	dp[0] = nums[0]
-	for i in initialize range from 1 to len(nums):
-		dp[i] = max(nums[i], dp[i - 1] + nums[i])
-	return max(dp)
-```
