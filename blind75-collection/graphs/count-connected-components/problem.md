@@ -43,7 +43,7 @@ Return the total number of connected components in that graph.
 
 ```pseudo
 function countComponents(n, edges):
-	graph = {i: [] for i in range(n)}
+	graph = a map of keys from 0 to n - 1 initialized to []
 	visited = set()
 	count = 0
 
@@ -83,7 +83,7 @@ function countComponents(n, edges):
 
 ```pseudo
 function countComponents(n, edges):
-	parent = an array of size n initialized to its own index
+	parent = an array of size n initialized by index
 	rank = an array of size n initialized to 1
 
 	function find(x):

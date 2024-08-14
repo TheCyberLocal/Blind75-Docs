@@ -46,10 +46,10 @@ Given `n` nodes labeled from `0` to `n - 1` and a list of undirected edges (each
 ```pseudo
 function validTree(n, edges):
 	if len(edges) != n - 1:
-		return False
+		return false
 
-	parent = [i for i in range(n)]
-	rank = [1] * n
+	parent = an array of size n initialized by index
+	rank = an array of size n initialized to 1
 
 	function find(x):
 		if parent[x] != x:
@@ -60,7 +60,7 @@ function validTree(n, edges):
 		rootX = find(x)
 		rootY = find(y)
 		if rootX == rootY:
-			return False
+			return false
 
 		if rank[rootX] > rank[rootY]:
 			parent[rootY] = rootX
@@ -70,13 +70,13 @@ function validTree(n, edges):
 			parent[rootY] = rootX
 			rank[rootX] += 1
 
-		return True
+		return true
 
 	for x, y in edges:
 		if not union(x, y):
-			return False
+			return false
 
-	return True
+	return true
 ```
 
 ### Approach 2: Depth-First Search (DFS)
@@ -99,9 +99,9 @@ function validTree(n, edges):
 ```pseudo
 function validTree(n, edges):
 	if len(edges) != n - 1:
-		return False
+		return false
 
-	graph = {i: [] for i in range(n)}
+	graph = a map of keys from 0 to n - 1 initialized to []
 	visited = set()
 
 	for x, y in edges:
@@ -114,11 +114,11 @@ function validTree(n, edges):
 			if neighbor == parent:
 				continue
 			if neighbor in visited or not dfs(neighbor, node):
-				return False
-		return True
+				return false
+		return true
 
 	if not dfs(0, -1):
-		return False
+		return false
 
 	return len(visited) == n
 ```
