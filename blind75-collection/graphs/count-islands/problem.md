@@ -39,6 +39,8 @@ An island is formed by connecting adjacent lands horizontally or vertically and 
 -   `1 <= len(grid), len(grid[i]) <= 100`
 -   `grid[i][j]` is `'0'` or `'1'`.
 
+---
+
 ### Approach 1: Depth-First Search (DFS)
 
 -   **Time Complexity**: `O(m * n)` where `m` is the number of rows and `n` is the number of columns.
@@ -76,6 +78,8 @@ function numIslands(grid):
 
 	return islandCount
 ```
+
+---
 
 ### Approach 2: Breadth-First Search (BFS)
 
@@ -116,6 +120,8 @@ function numIslands(grid):
 
 	return islandCount
 ```
+
+---
 
 ### Approach 3: Union-Find (Disjoint Set)
 
