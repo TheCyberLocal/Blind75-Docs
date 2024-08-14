@@ -64,17 +64,17 @@ function pacificAtlantic(heights):
 			if 0 <= newR < rows and 0 <= newC < cols and (newR, newC) not in reachable and heights[newR][newC] >= heights[r][c]:
 				dfs(newR, newC, reachable)
 
-	for i in initialize range of rows:
+	for i from 0 to rows - 1:
 		dfs(i, 0, pacificReachable)
 		dfs(i, cols - 1, atlanticReachable)
 
-	for j in initialize range of cols:
+	for j from 0 to cols - 1:
 		dfs(0, j, pacificReachable)
 		dfs(rows - 1, j, atlanticReachable)
 
 	res = []
-	for r in initialize range of rows:
-		for c in initialize range of cols:
+	for r from 0 to rows - 1:
+		for c from 0 to cols - 1::
 			if (r, c) in pacificReachable and (r, c) in atlanticReachable:
 				res.append([r, c])
 
@@ -119,8 +119,8 @@ function pacificAtlantic(heights):
 	bfs(atlanticQueue, atlanticReachable)
 
 	res = []
-	for r in initialize range of rows:
-		for c in initialize range of cols:
+	for r from 0 to rows - 1:
+		for c from 0 to cols - 1::
 			if pacificReachable[r][c] and atlanticReachable[r][c]:
 				res.append([r, c])
 
