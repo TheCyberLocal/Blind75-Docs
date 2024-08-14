@@ -83,8 +83,8 @@ function countComponents(n, edges):
 
 ```pseudo
 function countComponents(n, edges):
-	parent = [i for i in range(n)]
-	rank = [1] * n
+	parent = an array of size n initialized to its own index
+	rank = an array of size n initialized to 1
 
 	function find(x):
 		if parent[x] != x:
@@ -106,6 +106,6 @@ function countComponents(n, edges):
 	for x, y in edges:
 		union(x, y)
 
-	uniqueRoots = set(find(i) for i in range(n))
+	uniqueRoots = set(find(i) for i from 0 to n - 1)
 	return len(uniqueRoots)
 ```
