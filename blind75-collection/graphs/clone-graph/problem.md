@@ -42,6 +42,8 @@ The input node will always be the first node in the graph and have 1 as the valu
 -   `1 <= Node.val <= 100`
 -   There are no duplicate edges and no self-loops in the graph.
 
+---
+
 ### Approach 1: Depth-First Search (DFS) with HashMap
 
 -   **Time Complexity**: `O(V + E)` where `V` is the number of nodes (vertices) and `E` is the number of edges.
