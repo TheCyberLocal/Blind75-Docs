@@ -44,8 +44,8 @@ The input node will always be the first node in the graph and have 1 as the valu
 
 ### Approach 1: Depth-First Search (DFS) with HashMap
 
--   **Time Complexity**: `O(n)` where `n` is the number of nodes since each node and its edges are visited once.
--   **Space Complexity**: `O(n)` for the recursion stack and the HashMap that stores copies of nodes.
+-   **Time Complexity**: `O(V + E)` where `V` is the number of nodes (vertices) and `E` is the number of edges.
+-   **Space Complexity**: `O(V)` where `V` is the number of nodes (vertices).
 -   **Description**: Perform a DFS to create a deep copy of the graph. Use a HashMap to keep track of visited nodes and their corresponding copies.
 -   **Algorithm**:
 
