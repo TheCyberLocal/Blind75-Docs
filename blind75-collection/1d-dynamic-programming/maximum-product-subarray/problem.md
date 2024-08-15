@@ -43,7 +43,9 @@ You can assume the output will fit into a 32-bit integer.
 
 ```pseudo
 function maxProduct(nums):
-	maxProd = minProd = res = nums[0]
+    maxProd = nums[0]
+    minProd = nums[0]
+    res = nums[0]
 
 	for i from 1 to len(nums):
 		tmp = max(nums[i], maxProd * nums[i], minProd * nums[i])
@@ -75,7 +77,8 @@ function maxProduct(nums):
 ```pseudo
 function maxProduct(nums):
     res = max(nums)
-    maxProd = minProd = 1
+    maxProd = 1
+    minProd = 1
 
     for num in nums:
         tmp = maxProd * num

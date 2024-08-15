@@ -86,7 +86,8 @@ function longestPalindrome(s):
 			l, r = l - 1, r + 1
 		return r - l - 1
 
-	start = end = 0
+	start = 0
+	end = 0
 	for i from 0 to len(s):
 		len1 = paliLen(i, i)
 		len2 = paliLen(i, i + 1)
@@ -117,7 +118,8 @@ function longestPalindrome(s):
 function longestPalindrome(s):
 	n = len(s)
 	dp = 2D array of size n x n filled initialized to false
-	start = end = 0
+	start = 0
+	end = 0
 	for i from 0 to n:
 		dp[i][i] = true
 	for length from 2 to n:
