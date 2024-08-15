@@ -33,16 +33,19 @@ Return the sorted linked list that is the result of merging all the individual l
 
 ### Approach 1: Min-Heap (Priority Queue)
 
--   **Time Complexity:** `O(n log k)` where `n` is the total number of nodes across all lists and `k` is the number of linked lists.
--   **Space Complexity:** `O(k)` for storing nodes in the heap.
--   **Description:** We can efficiently merge the k sorted lists using a min-heap (priority queue). The min-heap helps to keep track of the smallest element among the k lists. We keep adding the smallest element to the result list until all nodes are merged.
+-   **Time Complexity:** `O(n log k)`, where `n` is the total number of nodes across all lists and `k` is the number of linked lists.
+-   **Space Complexity:** `O(k)` for the merge process.
+-   **Description:** This approach leverages the divide and conquer technique to efficiently merge `k` sorted linked lists. The idea is to pair up the lists and merge each pair. This process is repeated iteratively, halving the number of lists at each step until only one merged list remains. This method is efficient because it reduces the problem size by half in each iteration, leading to a logarithmic number of merge operations.
 -   **Algorithm:**
 
-    1. Initialize an empty min-heap.
-    2. Insert the head of each linked list into the heap.
-    3. Extract the smallest element from the heap and add it to the merged linked list.
-    4. If the extracted node has a next node, insert it into the heap.
-    5. Repeat steps 3-4 until the heap is empty.
+    1. If the list of linked lists is empty, return `none`.
+    2. While there are more than one list:
+        1. Initialize an empty list `mergedLists` to store the merged results of the current iteration.
+        2. For each pair of adjacent lists `l1` and `l2`:
+            - Merge `l1` and `l2` using a helper function `mergeList`.
+            - Append the merged list to `mergedLists`.
+        3. Replace the original list of lists with `mergedLists`.
+    3. Once only one list remains, return it as the final merged linked list.
 
 ```pseudo
 function mergeKLists(lists):
