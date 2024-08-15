@@ -43,7 +43,7 @@ Given a string `s` containing only digits, return the number of ways to decode i
 
 -   **Time Complexity**: `O(n)`
 -   **Space Complexity**: `O(n)`
--   **Description**: This approach uses dynamic programming to keep track of the number of ways to decode the string up to each character. The key observation is that a valid decoding can be formed by considering either the last single digit or the last two digits as a letter if they form a valid character mapping.
+-   **Description**: This approach leverages dynamic programming to track the number of ways the string can be decoded up to each character. The fundamental idea is that each character in the string can potentially be decoded as a single digit or, when combined with the previous character, as a two-digit number, provided they form valid mappings to letters. By maintaining an array where each element represents the number of decoding ways up to that index, we can systematically explore all valid decoding possibilities. The solution involves examining each character, considering it individually and as part of a pair, and updating the array based on these possibilities.
 -   **Algorithm**:
 
     1. Define `n` as `len(s)`.
@@ -53,6 +53,19 @@ Given a string `s` containing only digits, return the number of ways to decode i
         - If `s[i - 1]` is a valid single digit, add `dp[i - 1]` to `dp[i]`.
         - If `s[i - 2:i]` is a valid two-digit number, add `dp[i - 2]` to `dp[i]`.
     5. Return `dp[n]`.
+- **Algorithm**:
+
+    1. **Define the Problem Size**: Determine the length of the string `s` and store it in `n`.
+
+    2. **Initialize the Array**: Create an array `dp` of size `n + 1`, where each element will store the number of ways to decode the substring up to that point. Set the first element `dp[0]` to `1`, representing the single valid way to decode an empty string. For the first character, set `dp[1]` to `1` if it is a valid digit (i.e., not '0') since a single character can be decoded on its own.
+
+    3. **Iterate Through the String**: Starting from the second character (index 2), iterate through each character in the string. For each character:
+
+        - **Check Single Digit Validity**: If the current character can be decoded as a single digit (i.e., it is not '0'), add the number of ways to decode the string up to the previous character (`dp[i - 1]`) to the current value `dp[i]`.
+
+        - **Check Two-Digit Validity**: If the combination of the current character and the previous character forms a valid two-digit number (between 10 and 26 inclusive), add the number of ways to decode the string up to two characters before (`dp[i - 2]`) to the current value `dp[i]`.
+
+    4. **Return the Result**: After processing all characters, the last element of the `dp` array (`dp[n]`) contains the total number of ways to decode the entire string. Return this value as the result. If the string starts with '0', return `0` immediately as it is not decodable.
 
 ```pseudo
 function numDecodings(s):
