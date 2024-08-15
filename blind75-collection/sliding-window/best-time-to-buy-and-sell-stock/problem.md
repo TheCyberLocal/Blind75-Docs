@@ -12,26 +12,14 @@ Return the maximum profit you can achieve. You may choose to not make any transa
 
 **Example 1:**
 
--   **Input:**
-    ```
-    prices = [10,1,5,6,7,1]
-    ```
--   **Output:**
-    ```
-    6
-    ```
+-   **Input:** `prices = [10,1,5,6,7,1]`
+-   **Output:** `6`
     Explanation: Buy on day `1` (price = 1) and sell on day `4` (price = 7), profit = 7 - 1 = 6.
 
 **Example 2:**
 
--   **Input:**
-    ```
-    prices = [10,8,7,5,2]
-    ```
--   **Output:**
-    ```
-    0
-    ```
+-   **Input:** `prices = [10,8,7,5,2]`
+-   **Output:** `0`
     Explanation: No profitable transactions can be made, thus the max profit is `0`.
 
 ### Constraints

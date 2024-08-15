@@ -10,26 +10,14 @@ After performing at most `k` replacements, return the length of the longest subs
 
 **Example 1:**
 
--   **Input:**
-    ```
-    s = "XYYX", k = 2
-    ```
--   **Output:**
-    ```
-    4
-    ```
+-   **Input:** `s = "XYYX", k = 2`
+-   **Output:** `4`
     Explanation: Either replace the `'X'`s with `'Y'`s, or replace the `'Y'`s with `'X'`s.
 
 **Example 2:**
 
--   **Input:**
-    ```
-    s = "AAABABB", k = 1
-    ```
--   **Output:**
-    ```
-    5
-    ```
+-   **Input:** `s = "AAABABB", k = 1`
+-   **Output:** `5`
     Explanation: Replace the `'B'` at index 4 with `'A'` to form the substring `"AAAAA"`.
 
 ### Constraints
