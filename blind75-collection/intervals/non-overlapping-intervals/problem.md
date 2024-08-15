@@ -32,7 +32,6 @@ Given an array of intervals `intervals` where `intervals[i] = [start_i, end_i]`,
 -   **Time Complexity:** `O(n log n)` where `n` is the number of intervals.
 -   **Space Complexity:** `O(1)` if sorting in place, otherwise `O(n)` for the sorted intervals.
 -   **Description:** To minimize the number of intervals removed, we can employ a greedy strategy. Sort the intervals by their end times and iteratively select the interval with the earliest end time that doesn't overlap with the previously selected interval. Any interval that overlaps with the current one is removed.
-
 -   **Algorithm:**
 
     1. Sort `intervals` by end times.
