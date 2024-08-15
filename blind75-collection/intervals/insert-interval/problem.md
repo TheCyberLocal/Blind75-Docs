@@ -39,26 +39,26 @@ Return `intervals` after adding `newInterval`.
 -   **Description:** The idea is to traverse the intervals, and add all intervals that are completely before the new interval. Then, merge the new interval with any overlapping intervals. Finally, add the remaining intervals.
 -   **Algorithm:**
 
-    1. Initialize an empty list `result` to store the merged intervals.
+    1. Initialize an empty list `res` to store the merged intervals.
     2. Iterate through each interval in `intervals`:
-        - If the current interval ends before `newInterval` starts, add the current interval to `result`.
-        - If `newInterval` ends before the current interval starts, add `newInterval` to `result` and update `newInterval` to the current interval.
+        - If the current interval ends before `newInterval` starts, add the current interval to `res`.
+        - If `newInterval` ends before the current interval starts, add `newInterval` to `res` and update `newInterval` to the current interval.
         - Otherwise, merge `newInterval` with the current interval by updating the start to the minimum of both starts and the end to the maximum of both ends.
-    3. After the loop, add the final `newInterval` to `result`.
-    4. Return `result`.
+    3. After the loop, add the final `newInterval` to `res`.
+    4. Return `res`.
 
 ```pseudo
 function insertInterval(intervals, newInterval):
-	result = initialize as empty list
-	for each interval in intervals:
-		if interval.end < newInterval.start:
-			append interval to result
-		else if newInterval.end < interval.start:
-			append newInterval to result
+	res = []
+	for interval in intervals:
+		if interval[0] < newInterval[0]:
+			res.append(interval)
+		else if newInterval[0] < interval[0]:
+			res.append(newInterval)
 			newInterval = interval
 		else:
-			newInterval.start = minimum of newInterval.start and interval.start
-			newInterval.end = maximum of newInterval.end and interval.end
-	append newInterval to result
-	return result
+			newInterval[0] = min(newInterval[0], interval[0])
+			newInterval[0] = max(newInterval[0], interval[0])
+	res.append(newInterval)
+	return res
 ```
