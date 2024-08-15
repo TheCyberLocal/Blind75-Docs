@@ -40,10 +40,10 @@ Given an array of meeting time intervals consisting of start and end times `[[st
 
 ```pseudo
 function canAttendMeetings(intervals):
-	if intervals is empty:
+	if len(intervals) == 0:
 		return true
 	sort intervals by start time
-	for i from 1 to length of intervals:
+	for i from 1 to len(intervals):
 		if intervals[i].start < intervals[i-1].end:
 			return false
 	return true
