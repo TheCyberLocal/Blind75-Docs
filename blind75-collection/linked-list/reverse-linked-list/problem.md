@@ -37,8 +37,7 @@ Given the beginning of a singly linked list `head`, reverse the list, and return
 
 ```pseudo
 function reverseList(head):
-	prev = null
-	curr = head
+	prev, curr = null, head
 
 	while curr:
 		nextNode = curr.next
