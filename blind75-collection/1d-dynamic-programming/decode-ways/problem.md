@@ -46,15 +46,6 @@ Given a string `s` containing only digits, return the number of ways to decode i
 -   **Description**: This approach leverages dynamic programming to track the number of ways the string can be decoded up to each character. The fundamental idea is that each character in the string can potentially be decoded as a single digit or, when combined with the previous character, as a two-digit number, provided they form valid mappings to letters. By maintaining an array where each element represents the number of decoding ways up to that index, we can systematically explore all valid decoding possibilities. The solution involves examining each character, considering it individually and as part of a pair, and updating the array based on these possibilities.
 -   **Algorithm**:
 
-    1. Define `n` as `len(s)`.
-    2. Initialize a `dp` array of size `n + 1`, where `dp[i]` represents the number of ways to decode the substring `s[0:i]`.
-    3. Set `dp[0] = 1` (empty string has one way to decode) and `dp[1] = 1` if `s[0]` is not '0'.
-    4. For each index `i` from 2 to `n`, update `dp[i]`:
-        - If `s[i - 1]` is a valid single digit, add `dp[i - 1]` to `dp[i]`.
-        - If `s[i - 2:i]` is a valid two-digit number, add `dp[i - 2]` to `dp[i]`.
-    5. Return `dp[n]`.
-- **Algorithm**:
-
     1. **Define the Problem Size**: Determine the length of the string `s` and store it in `n`.
 
     2. **Initialize the Array**: Create an array `dp` of size `n + 1`, where each element will store the number of ways to decode the substring up to that point. Set the first element `dp[0]` to `1`, representing the single valid way to decode an empty string. For the first character, set `dp[1]` to `1` if it is a valid digit (i.e., not '0') since a single character can be decoded on its own.
