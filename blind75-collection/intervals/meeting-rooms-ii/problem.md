@@ -43,13 +43,13 @@ Given an array of meeting time intervals consisting of start and end times `[[st
 
 ```pseudo
 function minMeetingRooms(intervals):
-	if intervals is empty:
+	if len(intervals) == 0:
 		return 0
 	sort intervals by start time
-	initialize min-heap rooms
+    rooms = empty min-heap
 	for interval in intervals:
-		if rooms is not empty and interval.start >= rooms.peek():
-			pop rooms
-		push interval.end to rooms
-	return size of rooms
+		if len(rooms) > 0 and interval.start >= rooms.peek():
+			rooms.pop()
+		rooms.push(interval.end)
+	return rooms.size
 ```
