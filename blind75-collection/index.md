@@ -90,13 +90,13 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Reorder List](./linked-list/reorder-list/problem.md)
 -   [Reverse Linked List](./linked-list/reverse-linked-list/problem.md)
 
-## Math and Geometry - _In Progress_
+## Math and Geometry
 
 -   [Rotate Image](./math-and-geometry/rotate-image/problem.md)
 -   [Set Matrix Zeroes](./math-and-geometry/set-matrix-zeroes/problem.md)
 -   [Spiral Matrix](./math-and-geometry/spiral-matrix/problem.md)
 
-## Sliding Window - _Void_
+## Sliding Window - _In Progress_
 
 -   [Best Time to Buy and Sell Stock](./sliding-window/best-time-to-buy-and-sell-stock/problem.md)
 -   [Longest Repeating Character Replacement](./sliding-window/longest-repeating-character-replacement/problem.md)
