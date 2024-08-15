@@ -31,30 +31,7 @@ Return the number of distinct ways to climb to the top of the staircase.
 
 ---
 
-### Approach 1: Simple Dynamic Programming
-
--   **Time Complexity**: `O(n)`
--   **Space Complexity**: `O(n)`
--   **Description**: This approach uses a dynamic programming array to store the number of ways to reach each step. Starting from the top, it calculates the number of ways to reach the top by summing the ways for both the next two steps.
--   **Algorithm**:
-
-    1.  Initialize an array `dp` of size `n + 1` to store the number of ways to reach each step.
-    2.  Set the base cases: `dp[n] = 1` and `dp[n - 1] = 1`, representing the number of ways to reach the top step and the step before it.
-    3.  Iterate from step `n - 2` to `0`, updating `dp[i]` based on the sum of the ways to reach the next two steps (`dp[i + 1]` and `dp[i + 2]`).
-    4.  Return `dp[0]`, which contains the number of ways to reach the first step.
-
-```pseudo
-function climbStairs(n):
-    dp = array of size n + 1
-    dp[n] = dp[n - 1] = 1
-    for i from (n - 2) to 0:
-        dp[i] = dp[i + 1] + dp[i + 2]
-    return dp[0]
-```
-
----
-
-### Approach 2: Optimized Dynamic Programming
+### Approach 1: Optimized Dynamic Programming
 
 -   **Time Complexity**: `O(n)`
 -   **Space Complexity**: `O(1)`
@@ -77,7 +54,7 @@ function climbStairs(n):
 
 ---
 
-### Approach 3: Mathematics (Binet's Formula)
+### Approach 2: Mathematics (Binet's Formula)
 
 -   **Time Complexity**: `O(1)`
 -   **Space Complexity**: `O(1)`
