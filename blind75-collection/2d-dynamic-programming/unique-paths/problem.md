@@ -93,7 +93,7 @@ function uniquePaths(m, n):
 
     1. Define a helper function `factorial(n)` to compute the factorial of a number `n`.
     2. Compute the number of unique paths using the formula:
-       combinations = (m + n - 2)! / (m - 1)! \* (n - 1)!
+       $$\binom{n}{k} = \frac{n!}{k!(n - k)!}$$
     3. Return the result of the above calculation.
 
 ```pseudo
