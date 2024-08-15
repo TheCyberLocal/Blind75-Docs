@@ -41,11 +41,11 @@ A cycle exists in a linked list if at least one node in the list can be revisite
 
 ```pseudo
 function hasCycle(head):
-	if head == null:
+	if !head:
 		return false
 	slow = head
 	fast = head
-	while fast != null and fast.next != null:
+	while fast and fast.next:
 		slow = slow.next
 		fast = fast.next.next
 		if slow == fast:

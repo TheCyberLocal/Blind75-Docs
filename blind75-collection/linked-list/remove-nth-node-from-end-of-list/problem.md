@@ -53,10 +53,10 @@ function removeNthFromEnd(head, n):
 	first = dummy
 	second = dummy
 
-	for i from 0 to n:
+	for _ from 0 to n:
 		first = first.next
 
-	while first is not null:
+	while first:
 		first = first.next
 		second = second.next
 
