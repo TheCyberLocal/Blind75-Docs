@@ -43,14 +43,14 @@ Given an array of intervals `intervals` where `intervals[i] = [start_i, end_i]`,
     4. Return `removalCount`.
 
 ```pseudo
-function nonOverlappingIntervals(intervals):
+function eraseOverlapIntervals(intervals):
 	sort intervals by end time
 	removalCount = 0
-	prevEnd = intervals[0].end
-	for interval in intervals[1:]:
-		if interval.start < prevEnd:
+	prevEnd = intervals[0][1]
+	for start, end in intervals[1:]:
+		if start < prevEnd:
 			removalCount += 1
 		else:
-			prevEnd = interval.end
+			prevEnd = end
 	return removalCount
 ```
