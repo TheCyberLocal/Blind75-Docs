@@ -25,8 +25,8 @@ Return the sorted linked list that is the result of merging all the individual l
 
 ### Constraints
 
--   `0 <= lists.length <= 1000`
--   `0 <= lists[i].length <= 100`
+-   `0 <= len(lists) <= 1000`
+-   `0 <= len(lists[i]) <= 100`
 -   `-1000 <= lists[i][j] <= 1000`
 
 ---
