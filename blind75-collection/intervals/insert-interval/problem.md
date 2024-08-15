@@ -26,8 +26,8 @@ Return `intervals` after adding `newInterval`.
 
 ### Constraints
 
--   `0 <= intervals.length <= 1000`
--   `newInterval.length == intervals[i].length == 2`
+-   `0 <= len(intervals) <= 1000`
+-   `len(newInterval) == len(intervals[i]) == 2`
 -   `0 <= start <= end <= 1000`
 
 ---
