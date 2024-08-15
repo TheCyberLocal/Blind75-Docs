@@ -79,14 +79,22 @@ function numDecodings(s):
 
 -   **Time Complexity**: `O(n)`
 -   **Space Complexity**: `O(1)`
--   **Description**: This is an optimized version of the dynamic programming approach where only two variables are used to store the last two states instead of using a full array.
+-   **Description**: This approach builds on the dynamic programming solution but optimizes it by reducing space complexity. Instead of maintaining a full array to track the number of ways to decode the string up to each character, we use two variables to keep track of the last two computed values. This allows us to efficiently compute the total number of ways to decode the string while minimizing memory usage.
 -   **Algorithm**:
 
-    1. Initialize two variables, `p1` (for `dp[i - 1]`) and `p2` (for `dp[i - 2]`), both starting as 1.
-    2. Iterate through the string from the second character to the end:
-        - Calculate the current state based on the last single digit and the last two digits.
-        - Update `p2` and `p1` accordingly.
-    3. Return `p1` after the loop.
+    1. **Initial Validation**: If the string `s` starts with `'0'`, return `0` immediately, as no valid decoding can start with a zero.
+
+    2. **Initialize Variables**: Define two variables, `p1` and `p2`, to represent the number of ways to decode the string up to the current and previous indices, respectively. Set both `p1` and `p2` to `1` because an empty string and a string with a single valid digit each have one way to decode.
+
+    3. **Iterate Through the String**: Loop through the string starting from the second character to the end:
+
+        - **Check Single Digit Validity**: If the current character is not `'0'`, it forms a valid single-digit mapping. Set `current` to `p1`, indicating that the current position can be decoded in as many ways as the previous one.
+
+        - **Check Two-Digit Validity**: Check if the current character and the previous one form a valid two-digit number (i.e., between `'10'` and `'26'`). If valid, add `p2` to `current`, as it represents the number of ways to decode the string up to two positions back.
+
+        - **Update Variables**: Shift the pointers by assigning `p1` to `p2` and `current` to `p1`. This updates the variables for the next iteration.
+
+    4. **Final Output**: After the loop, `p1` contains the total number of ways to decode the entire string. Return `p1` as the final result.
 
 ```pseudo
 function numDecodings(s):
