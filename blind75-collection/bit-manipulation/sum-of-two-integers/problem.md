@@ -20,7 +20,35 @@ Given two integers `a` and `b`, return the sum of the two integers without using
 
 -   `-1000 <= a, b <= 1000`
 
-### Approach 1: Bit Manipulation
+---
+
+### Approach 1: Bit Manipulation with Masking
+
+-   **Time Complexity**: `O(1)` because the number of iterations depends on the fixed bit length of the integers, usually 32 or 64 bits.
+-   **Space Complexity**: `O(1)` as the solution only uses a constant amount of space.
+-   **Description**: This approach uses bitwise operations to compute the sum of two integers without using the `+` or `-` operators. The key idea is to break the addition into two components: the sum without carrying, and the carry itself. The XOR operation (`a ^ b`) calculates the sum of the bits where there is no carry, while the AND operation (`a & b`) followed by a left shift calculates the carry. This process repeats until there are no more carry bits to add.
+-   **Algorithm**:
+
+    1. Start by initializing a `mask` with a value of `0xFFFFFFFF` (which represents a 32-bit integer).
+    2. In a loop, compute the sum of `a` and `b` using the XOR operation (`a ^ b`). This effectively adds the bits of `a` and `b` where there is no carry.
+    3. Compute the carry by using the AND operation (`a & b`) followed by a left shift (`<< 1`). This identifies where the carry occurs and shifts it to the next higher bit.
+    4. Update `a` to be the result of the XOR operation and `b` to be the result of the carry calculation.
+    5. Repeat the loop until there are no carry bits left (`b == 0`).
+    6. Once the loop ends, if `a` is positive, return `a` directly. If `a` is negative (greater than `0x7FFFFFFF`), return the 32-bit two's complement of `a` by XORing `a` with the mask and inverting the result.
+
+```pseudo
+function getSum(a, b):
+    mask = 0xFFFFFFFF
+
+    while b:
+        a, b = (a ^ b) & mask, ((a & b) << 1) & mask
+
+    return a if a <= 0x7FFFFFFF else ~(a ^ mask)
+```
+
+---
+
+### Approach 2: Bit Manipulation with Recursion
 
 -   **Time Complexity**: `O(1)` because the loop iterates over a constant number of bits.
 -   **Space Complexity**: `O(1)` for constant space usage.
