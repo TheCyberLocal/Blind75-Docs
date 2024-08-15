@@ -51,32 +51,7 @@ function lengthOfLIS(nums):
 
 ---
 
-### Approach 2: Dynamic Programming (Reversed Iteration)
-
--   **Time Complexity**: `O(n^2)`
--   **Space Complexity**: `O(n)`
--   **Description**: This approach is similar to the first one but iterates in reverse order. For each element in the array, it checks all subsequent elements to determine if it can extend the subsequence. If so, it updates the length of the subsequence ending at that element.
--   **Algorithm**:
-
-    1. Create an array `dp` where `dp[i]` represents the length of the longest increasing subsequence ending at index `i`.
-    2. Initialize each `dp[i]` to `1` because the minimum subsequence length at any position is `1`.
-    3. For each `i` from `n - 1` to `0`, and for each `j` from `i + 1` to `n - 1`, if `nums[i] < nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
-    4. The answer is the maximum value in the `dp` array.
-
-```pseudo
-function lengthOfLIS(nums):
-    n = len(nums)
-    dp = array of size len(nums) initialized to 1
-    for i from (n - 1) to 0:
-        for j from (i + 1) to (n - 1):
-            if nums[i] < nums[j]:
-                dp[i] = max(dp[i], dp[j] + 1)
-    return max(dp)
-```
-
----
-
-### Approach 3: Dynamic Programming with Binary Search
+### Approach 2: Dynamic Programming with Binary Search
 
 -   **Time Complexity**: `O(n log n)`
 -   **Space Complexity**: `O(n)`

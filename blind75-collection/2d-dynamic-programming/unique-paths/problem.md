@@ -55,36 +55,7 @@ function uniquePaths(m, n):
 
 ---
 
-### Approach 2: Dynamic Programming (Reversed Iteration)
-
--   **Time Complexity**: `O(m * n)`
--   **Space Complexity**: `O(n)`
--   **Description**: This approach is similar to Approach 1 but iterates through the columns in reverse order. The idea is to use dynamic programming to calculate the number of unique paths in an `m x n` grid. By iterating through each cell in reverse order, we can still use a single array to store the number of paths for the current row, optimizing the space complexity to `O(n)`.
--   **Algorithm**:
-
-    1. Initialize an array `row` of size `n` with all elements set to `1`. This represents the number of unique paths to each cell in the first row.
-    2. Iterate through each row from `0` to `m - 1`:
-        1. Create a new array `newRow` of size `n`, initialized to `1`.
-        2. For each column `j` from `n - 2` to `0`:
-            - Update `newRow[j]` to be the sum of `newRow[j + 1]` and `row[j]`.
-        3. Replace `row` with `newRow`.
-    3. Return `row[0]`, which contains the number of unique paths to the bottom-right corner of the grid.
-
-```pseudo
-function uniquePaths(m, n):
-    row = array of size n initialized to 1
-
-    for i from 0 to m - 1:
-        newRow = array of size n initialized to 1
-        for j from n - 2 to 0:
-            newRow[j] = newRow[j + 1] + row[j]
-        row = newRow
-    return row[0]
-```
-
----
-
-### Approach 3: Mathematics (Combinatorial Formula)
+### Approach 2: Mathematics (Combinatorial Formula)
 
 -   **Time Complexity**: `O(1)`
 -   **Space Complexity**: `O(1)`
