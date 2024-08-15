@@ -73,7 +73,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 
 -   [Find Median from Data Stream](./heap-priority-queue/find-median-from-data-stream/problem.md)
 
-## Intervals - _In Progress_
+## Intervals
 
 -   [Insert Interval](./intervals/insert-interval/problem.md)
 -   [Meeting Rooms](./intervals/meeting-rooms/problem.md)
@@ -81,7 +81,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Merge Intervals](./intervals/merge-intervals/problem.md)
 -   [Non-overlapping Intervals](./intervals/non-overlapping-intervals/problem.md)
 
-## Linked List - _Void_
+## Linked List - _In Progress_
 
 -   [Linked List Cycle](./linked-list/linked-list-cycle/problem.md)
 -   [Merge K Sorted Lists](./linked-list/merge-k-sorted-lists/problem.md)
