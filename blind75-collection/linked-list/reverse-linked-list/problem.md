@@ -64,7 +64,7 @@ function reverseList(head):
 
 ```pseudo
 function reverseList(head):
-	if !head or !head.next:
+	if not head or not head.next:
 		return head
 
 	newHead = reverseList(head.next)

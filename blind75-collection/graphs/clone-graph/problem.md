@@ -63,7 +63,7 @@ The input node will always be the first node in the graph and have 1 as the valu
 
 ```pseudo
 function cloneGraph(node):
-	if !node:
+	if not node:
 		return null
 
 	visited = {}

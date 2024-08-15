@@ -41,7 +41,7 @@ For a list of length `n`, the positions should be reordered as:
 
 ```pseudo
 function reorderList(head):
-	if !head or !head.next:
+	if not head or not head.next:
 		return
 
 	slow = head
@@ -55,7 +55,7 @@ function reorderList(head):
 	slow.next = null
 
 	prev = null
-	while !secondHalf:
+	while not secondHalf:
 		nextNode = secondHalf.next
 		secondHalf.next = prev
 		prev = secondHalf
@@ -63,7 +63,7 @@ function reorderList(head):
 
 	secondHalf = prev
 
-	while !secondHalf:
+	while not secondHalf:
 		temp1 = firstHalf.next
 		temp2 = secondHalf.next
 

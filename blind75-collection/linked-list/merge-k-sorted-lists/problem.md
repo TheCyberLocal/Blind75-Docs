@@ -49,7 +49,7 @@ Return the sorted linked list that is the result of merging all the individual l
 
 ```pseudo
 function mergeKLists(lists):
-        if !len(lists):
+        if not len(lists):
             return null
 
         while len(lists) > 1:
