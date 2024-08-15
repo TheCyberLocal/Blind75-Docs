@@ -61,12 +61,12 @@ function characterReplacement(s, k):
 	freq = array of size 26 initialized to 0
 
 	for right from 0 to len(s) - 1:
-		charIndex = s[right] - 'A'
+		charIndex = ascii(s[right]) - ascii('A')
 		freq[charIndex] += 1
 		maxCount = max(maxCount, freq[charIndex])
 
 		while (right - left + 1) - maxCount > k:
-			freq[s[left] - 'A'] -= 1
+			freq[ascii(s[left]) - ascii('A')] -= 1
 			left += 1
 
 		maxLength = max(maxLength, right - left + 1)
