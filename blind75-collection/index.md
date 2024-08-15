@@ -81,7 +81,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Merge Intervals](./intervals/merge-intervals/problem.md)
 -   [Non-overlapping Intervals](./intervals/non-overlapping-intervals/problem.md)
 
-## Linked List - _In Progress_
+## Linked List
 
 -   [Linked List Cycle](./linked-list/linked-list-cycle/problem.md)
 -   [Merge K Sorted Lists](./linked-list/merge-k-sorted-lists/problem.md)
@@ -90,7 +90,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Reorder List](./linked-list/reorder-list/problem.md)
 -   [Reverse Linked List](./linked-list/reverse-linked-list/problem.md)
 
-## Math and Geometry - _Void_
+## Math and Geometry - _In Progress_
 
 -   [Rotate Image](./math-and-geometry/rotate-image/problem.md)
 -   [Set Matrix Zeroes](./math-and-geometry/set-matrix-zeroes/problem.md)
