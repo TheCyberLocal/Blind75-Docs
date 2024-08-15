@@ -64,16 +64,16 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Graph Valid Tree](./graphs/graph-valid-tree/problem.md)
 -   [Pacific Atlantic Water Flow](./graphs/pacific-atlantic-water-flow/problem.md)
 
-## Greedy - _In Progress_
+## Greedy
 
 -   [Jump Game](./greedy/jump-game/problem.md)
 -   [Maximum Subarray](./greedy/maximum-subarray/problem.md)
 
-## Heap / Priority Queue - _Void_
+## Heap / Priority Queue
 
 -   [Find Median from Data Stream](./heap-priority-queue/find-median-from-data-stream/problem.md)
 
-## Intervals - _Void_
+## Intervals - _In Progress_
 
 -   [Insert Interval](./intervals/insert-interval/problem.md)
 -   [Meeting Rooms](./intervals/meeting-rooms/problem.md)
