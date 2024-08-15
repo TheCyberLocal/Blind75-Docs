@@ -45,11 +45,11 @@ You may return the answer in any order.
 ```pseudo
 function mergeIntervals(intervals):
 	sort intervals by start time
-	initialize list merged
+	merged = []
 	for interval in intervals:
-		if merged is empty or interval.start > merged[-1].end:
-			append interval to merged
+		if len(merged) == 0 or interval[0] > merged[-1][1]:
+			merged.append(interval)
 		else:
-			merged[-1].end = max(merged[-1].end, interval.end)
+			merged[-1][1] = max(merged[-1][1], interval[1])
 	return merged
 ```
