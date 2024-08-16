@@ -123,8 +123,8 @@ function findWords(board, words):
         trie.insert(word)
 
     result = set()
-    for i in range(len(board)):
-        for j in range(len(board[0])):
+    for i from 0 to len(board) - 1:
+        for j from 0 to len(board[0]) - 1:
             backtrack(trie.root, i, j, "")
 
     return list(result)
