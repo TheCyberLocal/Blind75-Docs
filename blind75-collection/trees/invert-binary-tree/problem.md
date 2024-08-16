@@ -42,14 +42,13 @@ You are given the root of a binary tree `root`. Invert the binary tree and retur
 
 ```pseudo
 function invertTree(root):
-	if root is null:
+	if not root:
 		return null
 
-	leftInverted = invertTree(root.left)
-	rightInverted = invertTree(root.right)
+	root.left, root.right = root.right, root.left
 
-	root.left = rightInverted
-	root.right = leftInverted
+	invertTree(root.left)
+	invertTree(root.right)
 
 	return root
 ```
