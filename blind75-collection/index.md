@@ -114,7 +114,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Binary Tree Maximum Path Sum](./trees/binary-tree-maximum-path-sum/problem.md)
 -   [Invert Binary Tree](./trees/invert-binary-tree/problem.md)
 -   [Kth Smallest Element in a BST](./trees/kth-smallest-element-in-a-bst/problem.md)
--   [Lowest Common Ancestor of a Binary Search Tree](./trees/lowest-common-ancestor-of-a-binary-search-tree/problem.md)
+-   [Lowest Common Ancestor of a BST](./trees/lowest-common-ancestor-of-a-bst/problem.md)
 -   [Maximum Depth of Binary Tree](./trees/maximum-depth-of-binary-tree/problem.md)
 -   [Same Tree](./trees/same-tree/problem.md)
 -   [Serialize and Deserialize Binary Tree](./trees/serialize-and-deserialize-binary-tree/problem.md)
