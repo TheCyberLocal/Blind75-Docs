@@ -103,11 +103,11 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Longest Substring without Repeating Characters](./sliding-window/longest-substring-without-repeating-characters/problem.md)
 -   [Minimum Window Substring](./sliding-window/minimum-window-substring/problem.md)
 
-## Stack - _In Progress_
+## Stack
 
 -   [Valid Parentheses](./stack/valid-parentheses/problem.md)
 
-## Trees - _Void_
+## Trees - _In Progress_
 
 -   [Binary Tree Level Order Traversal](./trees/binary-tree-level-order-traversal/problem.md)
 -   [Binary Tree Maximum Path Sum](./trees/binary-tree-maximum-path-sum/problem.md)
