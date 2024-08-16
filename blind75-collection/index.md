@@ -96,14 +96,14 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Set Matrix Zeroes](./math-and-geometry/set-matrix-zeroes/problem.md)
 -   [Spiral Matrix](./math-and-geometry/spiral-matrix/problem.md)
 
-## Sliding Window - _In Progress_
+## Sliding Window
 
 -   [Best Time to Buy and Sell Stock](./sliding-window/best-time-to-buy-and-sell-stock/problem.md)
 -   [Longest Repeating Character Replacement](./sliding-window/longest-repeating-character-replacement/problem.md)
 -   [Longest Substring without Repeating Characters](./sliding-window/longest-substring-without-repeating-characters/problem.md)
 -   [Minimum Window Substring](./sliding-window/minimum-window-substring/problem.md)
 
-## Stack - _Void_
+## Stack - _In Progress_
 
 -   [Valid Parentheses](./stack/valid-parentheses/problem.md)
 
