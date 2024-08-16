@@ -27,13 +27,7 @@ You are given an integer array `heights` where `heights[i]` represents the heigh
 
 -   **Time Complexity:** `O(n)`, where `n` is the length of `height`.
 -   **Space Complexity:** `O(1)`.
--   **Description:**
-
-    -   Use two pointers, `left` starting at the beginning and `right` at the end of the `height` array.
-    -   Calculate the area formed between the bars at `left` and `right`.
-    -   Move the pointer with the shorter bar inward to potentially find a larger container.
-    -   Continue this process until the pointers meet.
-
+-   **Description:** You are given an integer array `heights`, where `heights[i]` represents the height of the i-th bar. You may choose any two bars to form a container, and the task is to return the maximum amount of water that a container can store. The amount of water a container can store is determined by the shorter of the two chosen bars and the distance between them. The goal is to maximize this value by selecting the appropriate pair of bars.
 -   **Algorithm:**
 
     1. Initialize `left` to `0` and `right` to `len(height) - 1`.

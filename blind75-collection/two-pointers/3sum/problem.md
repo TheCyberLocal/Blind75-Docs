@@ -41,13 +41,7 @@ The output should not contain any duplicate triplets. You may return the output 
 
 -   **Time Complexity:** `O(n^2)`, where `n` is the length of `nums`.
 -   **Space Complexity:** `O(1)`, not counting the space used to store the result.
--   **Description:**
-
-    -   First, sort the array `nums`.
-    -   Iterate through `nums` from `0 to len(nums) - 2`. For each element `nums[i]`, use two pointers: one starting from `i + 1` and the other from the end of the array.
-    -   Move the pointers towards each other to find all valid triplets that sum to `0`.
-    -   Skip duplicate elements to avoid adding duplicate triplets to the result.
-
+-   **Description:** Given an integer array `nums`, the task is to return all the unique triplets `[nums[i], nums[j], nums[k]]` such that the sum of these three integers equals zero, and the indices `i`, `j`, and `k` are all distinct. The output should not contain any duplicate triplets, and you may return the triplets in any order. The objective is to identify all sets of three integers in the array that sum to zero while ensuring that no duplicates are included in the result.
 -   **Algorithm:**
 
     1. Sort the array `nums`.
