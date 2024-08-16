@@ -106,7 +106,7 @@ function pacificAtlantic(heights):
 	pacificQueue = initialize a queue with all cells along the Pacific border
 	atlanticQueue = initialize a queue with all cells along the Atlantic border
 
-	def bfs(queue, reachable):
+	function bfs(queue, reachable):
 		while queue:
 			r, c = queue.pop(0)
 			reachable[r][c] = true

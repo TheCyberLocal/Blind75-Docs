@@ -74,7 +74,7 @@ function numIslands(grid):
 	if not grid:
 		return 0
 
-	def bfs(startX, startY):
+	function bfs(startX, startY):
 		queue = [(startX, startY)]
 		grid[startX][startY] = '0'  # Mark the cell as visited
 		while queue is not empty:
@@ -121,12 +121,12 @@ function numIslands(grid):
 	parent = a map of keys from 0 to rows * cols - 1 where grid[i][j] == '1' initialized to its own index
 	rank = an array of size rows * cols initialized to 1 for each index where grid[i][j] == '1'
 
-	def find(x):
+	function find(x):
 		if parent[x] != x:
 			parent[x] = find(parent[x])
 		return parent[x]
 
-	def union(x, y):
+	function union(x, y):
 		rootX = find(x)
 		rootY = find(y)
 		if rootX != rootY:

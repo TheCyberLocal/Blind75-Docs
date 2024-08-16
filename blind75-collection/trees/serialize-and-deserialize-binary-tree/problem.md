@@ -129,7 +129,7 @@ function deserialize(data):
 
 ```pseudo
 function serialize(root):
-	def preorder(node):
+	function preorder(node):
 		if node is null:
 			serialized.append("null")
 		else:
@@ -145,7 +145,7 @@ function deserialize(data):
 	values = data.split(",")
 	index = 0
 
-	def build():
+	function build():
 		if values[index] == "null":
 			index += 1
 			return null
