@@ -47,7 +47,7 @@ Return the number of distinct ways to climb to the top of the staircase.
 ```pseudo
 function climbStairs(n):
     p1 = p2 = 1
-    for (n - 2) times:
+    for _ from 0 to n - 3:
         p1, p2 = p1 + p2, p1
     return p1
 ```

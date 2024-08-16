@@ -78,11 +78,11 @@ function maxSubArray(nums):
 		leftMax = float('-inf')
 		rightMax = float('-inf')
 		currentSum = 0
-		for i in range(mid, left - 1, -1):
+		for i from mid to left - 2 by -1:
 			currentSum += nums[i]
 			leftMax = max(leftMax, currentSum)
 		currentSum = 0
-		for i in range(mid + 1, right + 1):
+		for i from mid + 1 to right:
 			currentSum += nums[i]
 			rightMax = max(rightMax, currentSum)
 		return leftMax + rightMax

@@ -55,7 +55,7 @@ function levelOrder(root):
 
 	while queue:
 		level = []
-		for i in range(len(queue)):
+		for _ from 0 to len(queue) - 1:
 			node = queue.pop(0)
 			level.append(node.val)
 			if node.left:

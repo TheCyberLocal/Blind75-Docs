@@ -57,7 +57,7 @@ function canFinish(numCourses, prerequisites):
 		indegree[course] += 1
 
 	queue = []
-	for i in range(numCourses):
+	for i from 0 to numCourses - 1:
 		if indegree[i] == 0:
 			queue.append(i)
 
