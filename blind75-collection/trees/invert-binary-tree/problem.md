@@ -26,6 +26,8 @@ You are given the root of a binary tree `root`. Invert the binary tree and retur
 -   `0 <= The number of nodes in the tree <= 100`
 -   `-100 <= Node.val <= 100`
 
+---
+
 ### Approach 1: Recursive Inversion
 
 -   **Time Complexity:** `O(n)` where `n` is the number of nodes in the tree.
