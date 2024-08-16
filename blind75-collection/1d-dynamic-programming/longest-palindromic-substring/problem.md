@@ -74,7 +74,7 @@ function LongestPalindrome(s):
 
     1. Initialize two variables `start` and `end` to track the beginning and ending indices of the longest palindrome found.
     2. Define a helper function `paliLen(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
-	3. Iterate over the string `s`, considering each character as the center of the palindrome.
+    3. Iterate over the string `s`, considering each character as the center of the palindrome.
     4. For each center, expand around it while the characters on both sides are equal.
     5. Update the `start` and `end` indices if a longer palindrome is found.
     6. Return the substring of `s` from `start` to `end + 1`.
