@@ -1,4 +1,4 @@
-# Blind75: Kth Smallest Element in BST
+# Blind75: Kth Smallest Element in a BST
 
 ### [⇦ Back to Problem Index](../../index.md)
 
@@ -29,38 +29,33 @@ A binary search tree satisfies the following constraints:
 
 ---
 
-### Approach 1: Inorder Traversal
+### Approach 1: Iterative Inorder Traversal
 
 -   **Time Complexity:** `O(n)` where `n` is the number of nodes in the tree.
--   **Space Complexity:** `O(h)` where `h` is the height of the tree due to the recursion stack.
--   **Description:** To find the k-th smallest element in the binary search tree, an inorder traversal is performed. This type of traversal visits nodes in increasing order of their values. By keeping a count of the visited nodes, we can identify the k-th node in this sequence, which corresponds to the k-th smallest element in the tree.
--   **Algorithm:**
+-   **Space Complexity:** `O(h)` where `h` is the height of the tree due to the stack used for traversal.
+-   **Description:** To find the k-th smallest element in a binary search tree (BST), we utilize an iterative inorder traversal. Inorder traversal naturally visits nodes in increasing order in a BST. By keeping track of the number of nodes visited, we can determine when we have reached the k-th smallest element.
 
-    1. Initialize a counter to keep track of the number of nodes visited during the traversal.
-    2. Define a helper function that performs the inorder traversal:
-        1. Traverse the left subtree first by recursively calling the helper function on the left child.
-        2. Increment the counter when visiting a node.
-        3. If the counter equals `k`, store the node's value as the k-th smallest element.
-        4. Traverse the right subtree by recursively calling the helper function on the right child.
+-   **Algorithm:**
+    1.  Initialize an empty stack to assist in the iterative traversal and set the current node to the root.
+    2.  Use a loop to perform the inorder traversal:
+        1. Traverse the left subtree by pushing the current node to the stack and moving to its left child.
+        2. Once there are no more left children, pop the last node from the stack (which is the current node to visit).
+        3. Decrement `k` by 1 each time a node is visited.
+        4. If `k` reaches 0, return the value of the current node as it is the k-th smallest element.
+        5. Move to the right subtree of the current node and continue the traversal.
 
 ```pseudo
 function kthSmallest(root, k):
-	count = 0
-	result = null
+	stack = []
+	curr = root
 
-	function inorder(node):
-		if node is null or result is not null:
-			return
-
-		inorder(node.left)
-		count = count + 1
-
-		if count == k:
-			result = node.val
-			return
-
-		inorder(node.right)
-
-	inorder(root)
-	return result
+	while stack or curr:
+		while curr:
+			stack.append(curr)
+			curr = curr.left
+		curr = stack.pop()
+		k -= 1
+		if k == 0:
+			return curr.val
+		curr = curr.right
 ```
