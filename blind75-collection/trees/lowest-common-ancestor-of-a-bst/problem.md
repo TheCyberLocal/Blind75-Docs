@@ -28,30 +28,27 @@ The lowest common ancestor between two nodes `p` and `q` is the lowest node in a
 
 ---
 
-### Approach: Recursive Search
+### Approach 1: Iterative Search
 
 -   **Time Complexity:** `O(h)`, where `h` is the height of the tree.
--   **Space Complexity:** `O(h)` for the recursive call stack.
--   **Description:** This approach leverages the properties of a BST to find the LCA. Given that the values in the left subtree are always smaller than the root, and the values in the right subtree are always larger, the LCA can be determined based on the values of `p` and `q`. Starting at the root, if both `p` and `q` are smaller than the root, the LCA must be in the left subtree. Conversely, if both are larger, the LCA is in the right subtree. If `p` and `q` are on opposite sides of the root, the root itself is their LCA.
+-   **Space Complexity:** `O(1)` as the search is performed iteratively with constant space.
+-   **Description:** This approach efficiently finds the Lowest Common Ancestor (LCA) in a Binary Search Tree (BST) by leveraging its structural properties. In a BST, nodes in the left subtree have values less than the root, and nodes in the right subtree have values greater than the root. By iteratively traversing the tree, we can identify the LCA based on the values of `p` and `q`. If both values are smaller than the current node, the LCA lies in the left subtree. If both are larger, it lies in the right subtree. If the values diverge, with one on either side of the current node, the current node is the LCA.
 -   **Algorithm:**
 
-    1. Start at the root of the tree.
-    2. Compare the values of `p` and `q` with the value of the current node.
-        1. If both `p` and `q` are smaller, move to the left subtree.
-        2. If both `p` and `q` are larger, move to the right subtree.
-        3. If one is smaller and the other is larger, the current node is the LCA.
-    3. Return the current node as the LCA.
+    1.  Start with the root node as the current node.
+    2.  Enter a loop to traverse the tree:
+        1. If both `p` and `q` have values smaller than the current node’s value, move to the right subtree by setting the current node to its right child.
+        2. If both `p` and `q` have values larger than the current node’s value, move to the left subtree by setting the current node to its left child.
+        3. If one value is smaller and the other is larger (or one matches the current node), the current node is the LCA.
+    3.  Return the current node as the LCA.
 
 ```pseudo
 function lowestCommonAncestor(root, p, q):
-	if root is None:
-		return None
-
-	if p.val < root.val and q.val < root.val:
-		return lowestCommonAncestor(root.left, p, q)
-
-	if p.val > root.val and q.val > root.val:
-		return lowestCommonAncestor(root.right, p, q)
-
-	return root
+	while True:
+		if root.val < p.val and root.val < q.val:
+			root = root.right
+		else if root.val > p.val and root.val > q.val:
+			root = root.left
+		else:
+			return root
 ```
