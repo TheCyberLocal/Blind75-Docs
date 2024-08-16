@@ -50,10 +50,7 @@ function isSameTree(p, q):
 	if p is null and q is null:
 		return true
 
-	if p is null or q is null:
-		return false
-
-	if p.val != q.val:
+	if p is null or q is null or p.val != q.val:
 		return false
 
 	return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
