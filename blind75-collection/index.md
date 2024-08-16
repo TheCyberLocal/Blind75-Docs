@@ -109,9 +109,9 @@ This project is being completed top-down, so please be patient for `Two Pointers
 
 ## Trees - _In Progress_
 
+-   [Binary Tree from Preorder and Inorder Traversal](./trees/construct-binary-tree-from-preorder-and-inorder-traversal/problem.md)
 -   [Binary Tree Level Order Traversal](./trees/binary-tree-level-order-traversal/problem.md)
 -   [Binary Tree Maximum Path Sum](./trees/binary-tree-maximum-path-sum/problem.md)
--   [Construct Binary Tree from Preorder and Inorder Traversal](./trees/construct-binary-tree-from-preorder-and-inorder-traversal/problem.md)
 -   [Invert Binary Tree](./trees/invert-binary-tree/problem.md)
 -   [Kth Smallest Element in a BST](./trees/kth-smallest-element-in-a-bst/problem.md)
 -   [Lowest Common Ancestor of a Binary Search Tree](./trees/lowest-common-ancestor-of-a-binary-search-tree/problem.md)
