@@ -107,7 +107,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 
 -   [Valid Parentheses](./stack/valid-parentheses/problem.md)
 
-## Trees - _In Progress_
+## Trees
 
 -   [Binary Tree from Preorder and Inorder Traversal](./trees/construct-binary-tree-from-preorder-and-inorder-traversal/problem.md)
 -   [Binary Tree Level Order Traversal](./trees/binary-tree-level-order-traversal/problem.md)
@@ -121,7 +121,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Subtree of Another Tree](./trees/subtree-of-another-tree/problem.md)
 -   [Validate Binary Search Tree](./trees/validate-binary-search-tree/problem.md)
 
-## Tries - _Void_
+## Tries - _In Progress_
 
 -   [Design Add and Search Words Data Structure](./tries/design-add-and-search-words-data-structure/problem.md)
 -   [Implement Trie (Prefix Tree)](./tries/implement-trie-prefix-tree/problem.md)
