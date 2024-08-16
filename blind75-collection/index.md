@@ -123,7 +123,7 @@ This project is being completed top-down, so please be patient for `Two Pointers
 
 ## Tries - _In Progress_
 
--   [Design Add and Search Words Data Structure](./tries/design-add-and-search-words-data-structure/problem.md)
+-   [Design Word Search Data Structure](./tries/design-word-search-data-structure/problem.md)
 -   [Implement Trie (Prefix Tree)](./tries/implement-trie-prefix-tree/problem.md)
 -   [Word Search II](./tries/word-search-ii/problem.md)
 
