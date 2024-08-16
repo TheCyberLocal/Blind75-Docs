@@ -40,7 +40,7 @@ The depth of a binary tree is defined as the number of nodes along the longest p
 
 ```pseudo
 function maxDepth(root):
-	if root is null:
+	if not root:
 		return 0
 
 	leftDepth = maxDepth(root.left)
