@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 You are given the head of a singly linked list. Reorder the nodes of the linked list in the following pattern:
 

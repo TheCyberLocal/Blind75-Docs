@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 Given the beginning of a linked list `head`, return `true` if there is a cycle in the linked list. Otherwise, return `false`.
 

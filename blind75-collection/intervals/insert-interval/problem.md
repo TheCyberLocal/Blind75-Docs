@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 You are given an array of non-overlapping intervals `intervals` where `intervals[i] = [start_i, end_i]` represents the start and end time of the ith interval. `intervals` is initially sorted in ascending order by `start_i`.
 

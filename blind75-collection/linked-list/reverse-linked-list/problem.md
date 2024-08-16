@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 Given the beginning of a singly linked list `head`, reverse the list, and return the new beginning of the list.
 

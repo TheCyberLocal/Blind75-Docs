@@ -2,4 +2,4 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-### Coming Soon...
+## Textbook Problem

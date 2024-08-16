@@ -1,14 +1,8 @@
-# Blind75: Find Median from Data Stream
-
-### [⇦ Back to Problem Index](../../index.md)
-
-Here's the solution for the "Find Median in a Data Stream" problem, formatted according to your preferences:
-
 # Blind75: Find Median in a Data Stream
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 The median is the middle value in a sorted list of integers. For lists of even length, there is no middle value, so the median is the mean of the two middle values.
 

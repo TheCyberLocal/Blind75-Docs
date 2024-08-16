@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 Given a square `n x n` matrix of integers `matrix`, rotate it by 90 degrees clockwise.
 

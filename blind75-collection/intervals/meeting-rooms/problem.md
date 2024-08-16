@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 Given an array of meeting time intervals consisting of start and end times `[[start_1,end_1],[start_2,end_2],...]` where `start_i < end_i`, determine if a person could attend all meetings without any conflicts.
 

@@ -2,7 +2,7 @@
 
 ### [⇦ Back to Problem Index](../../index.md)
 
-## Problem Statement
+## Textbook Problem
 
 Given an `m x n` matrix of integers `matrix`, return a list of all elements within the matrix in spiral order.
 
