@@ -1,4 +1,4 @@
-# Blind 75 Docs - _Under Development_
+# Blind 75 Docs
 
 ## 🗺️ Project Overview
 
