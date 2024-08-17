@@ -2,8 +2,6 @@
 
 ### [⇦ Back to Project Overview](../README.md)
 
-This project is being completed top-down, so please be patient for `Two Pointers - Valid Palindrome`. 😅
-
 ## 1D Dynamic Programming
 
 -   [Climbing Stairs](./1d-dynamic-programming/climbing-stairs/problem.md)
@@ -121,13 +119,13 @@ This project is being completed top-down, so please be patient for `Two Pointers
 -   [Subtree of Another Tree](./trees/subtree-of-another-tree/problem.md)
 -   [Validate Binary Search Tree](./trees/validate-binary-search-tree/problem.md)
 
-## Tries - _In Progress_
+## Tries
 
 -   [Design Word Search Data Structure](./tries/design-word-search-data-structure/problem.md)
 -   [Implement Trie (Prefix Tree)](./tries/implement-trie-prefix-tree/problem.md)
 -   [Word Search II](./tries/word-search-ii/problem.md)
 
-## Two Pointers - _Void_
+## Two Pointers
 
 -   [3Sum](./two-pointers/3sum/problem.md)
 -   [Container with Most Water](./two-pointers/container-with-most-water/problem.md)
