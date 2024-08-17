@@ -45,7 +45,7 @@ For a word to be present, it must be possible to form the word with a path in th
 
 ---
 
-### Approach: Trie + Backtracking
+### Approach 1: Trie + Backtracking
 
 -   **Time Complexity:**
     The time complexity is `O(m * n * l)`, where `m` and `n` are the dimensions of the board, and `l` is the total number of letters in all words.

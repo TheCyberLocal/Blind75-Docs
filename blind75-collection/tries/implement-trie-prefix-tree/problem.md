@@ -38,7 +38,7 @@ Implement the `PrefixTree` class:
 
 ---
 
-### Approach: Trie Implementation
+### Approach 1: Trie Implementation
 
 -   **Time Complexity:**
     -   `insert`: `O(m)`, where `m` is the length of the word.

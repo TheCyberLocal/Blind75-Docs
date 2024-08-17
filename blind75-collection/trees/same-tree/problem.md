@@ -30,7 +30,7 @@ Two binary trees are considered equivalent if they share the exact same structur
 
 ---
 
-### Approach: Recursive Comparison
+### Approach 1: Recursive Comparison
 
 -   **Time Complexity:** `O(n)`, where `n` is the number of nodes in the trees.
 -   **Space Complexity:** `O(h)`, where `h` is the height of the tree, for the recursive call stack.

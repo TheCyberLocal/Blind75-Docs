@@ -25,7 +25,7 @@ The depth of a binary tree is defined as the number of nodes along the longest p
 
 ---
 
-### Approach: Recursive Depth Calculation
+### Approach 1: Recursive Depth Calculation
 
 -   **Time Complexity:** `O(n)`, where `n` is the number of nodes in the tree.
 -   **Space Complexity:** `O(h)`, where `h` is the height of the tree, for the recursive call stack.

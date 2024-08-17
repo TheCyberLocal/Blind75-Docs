@@ -32,7 +32,6 @@ A palindrome is a string that reads the same forward and backward. It is also ca
 -   **Time Complexity:** `O(n)`, where `n` is the length of `s`.
 -   **Space Complexity:** `O(1)`.
 -   **Description:** The two-pointer technique is employed to check whether the given string is a palindrome. The string is traversed using two pointers: one starting from the beginning and the other from the end. The goal is to compare the characters at both ends while skipping any non-alphanumeric characters and ignoring case. If all character pairs match, the string is a palindrome.
-
 -   **Algorithm:**
 
     1. Initialize `left` to `0` and `right` to `len(s) - 1`.
