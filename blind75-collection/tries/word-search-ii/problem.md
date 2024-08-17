@@ -50,7 +50,7 @@ For a word to be present, it must be possible to form the word with a path in th
 -   **Time Complexity:**
     The time complexity is `O(m * n * l)`, where `m` and `n` are the dimensions of the board, and `l` is the total number of letters in all words.
 -   **Space Complexity:**
-    The space complexity is `O(n * l)`, where `n` is the number of words and `l` is the length of the longest word.
+    The space complexity is `O(k * l)`, where `k` is the number of words and `l` is the length of the longest word.
 -   **Description:**
     The problem is tackled by combining a Trie data structure with backtracking. The Trie helps in efficiently searching for word prefixes, while backtracking explores the grid to find all valid paths that form words.
 
@@ -128,4 +128,86 @@ function findWords(board, words):
             backtrack(trie.root, i, j, "")
 
     return list(result)
+```
+
+---
+
+### Approach 2: Optimized Trie with DFS
+
+-   **Time Complexity:** The time complexity is `O(m * n * l)`, where `m` and `n` are the dimensions of the board, and `l` is the total length of all words.
+-   **Space Complexity:** The space complexity is `O(k * l)`, where `k` is the number of words and `l` is the average length of the words.
+-   **Description:** This approach uses a Trie to store the given list of words, enabling efficient prefix searching and word lookup. A depth-first search (DFS) is performed on each cell of the board, exploring all possible paths that form valid words. The Trie nodes are augmented with reference counts to manage the removal of words once they are found, preventing redundant searches. As the search progresses, cells are marked as visited to ensure that each cell is only used once per word search. The found words are collected and returned as the result.
+-   **Algorithm:**
+    1. Insert each word into the Trie, where each node in the Trie represents a letter. As each word is added, increment the reference count at each node along the path.
+    2. For each cell in the grid:
+        1. If the current cell is out of bounds, the character does not exist in the current Trie node's children, or the reference count is less than 1, terminate the current path.
+        2. Add the current cell to the visited set to avoid revisiting.
+        3. Traverse to the corresponding child node in the Trie and add the character to the current word path.
+        4. If a valid word is found (indicated by the `isWord` flag in the Trie node), mark the word as found, remove it from the Trie, and add it to the result set.
+        5. Recursively explore all four possible directions (up, down, left, right) from the current cell.
+        6. After exploring all possible directions, remove the current cell from the visited set to allow other DFS paths to use it.
+    3. After exploring all cells and paths, convert the result set to a list and return it.
+
+```pseudo
+class TrieNode:
+    function constructor():
+        self.children = {}
+        self.isWord = False
+        self.refs = 0
+
+    function addWord(word):
+        cur = self
+        cur.refs += 1
+        for c in word:
+            if c not in cur.children:
+                cur.children[c] = TrieNode()
+            cur = cur.children[c]
+            cur.refs += 1
+        cur.isWord = True
+
+    function removeWord(word):
+        cur = self
+        cur.refs -= 1
+        for c in word:
+            if c in cur.children:
+                cur = cur.children[c]
+                cur.refs -= 1
+
+function findWords(board, words):
+    root = TrieNode()
+    for w in words:
+        root.addWord(w)
+
+    rows, cols = len(board), len(board[0])
+    res, visit = set(), set()
+
+    function dfs(r, c, node, word):
+        if (
+            0 > r or r >= len(rows)
+            or 0 > c or c >= len(cols)
+            or board[r][c] not in node.children
+            or node.children[board[r][c]].refs < 1
+            or (r, c) in visit
+        ):
+            return
+
+        visit.add((r, c))
+        node = node.children[board[r][c]]
+        word += board[r][c]
+        if node.isWord:
+            node.isWord = False
+            res.add(word)
+            root.removeWord(word)
+
+        dfs(r + 1, c, node, word)
+        dfs(r - 1, c, node, word)
+        dfs(r, c + 1, node, word)
+        dfs(r, c - 1, node, word)
+        visit.remove((r, c))
+
+    for r from 0 to len(rows) - 1:
+        for c from 0 to len(cols) - 1:
+            dfs(r, c, root, "")
+
+    return list(res)
 ```
