@@ -44,26 +44,28 @@ A palindrome is a string that reads the same forward and backward. It is also ca
     3. If the loop finishes, return `true` (the string is a palindrome).
 
 ```pseudo
+function isAlphanumeric(c):
+    return (
+        ('a' <= c <= 'z')
+        or ('A' <= c <= 'Z')
+        or ('0' <= c <= '9')
+    )
+
 function isPalindrome(s):
-    left = 0
-    right = len(s) - 1
+    left, right = 0, len(s) - 1
 
     while left < right:
-        # Move left to the next alphanumeric character
         if not isAlphanumeric(s[left]):
             left += 1
             continue
 
-        # Move right to the previous alphanumeric character
         if not isAlphanumeric(s[right]):
             right -= 1
             continue
 
-        # Compare characters, ignoring case
         if toLower(s[left]) != toLower(s[right]):
             return false
 
-        # Move both pointers inward
         left += 1
         right -= 1
 

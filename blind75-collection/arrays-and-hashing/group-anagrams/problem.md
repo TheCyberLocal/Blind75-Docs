@@ -79,7 +79,7 @@ function groupAnagrams(strs):
     for s in strs:
         count = array of size 26 initialized to 0
         for char in s:
-            count[ord(char) - ord('a')] += 1
+            count[char - 'a'] += 1
         key = tuple(count)
         if key not in anagramMap:
             anagramMap[key] = []
