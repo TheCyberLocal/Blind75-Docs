@@ -63,7 +63,7 @@ function isPalindrome(s):
             right -= 1
             continue
 
-        if toLower(s[left]) != toLower(s[right]):
+        if s[left].lowercase() != s[right].lowercase():
             return false
 
         left += 1
