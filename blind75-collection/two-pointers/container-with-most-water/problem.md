@@ -30,27 +30,26 @@ You are given an integer array `heights` where `heights[i]` represents the heigh
 -   **Description:** You are given an integer array `heights`, where `heights[i]` represents the height of the i-th bar. You may choose any two bars to form a container, and the task is to return the maximum amount of water that a container can store. The amount of water a container can store is determined by the shorter of the two chosen bars and the distance between them. The goal is to maximize this value by selecting the appropriate pair of bars.
 -   **Algorithm:**
 
-    1. Initialize `left` to `0` and `right` to `len(height) - 1`.
+    1. Initialize `left` to `0` and `right` to `len(heights) - 1`.
     2. Set `maxWater` to `0`.
     3. While `left` is less than `right`:
         1. Calculate the width as `right - left`.
-        2. Determine the minimum height between `height[left]` and `height[right]`.
-        3. Calculate the current area as `width * min(height[left], height[right])`.
+        2. Determine the minimum height between `heights[left]` and `heights[right]`.
+        3. Calculate the current area as `width * min(heights[left], heights[right])`.
         4. Update `maxWater` to be the maximum of `maxWater` and `current area`.
-        5. If `height[left]` is less than `height[right]`, increment `left`; otherwise, decrement `right`.
+        5. If `heights[left]` is less than `heights[right]`, increment `left`; otherwise, decrement `right`.
     4. Return `maxWater`.
 
 ```pseudo
-function maxArea(height):
-	left = 0
-	right = len(height) - 1
+function maxArea(heights):
+	left, right = 0, len(heights) - 1
 	maxWater = 0
 	while left < right:
 		width = right - left
-		currentHeight = min(height[left], height[right])
+		currentHeight = min(heights[left], heights[right])
 		currentArea = width * currentHeight
 		maxWater = max(maxWater, currentArea)
-		if height[left] < height[right]:
+		if heights[left] < heights[right]:
 			left += 1
 		else:
 			right -= 1
