@@ -42,12 +42,10 @@ You can assume the output will fit into a 32-bit integer.
     6. Return `res` as the maximum product subarray.
 
 ```python
-def max_product(nums):
-    max_prod = nums[0]
-    min_prod = nums[0]
-    res = nums[0]
+def max_product(nums: List[int]) -> int:
+    max_prod = min_prod = res = nums[0]
 
-	for i from 1 to len(nums):
+	for i in range(1, len(nums)):
 		tmp = max(nums[i], max_prod * nums[i], min_prod * nums[i])
 		min_prod = min(nums[i], max_prod * nums[i], min_prod * nums[i])
 		max_prod = tmp
@@ -62,27 +60,27 @@ def max_product(nums):
 
 -   **Time Complexity**: `O(n)`
 -   **Space Complexity**: `O(1)`
--   **Description**: This approach refines the dynamic programming method by focusing on the impact of negative numbers on the product. The main idea is to track both the maximum and minimum products up to each index, as a negative number could turn the smallest product into the largest one. Unlike the first approach, we don't explicitly reset on zeros but rather handle each element based on its value. Specifically, when encountering a negative number, we swap `max_prod` and `min_prod` before updating them, since multiplying by a negative number would flip the signs. This ensures that `max_prod` always holds the maximum possible product up to the current element.
+-   **Description**: This approach refines the dynamic programming method by focusing on the impact of negative numbers and zeros on the product. The main idea is to track both the maximum and minimum products up to each index, as a negative number could turn the smallest product into the largest one. When encountering a negative number, we swap `max_prod` and `min_prod` before updating them, since multiplying by a negative number would flip the signs. This ensures that `max_prod` always holds the maximum possible product up to the current element. The algorithm inherently handles zeros by updating `max_prod` and `min_prod` based on the current number, ensuring that `max_prod` and `min_prod` are reset appropriately.
 -   **Algorithm**:
 
     1. Initialize `res` with the maximum value in the array to account for cases where the array might contain only negative numbers or zeros.
     2. Initialize `max_prod` and `min_prod` to 1.
     3. Iterate through each number in `nums`:
         - Calculate a temporary value `tmp` as the product of `max_prod` and the current number.
-        - Update `max_prod` to the minimum of `num`, `min_prod * num`, and `max_prod * num`. This accounts for the possibility that multiplying by a negative number could yield a higher product.
-        - Update `min_prod` to the maximum of `num`, `min_prod * num`, and `tmp` to ensure that `min_prod` correctly tracks the smallest product, which could become the largest when multiplied by another negative number.
+        - Update `max_prod` to the maximum of `num`, `min_prod * num`, and `max_prod * num`. This accounts for the possibility that multiplying by a negative number could yield a higher product.
+        - Update `min_prod` to the minimum of `num`, `min_prod * num`, and `tmp` to ensure that `min_prod` correctly tracks the smallest product, which could become the largest when multiplied by another negative number.
         - Update `res` to be the maximum of `res` and `max_prod`.
     4. Return `res`, which contains the maximum product subarray.
 
 ```python
-def max_product(nums):
+def max_product(nums: List[int]) -> int:
     res = max(nums)
     max_prod = min_prod = 1
 
     for num in nums:
         tmp = max_prod * num
-        max_prod = min(num, min_prod * num, max_prod * num)
-        min_prod = max(num, min_prod * num, tmp)
+        max_prod = max(num, min_prod * num, max_prod * num)
+        min_prod = min(num, min_prod * num, tmp)
         res = max(res, max_prod)
 
     return res

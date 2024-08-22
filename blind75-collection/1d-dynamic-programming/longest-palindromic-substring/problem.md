@@ -43,8 +43,9 @@ If there are multiple palindromic substrings that have the same length, return a
 
 ```python
 def longest_palindrome(s: str) -> str:
-	def pali_len(left, right):
+	def pali_len(left: int, right: int) -> None:
 			nonlocal res, res_len
+
 			while left >= 0 and right < n and s[left] == s[right]:
 				if (right - left + 1) > res_len:
 					res = s[left:right + 1]
@@ -81,7 +82,7 @@ def longest_palindrome(s: str) -> str:
 
 ```python
 def longest_palindrome(s: str) -> str:
-	def pali_len(left, right):
+	def pali_len(left: int, right: int) -> int:
 		while left >= 0 and right < len(s) and s[left] == s[right]:
 			left, right = left - 1, right + 1
 
