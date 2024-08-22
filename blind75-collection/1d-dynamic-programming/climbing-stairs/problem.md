@@ -44,10 +44,10 @@ Return the number of distinct ways to climb to the top of the staircase.
         -   Update `p2` to the previous value of `p1`.
     3.  Return `p1`, which contains the number of ways to reach the `n`-th step.
 
-```pseudo
-function climbStairs(n):
+```python
+def climbStairs(n):
     p1 = p2 = 1
-    for _ from 0 to n - 3:
+    for _ in range(n - 1):
         p1, p2 = p1 + p2, p1
     return p1
 ```
