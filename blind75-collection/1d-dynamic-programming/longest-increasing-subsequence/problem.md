@@ -38,14 +38,16 @@ A subsequence is a sequence that can be derived from the given sequence by delet
     3. For each `i` from `1` to `n`, and for each `j` from `0` to `i - 1`, if `nums[i] > nums[j]`, update `dp[i]` to `max(dp[i], dp[j] + 1)`.
     4. The answer is the maximum value in the `dp` array.
 
-```pseudo
-function lengthOfLIS(nums):
+```python
+def length_of_LIS(nums: List[int]) -> int:
 	n = len(nums)
-	dp = array of size n initialized to 1
-	for i from 1 to n:
-		for j from 0 to i - 1:
+	dp = [1] * n
+
+	for i in range(1, n):
+		for j in range(i):
 			if nums[i] > nums[j]:
 				dp[i] = max(dp[i], dp[j] + 1)
+
 	return max(dp)
 ```
 
@@ -64,7 +66,7 @@ function lengthOfLIS(nums):
     4. The length of `tails` is the length of the longest increasing subsequence.
 
 ```pseudo
-function lengthOfLIS(nums):
+function length_of_LIS(nums):
 	tails = []
 	for num in nums:
 		l, r = 0, len(tails)
