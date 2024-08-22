@@ -43,7 +43,7 @@ Return the maximum amount of money you can rob without alerting the police.
     5. Return `dp[n - 1]` as the result.
 
 ```python
-def robHouses(nums: List[int]) -> int:
+def rob_houses(nums: List[int]) -> int:
     n = len(nums)
 
     if n == 1:
@@ -72,11 +72,12 @@ def robHouses(nums: List[int]) -> int:
     2. Iterate through each house, updating the two variables as needed.
     3. Return `p1` after the loop, which contains the maximum money that can be robbed from all houses.
 
-```pseudo
-function robHouses(nums):
-    p1 = 0
-    p2 = 0
+```python
+def rob_houses(nums: List[int]) -> int:
+    p1 = p2 = 0
+
     for num in nums:
         p1, p2 = max(p2 + num, p1), p1
+
     return p1
 ```
