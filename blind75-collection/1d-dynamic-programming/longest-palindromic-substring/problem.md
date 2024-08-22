@@ -35,30 +35,30 @@ If there are multiple palindromic substrings that have the same length, return a
 -   **Description**: This approach identifies the longest palindrome by treating each character (and each pair of consecutive characters) as the potential center of a palindrome. It directly updates a result string with the current longest palindrome as it iterates through the centers.
 -   **Algorithm**:
 
-    1. Initialize two variables `result` and `resLen` to track the longest palindromic substring and its length.
-    2. Define a helper function `paliLen(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
-    3. For each center index `i` in the string `s`, call `paliLen` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i + 1`).
-    4. Update `res` and `resLen` if a longer palindrome is found during the expansion.
+    1. Initialize two variables `result` and `res_len` to track the longest palindromic substring and its length.
+    2. Define a helper function `pali_len(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
+    3. For each center index `i` in the string `s`, call `pali_len` twice: once for odd-length palindromes (centered at `i`) and once for even-length palindromes (centered between `i` and `i + 1`).
+    4. Update `res` and `res_len` if a longer palindrome is found during the expansion.
     5. Return the longest palindromic substring stored in `res`.
 
-```pseudo
-function LongestPalindrome(s):
+```python
+def longest_palindrome(s: str) -> str:
+	def pali_len(left, right):
+			nonlocal res, res_len
+			while left >= 0 and right < n and s[left] == s[right]:
+				if (right - left + 1) > res_len:
+					res = s[left:right + 1]
+					res_len = right - left + 1
+
+				left, right = left - 1, right + 1
+
+	n = len(s)
 	res = ""
-	resLen = 0
+	res_len = 0
 
-	function paliLen(l, r):
-		while l >= 0 and r < len(s) and s[l] == s[r]:
-			if (r - l + 1) > resLen:
-				res = s[l : r + 1]
-				resLen = r - l + 1
-			l, r = l - 1, r + 1
-
-	for i from 0 to (len(s) - 1):
-		# odd length
-		paliLen(i, i)
-
-		# even length
-		paliLen(i, i + 1)
+	for i in range(n):
+		pali_len(i, i)
+		pali_len(i, i + 1)
 
 	return res
 ```
@@ -73,15 +73,15 @@ function LongestPalindrome(s):
 -   **Algorithm**:
 
     1. Initialize two variables `start` and `end` to track the beginning and ending indices of the longest palindrome found.
-    2. Define a helper function `paliLen(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
+    2. Define a helper function `pali_len(l, r)` that expands around the center indices `l` and `r` while the characters on both sides are equal.
     3. Iterate over the string `s`, considering each character as the center of the palindrome.
     4. For each center, expand around it while the characters on both sides are equal.
     5. Update the `start` and `end` indices if a longer palindrome is found.
     6. Return the substring of `s` from `start` to `end + 1`.
 
 ```pseudo
-function longestPalindrome(s):
-	function paliLen(l, r):
+def longest_palindrome(s: str) -> str:
+	def pali_len(l, r):
 		while l >= 0 and r < len(s) and s[l] == s[r]:
 			l, r = l - 1, r + 1
 		return r - l - 1
@@ -89,8 +89,8 @@ function longestPalindrome(s):
 	start = 0
 	end = 0
 	for i from 0 to len(s):
-		len1 = paliLen(i, i)
-		len2 = paliLen(i, i + 1)
+		len1 = pali_len(i, i)
+		len2 = pali_len(i, i + 1)
 		maxLen = max(len1, len2)
 		if maxLen > end - start:
 			start = i - (maxLen - 1) // 2
@@ -115,7 +115,7 @@ function longestPalindrome(s):
     6. Return the substring of `s` from `start` to `end + 1`.
 
 ```pseudo
-function longestPalindrome(s):
+def longest_palindrome(s: str) -> str:
 	n = len(s)
 	dp = 2D array of size n x n filled initialized to false
 	start = 0
