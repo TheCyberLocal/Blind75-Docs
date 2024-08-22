@@ -92,11 +92,11 @@ def longest_palindrome(s: str) -> str:
 	for i in range(len(s)):
 		len1 = pali_len(i, i)
 		len2 = pali_len(i, i + 1)
-		maxLen = max(len1, len2)
+		max_len = max(len1, len2)
 
-		if maxLen > end - start:
-			start = i - (maxLen - 1) // 2
-			end = i + maxLen // 2
+		if max_len > end - start:
+			start = i - (max_len - 1) // 2
+			end = i + max_len // 2
 
 	return s[start:end + 1]
 ```
