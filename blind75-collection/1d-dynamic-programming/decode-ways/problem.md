@@ -87,13 +87,15 @@ def num_decodings(s: str) -> int:
         - Update `p2` and `p1` accordingly.
     3. Return `p1` after the loop.
 
-```pseudo
-function numDecodings(s):
-    n = len(s)
+```python
+def num_decodings(s: str) -> int:
     if s[0] == '0':
         return 0
+
+    n = len(s)
     p1 = p2 = 1
-    for i from 1 to (n - 1):
+
+    for i in range(1, n):
         current = 0
         if s[i] != '0':
             current = p1
@@ -101,5 +103,6 @@ function numDecodings(s):
             current += p2
         p2 = p1
         p1 = current
+
     return p1
 ```
