@@ -45,7 +45,7 @@ Return the number of distinct ways to climb to the top of the staircase.
     3.  Return `p1`, which contains the number of ways to reach the `n`-th step.
 
 ```python
-def climbStairs(n: int) -> int:
+def climb_stairs(n: int) -> int:
     p1 = p2 = 1
     for _ in range(n - 1):
         p1, p2 = p1 + p2, p1
@@ -66,7 +66,7 @@ def climbStairs(n: int) -> int:
     3. Return the result, rounded to the nearest integer.
 
 ```python
-def climbStairs(n: int) -> int:
+def climb_stairs(n: int) -> int:
     def fib(n: int) -> int:
         sqrt_5 = 5 ** 0.5
         phi = (1 + sqrt_5) / 2
