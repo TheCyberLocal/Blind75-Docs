@@ -49,12 +49,14 @@ You may assume that you have an unlimited number of each coin.
     2. For each coin, update the `dp` array such that `dp[x] = min(dp[x], dp[x - coin] + 1)` for all `x` from the coin value to the amount.
     3. Return `dp[amount]` if it is not the initialized large number; otherwise, return `-1`.
 
-```pseudo
-function coinChange(coins, amount):
-    dp = array of size amount + 1 initialized to amount + 1
+```python
+def coin_change(coins: List[int], amount: int) -> int:
+    dp = [amount + 1] * (amount + 1)
     dp[0] = 0
-    for each coin in coins:
-        for x from coin to amount:
+
+    for coin in coins:
+        for x in range(coin, amount + 1):
             dp[x] = min(dp[x], dp[x - coin] + 1)
+
     return dp[amount] if dp[amount] != amount + 1 else -1
 ```
