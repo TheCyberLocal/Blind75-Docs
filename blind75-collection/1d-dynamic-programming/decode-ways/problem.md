@@ -92,10 +92,9 @@ def num_decodings(s: str) -> int:
     if s[0] == '0':
         return 0
 
-    n = len(s)
     p1 = p2 = 1
 
-    for i in range(1, n):
+    for i in range(1, len(s)):
         current = 0
         if s[i] != '0':
             current = p1

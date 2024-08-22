@@ -51,12 +51,10 @@ def rob_houses2(nums: List[int]) -> int:
 
         return p1
 
-    n = len(nums)
-
-    if n == 1:
+    if len(nums) == 1:
         return nums[0]
 
-    case1 = rob_houses(nums[:n - 1])
+    case1 = rob_houses(nums[:-1])
     case2 = rob_houses(nums[1:])
 
     return max(case1, case2)
@@ -64,7 +62,7 @@ def rob_houses2(nums: List[int]) -> int:
 
 ---
 
-### Approach 2: Handling Edge Case for Single House Separately
+### Approach 2: Efficient Edge Case Handling
 
 -   **Time Complexity**: `O(n)`
 -   **Space Complexity**: `O(1)`
@@ -75,16 +73,17 @@ def rob_houses2(nums: List[int]) -> int:
     2. Call `rob_houses` twice: once excluding the last house and once excluding the first house.
     3. Return the maximum of `nums[0]`, `case1`, and `case2`. This ensures that if there is only one house, its value is compared against the two cases.
 
-```pseudo
-function rob_houses2(nums):
-    function rob_houses(nums):
-        p1 = 0
-        p2 = 0
+```python
+def rob_houses2(nums: List[int]) -> int:
+    def rob_houses(nums: List[int]) -> int:
+        p1 = p2 = 0
+
         for num in nums:
             p1, p2 = max(p2 + num, p1), p1
+
         return p1
 
-    case1 = rob_houses(nums[:len(nums)-2])
+    case1 = rob_houses(nums[:-1])
     case2 = rob_houses(nums[1:])
 
     return max(nums[0], case1, case2)
