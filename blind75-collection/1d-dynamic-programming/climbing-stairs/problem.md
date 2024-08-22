@@ -47,8 +47,10 @@ Return the number of distinct ways to climb to the top of the staircase.
 ```python
 def climb_stairs(n: int) -> int:
     p1 = p2 = 1
+
     for _ in range(n - 1):
         p1, p2 = p1 + p2, p1
+
     return p1
 ```
 
@@ -72,5 +74,6 @@ def climb_stairs(n: int) -> int:
         phi = (1 + sqrt_5) / 2
         psi = (1 - sqrt_5) / 2
         return round((phi ** n - psi ** n) / sqrt_5)
+
     return fib(n + 1)
 ```

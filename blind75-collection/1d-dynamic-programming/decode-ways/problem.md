@@ -54,18 +54,21 @@ Given a string `s` containing only digits, return the number of ways to decode i
         - If `s[i - 2:i]` is a valid two-digit number, add `dp[i - 2]` to `dp[i]`.
     5. Return `dp[n]`.
 
-```pseudo
-function numDecodings(s):
-    n = len(s)
+```python
+def num_decodings(s: str) -> int:
     if s[0] == '0':
         return 0
-    dp = array of size n + 1 initialized to 0
+
+    n = len(s)
+    dp = [0] * (n + 1)
     dp[0] = dp[1] = 1
-    for i from 2 to n:
+
+    for i in range(2, n + 1):
         if s[i - 1] != '0':
             dp[i] += dp[i - 1]
         if 10 <= int(s[i - 2:i]) <= 26:
             dp[i] += dp[i - 2]
+
     return dp[n]
 ```
 
