@@ -65,20 +65,25 @@ def length_of_LIS(nums: List[int]) -> int:
     3. If such an element exists, replace it with `num`; otherwise, append `num` to `tails`.
     4. The length of `tails` is the length of the longest increasing subsequence.
 
-```pseudo
-function length_of_LIS(nums):
+```python
+def length_of_LIS(nums: List[int]) -> int:
 	tails = []
+
 	for num in nums:
-		l, r = 0, len(tails)
-		while l < r:
-			mid = (l + r) // 2
+		left, right = 0, len(tails)
+
+		while left < right:
+			mid = (left + right) // 2
+
 			if tails[mid] < num:
-				l = mid + 1
+				left = mid + 1
 			else:
-				r = mid
-		if r >= len(tails):
+				right = mid
+
+		if right >= len(tails):
 			tails.append(num)
 		else:
-			tails[r] = num
+			tails[right] = num
+
 	return len(tails)
 ```
