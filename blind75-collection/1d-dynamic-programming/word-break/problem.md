@@ -60,36 +60,3 @@ def word_break(s: str, word_dict: List[str]) -> bool:
 
     return dp[n]
 ```
-
----
-
-### Approach 2: Dynamic Programming (Reversed Iteration)
-
--   **Time Complexity**: `O(n * m)` where `n` is `len(s)` and `m` is the total number of characters in `word_dict`.
--   **Space Complexity**: `O(n)` where `n` is `len(s)`.
--   **Description**: This approach uses dynamic programming to solve the problem by iterating through the string `s` in reverse order. The `dp` array keeps track of whether the substring starting from a given index `i` to the end of the string can be segmented into words from the dictionary. Starting from the end of the string (`dp[len(s)]`), which is initialized to `True`, the algorithm checks each word in the dictionary to see if it matches the substring starting at `i`. If a match is found and the remaining substring (from the end of the matched word onward) can be segmented (`dp[i + len(word)]` is `True`), then `dp[i]` is set to `True`. The process continues until the start of the string, and the result is `dp[0]`, which indicates whether the entire string can be segmented.
--   **Algorithm**:
-
-    1. Initialize a boolean array `dp` of size `len(s) + 1` to `False`, and set `dp[len(s)] = True`.
-    2. Iterate over the string `s` from the second last index to `0`.
-    3. For each index `i`, check each word in `word_dict`:
-        - If the substring `s[i:i + len(word)]` matches the word and `i + len(word) <= len(s)`, set `dp[i] = dp[i + len(word)]`.
-        - If `dp[i]` is `True`, break the inner loop as no further checks are needed.
-    4. Return `dp[0]` as the final result, indicating whether the entire string can be segmented into words from `word_dict`.
-
-```python
-def word_break(s: str, word_dict: List[str]) -> bool:
-    n = len(s)
-    dp = [False] * (n + 1)
-    dp[n] = True
-
-    for i in range(n - 1, -1, -1):
-        for w in wordDict:
-            w_len = len(w)
-            if (i + w_len) <= n and s[i : i + w_len] == w:
-                dp[i] = dp[i + word_len]
-            if dp[i]:
-                break
-
-    return dp[0]
-```
