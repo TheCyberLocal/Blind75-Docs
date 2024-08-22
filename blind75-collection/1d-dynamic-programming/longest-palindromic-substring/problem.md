@@ -97,37 +97,3 @@ def longest_palindrome(s: str) -> str:
 			end = i + maxLen // 2
 	return s[start:end + 1]
 ```
-
----
-
-### Approach 3: Dynamic Programming
-
--   **Time Complexity**: `O(n^2)`
--   **Space Complexity**: `O(n^2)`
--   **Description**: This approach uses dynamic programming to check whether a substring is a palindrome. The idea is to use a 2D table `dp` where `dp[i][j]` is `true` if the substring `s[i:j + 1]` is a palindrome. The result is then the longest palindromic substring found in the table.
--   **Algorithm**:
-
-    1. Initialize a 2D array `dp` of size `n x n` where `n` is the length of the string `s`.
-    2. Set `dp[i][i]` to `true` since every single character is a palindrome.
-    3. Check for two consecutive characters and update `dp[i][i + 1]` if they are the same.
-    4. Iterate over substrings of length greater than 2, updating `dp[i][j]` if `dp[i + 1][j - 1]` is `true` and `s[i] == s[j]`.
-    5. Track the start and end indices of the longest palindrome found during the iterations.
-    6. Return the substring of `s` from `start` to `end + 1`.
-
-```pseudo
-def longest_palindrome(s: str) -> str:
-	n = len(s)
-	dp = 2D array of size n x n filled initialized to false
-	start = 0
-	end = 0
-	for i from 0 to n:
-		dp[i][i] = true
-	for length from 2 to n:
-		for i from 0 to n - length + 1:
-			j = i + length - 1
-			if s[i] == s[j] and (length == 2 or dp[i + 1][j - 1]):
-				dp[i][j] = true
-				if length > end - start + 1:
-					start = i, end = j
-	return s[start:end + 1]
-```
