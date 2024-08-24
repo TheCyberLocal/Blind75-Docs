@@ -45,13 +45,13 @@ A common subsequence of two strings is a subsequence that exists in both strings
     3. For each pair of characters `text1[i - 1]` and `text2[j - 1]`, if they are equal, set `dp[i][j] = dp[i - 1][j - 1] + 1`. Otherwise, set `dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])`.
     4. The value at `dp[m][n]` will contain the length of the longest common subsequence.
 
-```pseudo
-function longestCommonSubsequence(text1, text2):
+```python
+def longest_common_subsequence(text1: str, text2: str) -> int:
     m, n = len(text1), len(text2)
-    dp = 2D array of size (m + 1) x (n + 1) initialized to 0
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-    for i from 1 to m:
-        for j from 1 to n:
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
             if text1[i - 1] == text2[j - 1]:
                 dp[i][j] = dp[i - 1][j - 1] + 1
             else:
@@ -72,17 +72,17 @@ function longestCommonSubsequence(text1, text2):
     3. For each pair of characters `text1[i]` and `text2[j]`, if they are equal, set `dp[i][j] = 1 + dp[i + 1][j + 1]`. Otherwise, set `dp[i][j] = max(dp[i + 1][j], dp[i][j + 1])`.
     4. The value at `dp[0][0]` will contain the length of the longest common subsequence.
 
-```pseudo
-function longestCommonSubsequence(text1, text2):
+```python
+def longest_common_subsequence(text1: str, text2: str) -> int:
     m, n = len(text1), len(text2)
-    dp = 2D array of size (m + 1) x (n + 1) initialized to 0
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-    for i from m - 1 to 0:
-            for j from n - 1 to 0:
-                if text1[i] == text2[j]:
-                    dp[i][j] = 1 + dp[i + 1][j + 1]
-                else:
-                    dp[i][j] = max(dp[i][j + 1], dp[i + 1][j])
+    for i in range(m - 1, -1, -1):
+        for j in range(n - 1, -1, -1):
+            if text1[i] == text2[j]:
+                dp[i][j] = 1 + dp[i + 1][j + 1]
+            else:
+                dp[i][j] = max(dp[i][j + 1], dp[i + 1][j])
 
-        return dp[0][0]
+    return dp[0][0]
 ```
