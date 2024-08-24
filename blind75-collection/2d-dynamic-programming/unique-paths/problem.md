@@ -70,7 +70,7 @@ def unique_paths(m: int, n: int) -> int:
     3. Return the result of the above calculation.
 
 ```python
-def unique_paths(m, n):
+def unique_paths(m: int, n: int) -> int:
     def factorial(x):
         if x == 0 or x == 1:
             return 1
