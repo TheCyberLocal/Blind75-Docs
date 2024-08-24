@@ -46,8 +46,10 @@ def uniquePaths(m: int, n: int) -> int:
 
     for i in range(m - 1):
         newRow = [1] * n
+
         for j in range(1, n):
             newRow[j] = newRow[j - 1] + row[j]
+
         row = newRow
 
     return row[n - 1]
