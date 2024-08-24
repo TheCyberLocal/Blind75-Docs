@@ -34,19 +34,19 @@ You may assume the output will fit in a 32-bit integer.
 -   **Algorithm**:
 
     1. Initialize an array `row` of size `n` with all elements set to `1`. This represents the number of unique paths to each cell in the first row.
-    2. Iterate through each row from `1` to `m - 1`:
+    2. Iterate through each row from `0` to `m - 2`:
         1. Create a new array `newRow` of size `n`, initialized to `1`.
         2. For each column `j` from `1` to `n - 1` update `newRow[j]` to be the sum of `newRow[j - 1]` and `row[j]`.
         3. Replace `row` with `newRow`.
     3. Return `row[n - 1]`, which contains the number of unique paths to the bottom-right corner of the grid.
 
-```pseudo
-function uniquePaths(m, n):
-    row = array of size n initialized to 1
+```python
+def uniquePaths(m: int, n: int) -> int:
+    row = [1] * n
 
-    for i from 0 to m - 1:
-        newRow = array of size n initialized to 1
-        for j from 1 to n - 1:
+    for i in range(m - 1):
+        newRow = [1] * n
+        for j in range(1, n):
             newRow[j] = newRow[j - 1] + row[j]
         row = newRow
 
@@ -67,9 +67,9 @@ function uniquePaths(m, n):
        $$\binom{n}{k} = \frac{n!}{k!(n - k)!}$$
     3. Return the result of the above calculation.
 
-```pseudo
-function uniquePaths(m, n):
-    function factorial(x):
+```python
+def uniquePaths(m, n):
+    def factorial(x):
         if x == 0 or x == 1:
             return 1
         else:
