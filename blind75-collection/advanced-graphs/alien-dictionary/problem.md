@@ -47,44 +47,53 @@ A string `a` is lexicographically smaller than a string `b` if either of the fol
 -   **Description**: We treat each character as a node in a directed graph, where an edge from node `u` to node `v` means that character `u` comes before character `v`. We construct this graph by comparing adjacent words in the list. After constructing the graph, we perform a topological sort to determine a valid order of characters.
 -   **Algorithm**:
 
-    1. Initialize an empty adjacency list `graph` and a dictionary `inDegree` to store the in-degree of each character.
+    1. Initialize an empty adjacency list `graph` and a dictionary `in_degree` to store the in-degree of each character.
     2. For each pair of adjacent words `w1` and `w2`:
         - Compare the characters `c1` and `c2` at each position.
-        - If `c1 != c2`, add an edge from `c1` to `c2` in `graph` and increment `inDegree[c2]` by 1.
+        - If `c1 != c2`, add an edge from `c1` to `c2` in `graph` and increment `in_degree[c2]` by 1.
         - Break the loop after finding the first different character.
     3. Initialize a queue with all characters that have an in-degree of `0`.
     4. Process the queue:
         - Pop a character from the queue, append it to `order`.
         - Decrease the in-degree of each neighbor. If a neighbor's in-degree becomes `0`, add it to the queue.
-    5. Return `order` if it contains all unique characters; otherwise, return an empty string.
+    5. Return `order` joined as a string if it contains all unique characters; otherwise, return an empty string.
 
-```pseudo
-function alienOrder(words):
-    graph = {}  # adjacency list
-    inDegree = {char: 0 for char in all unique characters in words}
+```python
+def alien_order(words: List[str]) -> str:
+    graph = {}
+    in_degree = {char: 0 for word in words for char in word}
 
-    for i from 0 to len(words) - 1:
+    for i in range(len(words) - 1):
         w1, w2 = words[i], words[i + 1]
-        for j from 0 to min(len(w1), len(w2)):
+        min_length = min(len(w1), len(w2))
+        for j in range(min_length):
             c1, c2 = w1[j], w2[j]
             if c1 != c2:
+                if c2 not in graph:
+                    graph[c2] = []
+                if c1 not in graph:
+                    graph[c1] = []
                 if c2 not in graph[c1]:
                     graph[c1].append(c2)
-                    inDegree[c2] += 1
+                    in_degree[c2] += 1
                 break
+        else:
+            if len(w1) > len(w2):
+                return ""
 
-    queue = [char for char in inDegree if inDegree[char] == 0]
-    order = ""
+    queue = [char for char in in_degree if in_degree[char] == 0]
+    order = []
 
     while queue:
         char = queue.pop(0)
-        order += char
-        for neighbor in (graph[char] if char in graph else []):
-            inDegree[neighbor] -= 1
-            if inDegree[neighbor] == 0:
-                queue.append(neighbor)
+        order.append(char)
+        if char in graph:
+            for neighbor in graph[char]:
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
 
-    return order if len(order) == len(inDegree) else ""
+    return "".join(order) if len(order) == len(in_degree) else ""
 ```
 
 ---
@@ -114,8 +123,8 @@ function alienOrder(words):
     5. Perform DFS on each character in the adjacency list. If a cycle is detected, return an empty string.
     6. Reverse the result list, as characters are added in reverse order during DFS, and return the joined string.
 
-```pseudo
-function alienOrder(words):
+```python
+def alien_order(words: List[str]) -> str:
     # Initialize the adjacency list
     adj = {char: set() for word in words for char in word}
 
@@ -135,14 +144,14 @@ function alienOrder(words):
     res = []
 
     # Depth-first search function
-    function dfs(char):
+    def dfs(char):
         if char in visited:
             return visited[char]
 
         visited[char] = true
 
-        for neighChar in adj[char]:
-            if dfs(neighChar):
+        for neigh_char in adj[char]:
+            if dfs(neigh_char):
                 return true
 
         visited[char] = false
