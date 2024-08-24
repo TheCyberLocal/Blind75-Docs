@@ -66,8 +66,10 @@ def alien_order(words: List[str]) -> str:
     for i in range(len(words) - 1):
         w1, w2 = words[i], words[i + 1]
         min_length = min(len(w1), len(w2))
+
         for j in range(min_length):
             c1, c2 = w1[j], w2[j]
+
             if c1 != c2:
                 if c2 not in graph:
                     graph[c2] = []
@@ -87,9 +89,11 @@ def alien_order(words: List[str]) -> str:
     while queue:
         char = queue.pop(0)
         order.append(char)
+
         if char in graph:
             for neighbor in graph[char]:
                 in_degree[neighbor] -= 1
+
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
 
@@ -130,8 +134,10 @@ def alien_order(words: List[str]) -> str:
     for i in range(len(words) - 1):
         w1, w2 = words[i], words[i + 1]
         minLen = min(len(w1), len(w2))
+
         if len(w1) > len(w2) and w1[:minLen] == w2[:minLen]:
             return ""
+
         for j in range(minLen):
             if w1[j] != w2[j]:
                 adj[w1[j]].add(w2[j])
