@@ -125,39 +125,34 @@ def alien_order(words: List[str]) -> str:
 
 ```python
 def alien_order(words: List[str]) -> str:
-    # Initialize the adjacency list
     adj = {char: set() for word in words for char in word}
 
-    # Build the graph
-    for i from 0 to len(words) - 1:
+    for i in range(len(words) - 1):
         w1, w2 = words[i], words[i + 1]
         minLen = min(len(w1), len(w2))
         if len(w1) > len(w2) and w1[:minLen] == w2[:minLen]:
             return ""
-        for j from 0 to minLen:
+        for j in range(minLen):
             if w1[j] != w2[j]:
                 adj[w1[j]].add(w2[j])
                 break
 
-    # Initialize visited dictionary and result list
-    visited = {}  # {char: bool} false visited, true current path
+    visited = {}
     res = []
 
-    # Depth-first search function
     def dfs(char):
         if char in visited:
             return visited[char]
 
-        visited[char] = true
+        visited[char] = True
 
-        for neigh_char in adj[char]:
-            if dfs(neigh_char):
-                return true
+        for neighChar in adj[char]:
+            if dfs(neighChar):
+                return True
 
-        visited[char] = false
+        visited[char] = False
         res.append(char)
 
-    # Perform DFS for each character in the adjacency list
     for char in adj:
         if dfs(char):
             return ""
