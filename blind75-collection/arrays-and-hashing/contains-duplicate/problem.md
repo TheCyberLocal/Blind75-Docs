@@ -37,7 +37,7 @@ Given an integer array `nums`, return `true` if any value appears more than once
     3. If no duplicates are found by the end of the loop, return `false`.
 
 ```python
-def contains_duplicate(nums):
+def contains_duplicate(nums: List[int]) -> bool:
     seen = set()
     for num in nums:
         if num in seen:
@@ -61,10 +61,10 @@ def contains_duplicate(nums):
     3. If no duplicates are found, return `false`.
 
 ```python
-def contains_duplicate(nums):
+def contains_duplicate(nums: List[int]) -> bool:
     nums.sort() # In-place sort
-    for i from 0 to len(nums) - 1:
+    for i in range(len(nums) - 1):
         if nums[i] == nums[i + 1]:
-            return true
-    return false
+            return True
+    return False
 ```
