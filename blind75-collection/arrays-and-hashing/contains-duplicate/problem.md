@@ -36,8 +36,8 @@ Given an integer array `nums`, return `true` if any value appears more than once
         - Otherwise, add `num` to `seen`.
     3. If no duplicates are found by the end of the loop, return `false`.
 
-```pseudo
-function containsDuplicate(nums):
+```python
+def contains_duplicate(nums):
     seen = set()
     for num in nums:
         if num in seen:
@@ -60,8 +60,8 @@ function containsDuplicate(nums):
         - If `nums[i] == nums[i + 1]`, return `true`.
     3. If no duplicates are found, return `false`.
 
-```pseudo
-function containsDuplicate(nums):
+```python
+def contains_duplicate(nums):
     nums.sort() # In-place sort
     for i from 0 to len(nums) - 1:
         if nums[i] == nums[i + 1]:
