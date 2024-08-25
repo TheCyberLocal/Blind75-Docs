@@ -4,17 +4,17 @@
 
 ## Textbook Problem
 
-Given an integer array `nums`, return `true` if any value appears more than once in the array, otherwise return `false`.
+Given an integer array `nums`, return `True` if any value appears more than once in the array, otherwise return `False`.
 
 **Example 1:**
 
 -   **Input**: `nums = [1, 2, 3, 3]`
--   **Output**: `true`
+-   **Output**: `True`
 
 **Example 2:**
 
 -   **Input**: `nums = [1, 2, 3, 4]`
--   **Output**: `false`
+-   **Output**: `False`
 
 ### Constraints
 
@@ -27,14 +27,14 @@ Given an integer array `nums`, return `true` if any value appears more than once
 
 -   **Time Complexity**: `O(n)` where `n` is the number of elements in the array.
 -   **Space Complexity**: `O(n)` due to the space required for the hash set.
--   **Description**: Iterate through the array while storing each element in a hash set. If an element is already present in the set, return `true`. If the loop completes without finding a duplicate, return `false`.
+-   **Description**: Iterate through the array while storing each element in a hash set. If an element is already present in the set, return `True`. If the loop completes without finding a duplicate, return `False`.
 -   **Algorithm**:
 
     1. Initialize an empty hash set `seen`.
     2. Iterate over each element `num` in `nums`:
-        - If `num` is already in `seen`, return `true`.
+        - If `num` is already in `seen`, return `True`.
         - Otherwise, add `num` to `seen`.
-    3. If no duplicates are found by the end of the loop, return `false`.
+    3. If no duplicates are found by the end of the loop, return `False`.
 
 ```python
 def contains_duplicate(nums: List[int]) -> bool:
@@ -52,13 +52,13 @@ def contains_duplicate(nums: List[int]) -> bool:
 
 -   **Time Complexity**: `O(n log n)` due to the sorting step.
 -   **Space Complexity**: `O(1)` if sorting in place, otherwise `O(n)` if using extra space for the sorted array.
--   **Description**: Sort the array, then check each adjacent pair of elements. If any adjacent elements are equal, return `true`. If the loop completes without finding a duplicate, return `false`.
+-   **Description**: Sort the array, then check each adjacent pair of elements. If any adjacent elements are equal, return `True`. If the loop completes without finding a duplicate, return `False`.
 -   **Algorithm**:
 
     1. Sort the array `nums`.
     2. Iterate through the array from index `0` to `len(nums) - 1`:
-        - If `nums[i] == nums[i + 1]`, return `true`.
-    3. If no duplicates are found, return `false`.
+        - If `nums[i] == nums[i + 1]`, return `True`.
+    3. If no duplicates are found, return `False`.
 
 ```python
 def contains_duplicate(nums: List[int]) -> bool:
