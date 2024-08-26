@@ -83,3 +83,16 @@ def valid_anagram(s: str, t: str) -> bool:
 
     return count_s == count_t
 ```
+
+---
+
+### Pro Solution
+
+While this does work, it likely won't be accepted in an interview. 😅 But feel free to use it elsewhere and to impress others. 😎
+
+It is essentially the equivalent of Approach 2, but it utilizes Python's built-in `collections.Counter` class to remove the boilerplate code.
+
+```python
+def valid_anagram(s: str, t: str) -> bool:
+    return Counter(s) == Counter(t)
+```
