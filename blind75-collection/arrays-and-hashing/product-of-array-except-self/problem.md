@@ -63,30 +63,32 @@ def product_except_self(nums: List[int]) -> List[int]:
 
 -   **Time Complexity**: `O(n)` where `n` is the length of `nums`.
 -   **Space Complexity**: `O(1)` excluding the output array.
--   **Description**: This approach minimizes space complexity by using the `product` array to store the result directly. First, it fills the `product` array with the left products as it traverses from left to right. Then, it multiplies these values by the right products during a right-to-left traversal. This ensures that each element in `product[i]` contains the product of all elements in the array except `nums[i]`, without requiring additional arrays for left and right products.
-
+-   **Description**: This approach minimizes space complexity by directly storing the result in the `output` array. It first calculates the left products by traversing the array from left to right and stores them in `output`. Then, a right-to-left traversal updates the values in `output` by multiplying them with the right products. This ensures that each element in `output[i]` is the product of all elements in the array except `nums[i]`, without needing additional arrays to store intermediate results.
 -   **Algorithm**:
 
-    1. Initialize an array `product` of size `n` with all elements set to `1`.
-    2. Traverse the array from left to right:
-        - For each index `i` from `1` to `n - 1`, update `product[i]` to be the product of `product[i - 1]` and `nums[i - 1]`.
-    3. Initialize a variable `product` to `1`.
-    4. Traverse the array from right to left:
-        - For each index `i` from `n - 1` to `0`, update `product[i]` by multiplying it with `product`, then update `product` by multiplying it with `nums[i]`.
-    5. Return the `product` array.
+    1. Initialize an array `output` of size `n` with all elements set to `1`.
+    2. Initialize a variable `left_product` to `1`.
+    3. Traverse the array from left to right:
+        - For each index `i` from `0` to `n - 1`, set `output[i]` to `left_product` and then update `left_product` by multiplying it with `nums[i]`.
+    4. Initialize a variable `right_product` to `1`.
+    5. Traverse the array from right to left:
+        - For each index `i` from `n - 1` to `0`, multiply `output[i]` by `right_product` and then update `right_product` by multiplying it with `nums[i]`.
+    6. Return the `output` array.
 
 ```python
 def product_except_self(nums: List[int]) -> List[int]:
     n = len(nums)
-    product = [1] * n
+    output = [1] * n
 
-    for i from 1 to n - 1:
-        product[i] = product[i - 1] * nums[i - 1]
+    left_product = 1
+    for i in range(n):
+        output[i] = left_product
+        left_product *= nums[i]
 
-    product = 1
-    for i from n - 1 to 0:
-        product[i] *= product
-        product *= nums[i]
+    right_product = 1
+    for i in range(n-1, -1, -1):
+        output[i] *= right_product
+        right_product *= nums[i]
 
-    return product
+    return output
 ```
