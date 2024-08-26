@@ -48,9 +48,11 @@ An anagram is a string that contains the exact same characters as another string
 ```python
 def group_anagrams(strs: List[str]) -> List[List[str]]:
     anagram_map = defaultdict(list)
+
     for s in strs:
         key = sorted(s)
         anagram_map[tuple(key)].append(s)
+
     return list(anagram_map.values())
 ```
 
@@ -74,11 +76,15 @@ def group_anagrams(strs: List[str]) -> List[List[str]]:
 ```python
 def group_anagrams(strs: List[str]) -> List[List[str]]:
     anagram_map = defaultdict(list)
+
     for s in strs:
         count = [0] * 26
+
         for char in s:
             count[ord(char) - ord('a')] += 1
+
         key = tuple(count)
         anagram_map[key].append(s)
+
     return list(anagram_map.values())
 ```
