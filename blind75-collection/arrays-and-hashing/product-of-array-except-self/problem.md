@@ -38,20 +38,20 @@ Each product is guaranteed to fit in a 32-bit integer.
     4. For each index `i`, compute `product[i]` as the product of `left[i]` and `right[i]`.
     5. Return the `product` array.
 
-```pseudo
-function productExceptSelf(nums):
+```python
+def product_except_self(nums: List[int]) -> List[int]:
     n = len(nums)
-    left = array of size n initialized to 1
-    right = array of size n initialized to 1
-    product = array of size n initialized to 1
+    left = [1] * n
+    right = [1] * n
+    output = [1] * n
 
-    for i from i to n - 1:
+    for i in range(1, n):
         left[i] = left[i - 1] * nums[i - 1]
 
-    for i from n - 2 to 0:
+    for i in range(n - 2, -1, -1):
         right[i] = right[i + 1] * nums[i + 1]
 
-    for i from 0 to n - 1:
+    for i in range(n):
         product[i] = left[i] * right[i]
 
     return product
@@ -75,10 +75,10 @@ function productExceptSelf(nums):
         - For each index `i` from `n - 1` to `0`, update `product[i]` by multiplying it with `product`, then update `product` by multiplying it with `nums[i]`.
     5. Return the `product` array.
 
-```pseudo
-function productExceptSelf(nums):
+```python
+def product_except_self(nums: List[int]) -> List[int]:
     n = len(nums)
-    product = array of size n initialized to 1
+    product = [1] * n
 
     for i from 1 to n - 1:
         product[i] = product[i - 1] * nums[i - 1]
