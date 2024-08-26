@@ -47,21 +47,24 @@ Return the answer with the smaller index first.
 -   **Description**: We traverse the array and use a hash map to store the difference between the `target` and each element (`target - nums[i]`) along with the corresponding index. As we continue traversing, if we find an element that is in the hash map, it means we've found the two numbers that sum to the target.
 -   **Algorithm**:
 
-    1. Initialize an empty hash map `compMap`.
+    1. Initialize an empty hash map `comp_map`.
     2. Iterate through the array `nums` with index `i`:
         - Calculate the complement `comp = target - nums[i]`.
-        - If `comp` is in `compMap`, return `[compMap[comp], i]`.
-        - Otherwise, store the index of `nums[i]` in `compMap`.
+        - If `comp` is in `comp_map`, return `[comp_map[comp], i]`.
+        - Otherwise, store the index of `nums[i]` in `comp_map`.
     3. The function will return the pair `[i, j]` as soon as it finds the correct indices.
 
-```pseudo
-function twoSum(nums, target):
-    compMap = {}
-    for i from 0 to len(nums) - 1:
+```python
+def two_sum(nums: List[int], target: int) -> List[int]:
+    comp_map = {}
+
+    for i in range(len(nums)):
         comp = target - nums[i]
-        if comp in compMap:
-            return [compMap[comp], i]
-        compMap[nums[i]] = i
+
+        if comp in comp_map:
+            return [comp_map[comp], i]
+
+        comp_map[nums[i]] = i
 ```
 
 ---
@@ -78,10 +81,10 @@ function twoSum(nums, target):
     3. If the sum of `nums[i]` and `nums[j]` equals the `target`, return the indices `[i, j]`.
     4. Since the problem guarantees that there is exactly one solution, the function will return as soon as the correct pair is found.
 
-```pseudo
-function twoSum(nums, target):
-    for i from 0 to len(nums) - 2:
-        for j from i + 1 to len(nums) - 1:
+```python
+def two_sum(nums: List[int], target: int) -> List[int]:
+    for i in range(0, len(nums) - 1):
+        for j in range(i + 1, len(nums)):
             if nums[i] + nums[j] == target:
                 return [i, j]
 ```
