@@ -35,25 +35,28 @@ You must write an algorithm that runs in `O(n)` time.
 -   **Description**: This approach utilizes a hash set to allow `O(1)` lookups, which helps efficiently identify the start of each sequence. By iterating through the set and determining the length of each sequence that begins with a number, the algorithm finds the longest consecutive sequence in linear time.
 -   **Algorithm**:
 
-    1. Convert the array `nums` into a set `numSet` for `O(1)` lookups.
+    1. Convert the array `nums` into a set `num_set` for `O(1)` lookups.
     2. Initialize `longest` to 0.
-    3. Iterate through each number `num` in `numSet`:
-        - If `num - 1` is not in `numSet`, it indicates the start of a new sequence.
+    3. Iterate through each number `num` in `num_set`:
+        - If `num - 1` is not in `num_set`, it indicates the start of a new sequence.
         - Set `length` to 1.
-        - While `num + length` exists in `numSet`, increment `length`.
+        - While `num + length` exists in `num_set`, increment `length`.
         - Update `longest` with the maximum of `length` and `longest`.
     4. Return `longest` as the length of the longest consecutive sequence.
 
-```pseudo
-function longestConsecutive(nums):
-    numSet = set(nums)
+```python
+def longest_consecutive(nums: List[int]) -> int:
+    num_set = set(nums)
     longest = 0
 
-    for num in numSet:
-        if num - 1 not in numSet:
+    for num in num_set:
+        if num - 1 not in num_set:
             length = 1
-            while (num + length) in numSet:
+
+            while (num + length) in num_set:
                 length += 1
+
             longest = max(length, longest)
+
     return longest
 ```
