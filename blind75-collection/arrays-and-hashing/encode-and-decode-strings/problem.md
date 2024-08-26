@@ -46,23 +46,28 @@ Implement both `encode` and `decode` methods.
     3. Extract the string based on the length, append it to `strs`, and continue until the entire string is decoded.
     4. Return `strs`.
 
-```pseudo
-function encode(strs):
+```python
+def encode(strs: List[str]) -> str:
     cipher = ""
+
     for s in strs:
         cipher += str(len(s)) + "#" + s
+
     return cipher
 
-function decode(cipher):
+def decode(cipher: str) -> List[str]:
     strs = []
     i = 0
 
     while i < len(cipher):
         j = i
+
         while cipher[j] != "#":
             j += 1
+
         length = int(cipher[i:j])
         strs.append(cipher[j + 1:j + 1 + length])
         i = j + 1 + length
+
     return strs
 ```
