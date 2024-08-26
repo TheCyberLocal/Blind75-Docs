@@ -39,10 +39,13 @@ Given an integer array `nums`, return `True` if any value appears more than once
 ```python
 def contains_duplicate(nums: List[int]) -> bool:
     seen = set()
+
     for num in nums:
         if num in seen:
             return True
+
         seen.add(num)
+
     return False
 ```
 
@@ -63,8 +66,10 @@ def contains_duplicate(nums: List[int]) -> bool:
 ```python
 def contains_duplicate(nums: List[int]) -> bool:
     nums.sort() # In-place sort
+
     for i in range(len(nums) - 1):
         if nums[i] == nums[i + 1]:
             return True
+
     return False
 ```
