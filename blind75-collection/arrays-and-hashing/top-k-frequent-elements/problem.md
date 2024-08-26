@@ -45,23 +45,22 @@ You may return the output in any order.
     4. Iterate through the `buckets` array from the highest frequency to the lowest, collecting elements until `k` elements are collected.
     5. Return the collected elements as the result.
 
-```pseudo
-function topKFrequent(nums, k):
-    count = {}
-    for num in nums:
-        if count[num]:
-            count[num] += 1
-        else:
-            count[num] = 1
+```python
+def top_k_frequent(nums: List[int], k: int) -> List[int]:
+    count = defaultdict(int)
 
-    buckets = array of size len(nums) initialized to []
+    for num in nums:
+        count[num] += 1
+
+    buckets = [[] for _ in range(len(nums) + 1)]
     for num, freq in count.items():
         buckets[freq].append(num)
 
     result = []
-    for i len(buckets) - 1 to 0:
-        for num in buckets[i - 1]:
+    for i in range(len(buckets) - 1, 0, -1):
+        for num in buckets[i]:
             result.append(num)
+
             if len(result) == k:
                 return result
 ```
