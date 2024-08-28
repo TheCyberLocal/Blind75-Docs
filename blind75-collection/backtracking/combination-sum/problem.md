@@ -52,7 +52,7 @@ You may return the combinations in any order, and the order of the numbers in ea
     4. The result will be in `dp[target]`, containing all combinations that sum to `target`.
 
 ```python
-def comb_sum(nums, target):
+def comb_sum(nums: List[int], target: int) -> List[List[int]]:
     dp = [[] for _ in range(target + 1)]
     dp[0].append([])
 
