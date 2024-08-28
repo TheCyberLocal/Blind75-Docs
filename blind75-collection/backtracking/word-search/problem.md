@@ -60,7 +60,7 @@ For the word to be present, it must be possible to form it with a path in the `b
     6.  Return `True` if any path forms the word; otherwise, return `False`.
 
 ```python
-def exist(board, word):
+def exist(board: List[List[str]], word: str) -> bool:
 	def backtrack(row, col, idx):
 		if idx == len(word):
 			return True
@@ -116,7 +116,7 @@ def exist(board, word):
     4. Return `True` if any path forms the word; otherwise, return `False`.
 
 ```python
-def exist(board, word):
+def exist(board: List[List[str]], word: str) -> bool:
 	rows, cols = len(board), len(board[0])
 	memo = [[[None for _ in range(len(word))] for _ in range(cols)] for _ in range(rows)]
 	visited = 0
