@@ -37,46 +37,7 @@ You may return the combinations in any order, and the order of the numbers in ea
 
 ---
 
-### Approach 1: Recursive Backtracking
-
--   **Time Complexity**: `O(2^(target / min(n)))` where `n` is the length of `nums` and `target` is the target sum.
--   **Space Complexity**: `O(target / min(n))` for the recursion stack.
--   **Description**: Recursively explore all possible combinations of `nums` that sum to `target` by either including or excluding each element. Track the current combination and sum, backtracking when necessary.
--   **Algorithm**:
-
-    1. Initialize an empty list `res` to store results.
-    2. Define a recursive function `dfs(remain, comb, start)`:
-        - If `remain` is `0`, add a copy of `comb` to `res`.
-        - If `remain` is less than `0`, return.
-        - Iterate over the elements in `nums` starting from index `start`:
-            - Append `nums[i]` to `comb`.
-            - Recur with `remain - nums[i]`, the updated `comb`, and the current index `i`.
-            - Backtrack by removing the last element added to `comb`.
-    3. Start the recursion with `dfs(target, [], 0)`.
-    4. Return `res`.
-
-```pseudo
-function combSum(nums, target):
-    res = []
-
-    function dfs(remain, comb, start):
-        if remain == 0:
-            res.append(list(comb))
-            return
-        if remain < 0:
-            return
-        for i from start to len(nums) - 1:
-            comb.append(nums[i])
-            dfs(remain - nums[i], comb, i)
-            comb.pop()
-
-    dfs(target, [], 0)
-    return res
-```
-
----
-
-### Approach 2: Optimized with Dynamic Programming
+### Approach 1: Optimized with Dynamic Programming
 
 -   **Time Complexity**: `O(n * target)` where `n` is the length of `nums` and `target` is the target sum.
 -   **Space Complexity**: `O(n * target)` for the memoization table.
@@ -90,13 +51,13 @@ function combSum(nums, target):
             - For each combination `comb` in `dp[i - num]`, append `comb + [num]` to `dp[i]`.
     4. The result will be in `dp[target]`, containing all combinations that sum to `target`.
 
-```pseudo
-function combSum(nums, target):
-    dp = array of size target + 1 initialized to []
+```python
+def comb_sum(nums, target):
+    dp = [[] for _ in range(target + 1)]
     dp[0].append([])
 
     for num in nums:
-        for i from num to target:
+        for i in range(num, target + 1):
             for comb in dp[i - num]:
                 dp[i].append(comb + [num])
 
