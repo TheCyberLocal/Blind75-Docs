@@ -4,7 +4,7 @@
 
 ## Textbook Problem
 
-Given a 2-D grid of characters `board` and a string `word`, return `true` if the word is present in the grid; otherwise, return `false`.
+Given a 2-D grid of characters `board` and a string `word`, return `True` if the word is present in the grid; otherwise, return `False`.
 
 For the word to be present, it must be possible to form it with a path in the `board` using horizontally or vertically neighboring cells. The same cell may not be used more than once in a word.
 
@@ -19,7 +19,7 @@ For the word to be present, it must be possible to form it with a path in the `b
     ],
     word = "CAT"
     ```
--   **Output**: `true`
+-   **Output**: `True`
 -   **Explanation**: Indicies `[0][2]`, `[1][2]`, and `[1][3]` form the word `CAT`.
 
 **Example 2:**
@@ -33,7 +33,7 @@ For the word to be present, it must be possible to form it with a path in the `b
     ],
     word = "BAT"
     ```
--   **Output**: `false`
+-   **Output**: `False`
 
 ### Constraints
 
@@ -51,35 +51,45 @@ For the word to be present, it must be possible to form it with a path in the `b
 -   **Algorithm**:
 
     1.  Define a helper function `backtrack(row, col, idx)` that:
-        -   Returns `true` if all characters in `word` have been matched.
-        -   Returns `false` if the current position is out of bounds, or the current character does not match `word[idx]`.
+        -   Returns `True` if all characters in `word` have been matched.
+        -   Returns `False` if the current position is out of bounds, or the current character does not match `word[idx]`.
     2.  Mark the current cell as visited by temporarily setting `board[row][col]` to `#`.
     3.  Explore all four directions (up, down, left, right) by recursively calling `backtrack` with the updated position and index.
     4.  Restore the current cell's value after exploring all directions.
     5.  Iterate over every cell in the grid, initiating the backtracking from each cell.
-    6.  Return `true` if any path forms the word; otherwise, return `false`.
+    6.  Return `True` if any path forms the word; otherwise, return `False`.
 
-```pseudo
-function exist(board, word):
-	function backtrack(row, col, idx):
+```python
+def exist(board, word):
+	def backtrack(row, col, idx):
 		if idx == len(word):
-			return true
-		if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
-			return false
+			return True
+
+		rowOutOfBounds = row < 0 or row >= rows
+		colOutOfBounds = col < 0 or col >= cols
+		charMismatch = board[row][col] != word[idx]
+
+		if rowOutOfBounds or colOutOfBounds or charMismatch:
+			return False
+
 		tmp = board[row][col]
 		board[row][col] = '#'
+
 		for (r, c) in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
 			if backtrack(row + r, col + c, idx + 1):
-				return true
+				return True
+
 		board[row][col] = tmp
-		return false
+		return False
 
 	rows, cols = len(board), len(board[0])
-	for row from 0 to rows - 1:
-		for col from 0 to cols - 1:
+
+	for row in range(rows):
+		for col in range(cols):
 			if backtrack(row, col, 0):
-				return true
-	return false
+				return True
+
+	return False
 ```
 
 ---
@@ -96,16 +106,16 @@ function exist(board, word):
 
     1. Initialize a 3D memoization table `dp` with dimensions `(rows, cols, len(word))` set to `null`.
     2. Define a recursive function `dp(row, col, idx, visited)` that:
-        - Returns `true` if `idx` is equal to `len(word)` (meaning the entire word has been matched).
-        - Returns `false` if the current position is out of bounds, or if the current cell is not equal to `word[idx]`, or if the cell has already been visited.
+        - Returns `True` if `idx` is equal to `len(word)` (meaning the entire word has been matched).
+        - Returns `False` if the current position is out of bounds, or if the current cell is not equal to `word[idx]`, or if the cell has already been visited.
         - If `dp[row][col][idx]` is not `null`, return the stored result to avoid redundant calculations.
         - Mark the current cell as visited by updating the `visited` bitmask.
         - Recursively explore all four directions (up, down, left, right).
         - Restore the current state and store the result in `dp[row][col][idx]`.
     3. Iterate over every cell in the grid, initiating the DP search from each cell.
-    4. Return `true` if any path forms the word; otherwise, return `false`.
+    4. Return `True` if any path forms the word; otherwise, return `False`.
 
-```pseudo
+```python
 function exist(board, word):
 	rows, cols = len(board), len(board[0])
 	memo = array of size (rows, cols, len(word)) initialized to null
@@ -113,11 +123,11 @@ function exist(board, word):
 
 	function dp(row, col, idx, visited):
 		if idx == len(word):
-			return true
+			return True
 		if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
-			return false
+			return False
 		if (1 << (row * cols + col)) & visited:
-			return false
+			return False
 		if memo[row][col][idx] != null:
 			return memo[row][col][idx]
 
@@ -125,17 +135,17 @@ function exist(board, word):
 
 		for (dr, dc) in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
 			if dp(row + dr, col + dc, idx + 1, visited):
-				memo[row][col][idx] = true
-				return true
+				memo[row][col][idx] = True
+				return True
 
 		visited &= ~(1 << (row * cols + col))
-		memo[row][col][idx] = false
-		return false
+		memo[row][col][idx] = False
+		return False
 
 	for row from 0 to rows - 1:
 		for col from 0 to cols - 1:
 			if dp(row, col, 0, visited):
-				return true
+				return True
 
-	return false
+	return False
 ```
