@@ -4,14 +4,14 @@
 
 ## Textbook Problem
 
-Given two strings `s` and `t`, return `true` if the two strings are anagrams of each other, otherwise return `False`.
+Given two strings `s` and `t`, return `True` if the two strings are anagrams of each other, otherwise return `False`.
 
 An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
 **Example 1:**
 
 -   **Input**: `s = "racecar"`, `t = "carrace"`
--   **Output**: `true`
+-   **Output**: `True`
 
 **Example 2:**
 
@@ -28,13 +28,13 @@ An anagram is a string that contains the exact same characters as another string
 
 -   **Time Complexity**: `O(n log n)` where `n` is the length of the strings.
 -   **Space Complexity**: `O(1)` if sorting in place, otherwise `O(n)` for the sorted strings.
--   **Description**: Sort both strings and compare them. If the sorted versions of `s` and `t` are the same, return `true`. Otherwise, return `False`.
+-   **Description**: Sort both strings and compare them. If the sorted versions of `s` and `t` are the same, return `True`. Otherwise, return `False`.
 -   **Algorithm**:
 
     1. If the lengths of `s` and `t` are different, return `False`.
     2. Create `list_s` and `list_t`.
     3. Compare the sorted string lists:
-        - If they are the same, return `true`.
+        - If they are the same, return `True`.
         - Otherwise, return `False`.
 
 ```python
@@ -64,7 +64,7 @@ def valid_anagram(s: str, t: str) -> bool:
         - For each character in `t`, increment its count in `count_t`.
     4. Iterate through the keys in `count_s`:
         - If the frequency of a character in `count_s` does not match its frequency in `count_t`, return `False`.
-    5. If all character frequencies match, return `true`.
+    5. If all character frequencies match, return `True`.
 
 ```python
 def valid_anagram(s: str, t: str) -> bool:
