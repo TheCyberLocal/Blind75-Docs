@@ -104,11 +104,11 @@ def exist(board, word):
 
 -   **Algorithm**:
 
-    1. Initialize a 3D memoization table `dp` with dimensions `(rows, cols, len(word))` set to `null`.
+    1. Initialize a 3D memoization table `dp` with dimensions `(rows, cols, len(word))` set to `None`.
     2. Define a recursive function `dp(row, col, idx, visited)` that:
         - Returns `True` if `idx` is equal to `len(word)` (meaning the entire word has been matched).
         - Returns `False` if the current position is out of bounds, or if the current cell is not equal to `word[idx]`, or if the cell has already been visited.
-        - If `dp[row][col][idx]` is not `null`, return the stored result to avoid redundant calculations.
+        - If `dp[row][col][idx]` is not `None`, return the stored result to avoid redundant calculations.
         - Mark the current cell as visited by updating the `visited` bitmask.
         - Recursively explore all four directions (up, down, left, right).
         - Restore the current state and store the result in `dp[row][col][idx]`.
@@ -116,19 +116,26 @@ def exist(board, word):
     4. Return `True` if any path forms the word; otherwise, return `False`.
 
 ```python
-function exist(board, word):
+def exist(board, word):
 	rows, cols = len(board), len(board[0])
-	memo = array of size (rows, cols, len(word)) initialized to null
+	memo = [[[None for _ in range(len(word))] for _ in range(cols)] for _ in range(rows)]
 	visited = 0
 
-	function dp(row, col, idx, visited):
+	def dp(row, col, idx, visited):
 		if idx == len(word):
 			return True
-		if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[idx]:
+
+		rowOutOfBounds = row < 0 or row >= rows
+		colOutOfBounds = col < 0 or col >= cols
+		charMismatch = board[row][col] != word[idx]
+
+		if rowOutOfBounds or colOutOfBounds or charMismatch:
 			return False
+
 		if (1 << (row * cols + col)) & visited:
 			return False
-		if memo[row][col][idx] != null:
+
+		if memo[row][col][idx] != None:
 			return memo[row][col][idx]
 
 		visited |= (1 << (row * cols + col))
@@ -142,8 +149,8 @@ function exist(board, word):
 		memo[row][col][idx] = False
 		return False
 
-	for row from 0 to rows - 1:
-		for col from 0 to cols - 1:
+	for row in range(rows):
+		for col in range(cols):
 			if dp(row, col, 0, visited):
 				return True
 
