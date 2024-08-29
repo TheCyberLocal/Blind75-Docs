@@ -31,17 +31,17 @@ Given an array `nums` containing `n` integers in the range `[0, n]` without any 
 -   **Algorithm**:
 
     1.  Calculate `n` as `len(nums)`.
-    2.  Compute the expected sum as `expectedSum = n * (n + 1) // 2`.
+    2.  Compute the expected sum as `expected_sum = n * (n + 1) // 2`.
     3.  Compute the actual sum of elements in `nums`.
-    4.  The missing number is `expectedSum - actualSum`.
+    4.  The missing number is `expected_sum - actual_sum`.
     5.  Return the missing number.
 
-```pseudo
-function findMissing(nums):
+```python
+def find_missing(nums: List[int]) -> int:
 	n = len(nums)
-	expectedSum = n * (n + 1) // 2
-	actualSum = sum(nums)
-	return expectedSum - actualSum
+	expected_sum = n * (n + 1) // 2
+	actual_sum = sum(nums)
+	return expected_sum - actual_sum
 ```
 
 ---
