@@ -36,8 +36,8 @@ Given two integers `a` and `b`, return the sum of the two integers without using
     5. Repeat the loop until there are no carry bits left (`b == 0`).
     6. Once the loop ends, if `a` is positive, return `a` directly. If `a` is negative (greater than `0x7FFFFFFF`), return the 32-bit two's complement of `a` by XORing `a` with the mask and inverting the result.
 
-```pseudo
-function getSum(a, b):
+```python
+def get_sum(a: int, b: int) -> int:
     mask = 0xFFFFFFFF
 
     while b:
@@ -65,18 +65,21 @@ function getSum(a, b):
     3. Call the `add` function with the original values of `a` and `b`.
     4. Return the final result.
 
-```pseudo
-function getSum(a, b):
-    function add(a, b):
+```python
+def get_sum(a: int, b: int) -> int:
+    def add(a: int, b: int) -> int:
         if not a or not b:
             return a or b
+
         return add(a ^ b, (a & b) << 1)
 
     if a * b < 0:
         if a > 0:
-            return getSum(b, a)
+            return get_sum(b, a)
+
         if add(~a, 1) == b:
             return 0
+
         if add(~a, 1) < b:
             return add(~add(add(~a, 1), add(~b, 1)), 1)
 
