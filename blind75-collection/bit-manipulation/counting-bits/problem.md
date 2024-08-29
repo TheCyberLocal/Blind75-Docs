@@ -37,11 +37,11 @@ Return an array `output` where `output[i]` is the number of `1`'s in the binary 
         -   For each index `i`, calculate `bits[i] = bits[i >> 1] + (i & 1)`.
     3.  Return `bits`.
 
-```pseudo
-function countBits(n):
-	bits = an array of length n + 1 initialized to 0
+```python
+def countBits(n: int) -> List[int]:
+	bits = [0] * (n + 1)
 
-	for i from 1 to n:
+	for i in range(1, n + 1):
 		bits[i] = bits[i >> 1] + (i & 1)
 
 	return bits
