@@ -38,7 +38,7 @@ Return an array `output` where `output[i]` is the number of `1`'s in the binary 
     3.  Return `bits`.
 
 ```python
-def countBits(n: int) -> List[int]:
+def count_bits(n: int) -> List[int]:
 	bits = [0] * (n + 1)
 
 	for i in range(1, n + 1):
@@ -63,14 +63,15 @@ def countBits(n: int) -> List[int]:
         - Compute `dp[i]` as `1 + dp[i - offset]`, leveraging the previously computed values.
     4. Return `dp`.
 
-```pseudo
-function countBits(n):
-    dp = an array of length n + 1 initialized to 0
+```python
+def count_bits(n: int) -> List[int]:
+    dp = [0] * (n + 1)
     offset = 1
 
-    for i from 1 to n:
+    for i in range(1, n + 1):
         if offset * 2 == i:
             offset = i
+
         dp[i] = 1 + dp[i - offset]
 
     return dp
