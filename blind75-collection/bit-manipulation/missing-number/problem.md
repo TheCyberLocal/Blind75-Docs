@@ -87,11 +87,11 @@ def find_missing(nums: List[int]) -> int:
         - For each index `i`, update `res` as `res += i - nums[i]`.
     3. Return `res` which will hold the missing number after the loop.
 
-```pseudo
-function findMissing(nums):
+```python
+def find_missing(nums: List[int]) -> int:
     res = len(nums)
 
-    for i from 0 to len(nums):
+    for i in range(len(nums)):
         res += i - nums[i]
 
     return res
