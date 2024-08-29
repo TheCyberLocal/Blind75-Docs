@@ -37,12 +37,14 @@ You may assume `n` is a non-negative integer which fits within `32-bits`.
         - Increment `count`.
     3. Return `count`.
 
-```pseudo
-function hammingWeight(n):
+```python
+def hamming_weight(n: int) -> int:
     count = 0
+
     while n:
         n &= (n - 1)
         count += 1
+
     return count
 ```
 
@@ -61,12 +63,15 @@ function hammingWeight(n):
         -   Right shift `n` by `1`.
     3.  Return `count`.
 
-```pseudo
-function hammingWeight(n):
+```python
+def hamming_weight(n: int) -> int:
 	count = 0
+
 	while n:
 		if n & 1 == 1:
 			count += 1
+
 		n >>= 1
+
 	return count
 ```
