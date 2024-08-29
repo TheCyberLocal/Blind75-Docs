@@ -53,24 +53,24 @@ def find_missing(nums: List[int]) -> int:
 -   **Description**: XOR all the indices and the elements in `nums`. The result will be the missing number because XORing a number with itself cancels out the number, leaving the missing number as the result.
 -   **Algorithm**:
 
-    1.  Initialize `xorSum` as `0`.
-    2.  Iterate over the range `[0, n]` and for each index `i`, compute `xorSum ^= i`.
-    3.  Iterate over each element `num` in `nums` and compute `xorSum ^= num`.
-    4.  The missing number is `xorSum`.
+    1.  Initialize `xor_sum` as `0`.
+    2.  Iterate over the range `[0, n]` and for each index `i`, compute `xor_sum ^= i`.
+    3.  Iterate over each element `num` in `nums` and compute `xor_sum ^= num`.
+    4.  The missing number is `xor_sum`.
     5.  Return the missing number.
 
-```pseudo
-function findMissing(nums):
+```python
+def find_missing(nums: List[int]) -> int:
 	n = len(nums)
-	xorSum = 0
+	xor_sum = 0
 
 	for i from 0 to n:
-		xorSum ^= i
+		xor_sum ^= i
 
 	for num in nums:
-		xorSum ^= num
+		xor_sum ^= num
 
-	return xorSum
+	return xor_sum
 ```
 
 ---
