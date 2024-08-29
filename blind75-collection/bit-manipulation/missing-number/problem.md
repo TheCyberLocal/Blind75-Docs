@@ -82,17 +82,17 @@ def find_missing(nums: List[int]) -> int:
 -   **Description**: This approach calculates the missing number in a series by using the sum formula for the first `n` natural numbers and comparing it with the sum of the array's elements. The difference gives the missing number.
 -   **Algorithm**:
 
-    1. Initialize a variable `res` to `len(nums)`.
+    1. Initialize a variable `count` to `len(nums)`.
     2. Iterate over the array:
-        - For each index `i`, update `res` as `res += i - nums[i]`.
-    3. Return `res` which will hold the missing number after the loop.
+        - For each index `i`, update `count` as `count += i - nums[i]`.
+    3. Return `count` which will hold the missing number after the loop.
 
 ```python
 def find_missing(nums: List[int]) -> int:
-    res = len(nums)
+    count = len(nums)
 
     for i in range(len(nums)):
-        res += i - nums[i]
+        count += i - nums[i]
 
-    return res
+    return count
 ```
