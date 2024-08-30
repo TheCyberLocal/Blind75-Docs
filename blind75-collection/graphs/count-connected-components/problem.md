@@ -43,9 +43,9 @@ Return the total number of connected components in that graph.
         -   If a node is unvisited, perform a DFS and increment the component count.
     5.  Return the total count of connected components.
 
-```pseudo
-function countComponents(n, edges):
-	graph = a map of keys from 0 to n - 1 initialized to []
+```python
+def count_components(n: int, edges: List[List[int]]) -> int:
+	graph = {i: [] for i in range(n)}
 	visited = set()
 	count = 0
 
@@ -53,13 +53,14 @@ function countComponents(n, edges):
 		graph[x].append(y)
 		graph[y].append(x)
 
-	function dfs(node):
+	def dfs(node):
 		visited.add(node)
+
 		for neighbor in graph[node]:
 			if neighbor not in visited:
 				dfs(neighbor)
 
-	for i from 0 to n - 1:
+	for i in range(n):
 		if i not in visited:
 			dfs(i)
 			count += 1
@@ -85,23 +86,25 @@ function countComponents(n, edges):
     5.  Iterate through the edges, applying `union` on each pair.
     6.  Count the number of unique roots to determine the number of connected components.
 
-```pseudo
-function countComponents(n, edges):
-	parent = an array of size n initialized by index
-	rank = an array of size n initialized to 1
+```python
+def count_components(n: int, edges: List[List[int]]) -> int:
+	parent = list(range(n))
+	rank = [1] * n
 
-	function find(x):
+	def find(x: int) -> int:
 		if parent[x] != x:
 			parent[x] = find(parent[x])
+
 		return parent[x]
 
-	function union(x, y):
+	def union(x: int, y: int):
 		rootX = find(x)
 		rootY = find(y)
+
 		if rootX != rootY:
 			if rank[rootX] > rank[rootY]:
 				parent[rootY] = rootX
-			else if rank[rootX] < rank[rootY]:
+			elif rank[rootX] < rank[rootY]:
 				parent[rootX] = rootY
 			else:
 				parent[rootY] = rootX
@@ -110,6 +113,6 @@ function countComponents(n, edges):
 	for x, y in edges:
 		union(x, y)
 
-	uniqueRoots = set(find(i) for i from 0 to n - 1)
-	return len(uniqueRoots)
+	unique_roots = {find(i) for i in range(n)}
+	return len(unique_roots)
 ```
