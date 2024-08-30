@@ -48,80 +48,36 @@ Find all cells where water can flow from that cell to both the Pacific and Atlan
     3. For each DFS, if a cell has already been marked as reachable to both oceans, terminate further exploration from that cell.
     4. The final result is the intersection of the cells marked for both oceans.
 
-```pseudo
-function pacificAtlantic(heights):
+```python
+def pacific_atlantic(heights: List[List[int]]) -> List[List[int]]:
 	if not heights or not heights[0]:
 		return []
 
 	rows, cols = len(heights), len(heights[0])
-	pacificReachable = set()
-	atlanticReachable = set()
+	pacific_reachable = set()
+	atlantic_reachable = set()
 
-	function dfs(r, c, reachable):
+	def dfs(r: int, c: int, reachable: set) -> None:
 		reachable.add((r, c))
+
 		for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
 			newR, newC = r + dr, c + dc
+
 			if 0 <= newR < rows and 0 <= newC < cols and (newR, newC) not in reachable and heights[newR][newC] >= heights[r][c]:
 				dfs(newR, newC, reachable)
 
-	for i from 0 to rows - 1:
-		dfs(i, 0, pacificReachable)
-		dfs(i, cols - 1, atlanticReachable)
+	for i in range(rows):
+		dfs(i, 0, pacific_reachable)
+		dfs(i, cols - 1, atlantic_reachable)
 
-	for j from 0 to cols - 1:
-		dfs(0, j, pacificReachable)
-		dfs(rows - 1, j, atlanticReachable)
-
-	res = []
-	for r from 0 to rows - 1:
-		for c from 0 to cols - 1::
-			if (r, c) in pacificReachable and (r, c) in atlanticReachable:
-				res.append([r, c])
-
-	return res
-```
-
----
-
-### Approach 2: Breadth-First Search (BFS)
-
--   **Time Complexity:** `O(m * n)`, where `m` is the number of rows and `n` is the number of columns.
--   **Space Complexity:** `O(m * n)` in the worst case for the BFS queue.
--   **Description:** Similar to DFS, but we use BFS from the ocean edges, gradually marking the cells that can flow to each ocean and then finding the intersection.
--   **Algorithm:**
-
-    1. Create two matrices to track cells reachable from each ocean.
-    2. Perform BFS for each ocean from its respective borders.
-    3. The BFS will explore cells in layers, marking reachable cells as it goes.
-    4. The intersection of the two matrices gives the desired cells.
-
-```pseudo
-function pacificAtlantic(heights):
-	if not heights or not heights[0]:
-		return []
-
-	rows, cols = len(heights), len(heights[0])
-	pacificReachable = initialize a matrix of false with dimensions (rows, cols)
-	atlanticReachable = initialize a matrix of false with dimensions (rows, cols)
-	pacificQueue = initialize a queue with all cells along the Pacific border
-	atlanticQueue = initialize a queue with all cells along the Atlantic border
-
-	function bfs(queue, reachable):
-		while queue:
-			r, c = queue.pop(0)
-			reachable[r][c] = true
-			for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
-				newR, newC = r + dr, c + dc
-				if 0 <= newR < rows and 0 <= newC < cols and not reachable[newR][newC] and heights[newR][newC] >= heights[r][c]:
-					queue.append((newR, newC))
-
-	bfs(pacificQueue, pacificReachable)
-	bfs(atlanticQueue, atlanticReachable)
+	for j in range(cols):
+		dfs(0, j, pacific_reachable)
+		dfs(rows - 1, j, atlantic_reachable)
 
 	res = []
-	for r from 0 to rows - 1:
-		for c from 0 to cols - 1::
-			if pacificReachable[r][c] and atlanticReachable[r][c]:
+	for r in range(rows):
+		for c in range(cols):
+			if (r, c) in pacific_reachable and (r, c) in atlantic_reachable:
 				res.append([r, c])
 
 	return res
