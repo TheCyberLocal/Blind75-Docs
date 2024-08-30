@@ -51,7 +51,7 @@ The input node will always be the first node in the graph and have 1 as the valu
 -   **Description**: Perform a DFS to create a deep copy of the graph. Use a HashMap to keep track of visited nodes and their corresponding copies.
 -   **Algorithm**:
 
-    1.  If the input node is `null`, return `null`.
+    1.  If the input node is `None`, return `None`.
     2.  Create a HashMap `visited` to store the mapping of original nodes to their copies.
     3.  Define a recursive function `dfs(node)`:
         -   If `node` is already in `visited`, return the corresponding copy.
@@ -61,23 +61,24 @@ The input node will always be the first node in the graph and have 1 as the valu
         -   Return the new node.
     4.  Call `clone` with the input node and return the result.
 
-```pseudo
-function cloneGraph(node):
-	if not node:
-		return null
+```python
+def clone_graph(node: Optional[Node]) -> Optional[Node]:
+    if node is None:
+        return None
 
-	visited = {}
+    visited = {}
 
-	function dfs(node):
-		if node in visited:
-			return visited[node]
+    def clone(node):
+        if node in visited:
+            return visited[node]
 
-		cloneNode = Node(node.val, [])
-		visited[node] = cloneNode
+        clone_node = Node(node.val, [])
+        visited[node] = clone_node
 
-		for neighbor in node.neighbors:
-			cloneNode.neighbors.append(dfs(neighbor))
-		return cloneNode
+        for neighbor in node.neighbors:
+            clone_node.neighbors.append(clone(neighbor))
 
-	return clone(node)
+        return clone_node
+
+    return clone(node)
 ```
