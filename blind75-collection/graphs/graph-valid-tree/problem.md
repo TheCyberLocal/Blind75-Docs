@@ -9,12 +9,12 @@ Given `n` nodes labeled from `0` to `n - 1` and a list of undirected edges (each
 **Example 1:**
 
 -   **Input**: `n = 5`, `edges = [[0, 1], [0, 2], [0, 3], [1, 4]]`
--   **Output**: `true`
+-   **Output**: `True`
 
 **Example 2:**
 
 -   **Input**: `n = 5`, `edges = [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]]`
--   **Output**: `false`
+-   **Output**: `False`
 
 ### Note
 
@@ -34,35 +34,37 @@ Given `n` nodes labeled from `0` to `n - 1` and a list of undirected edges (each
 -   **Description**: To check if the graph is a valid tree, we can use the Union-Find data structure to detect cycles. A valid tree has exactly `n-1` edges and is fully connected without any cycles. Union-Find helps efficiently check for cycles as we try to unify nodes.
 -   **Algorithm**:
 
-    1.  If the number of edges is not equal to `n - 1`, return `false`.
+    1.  If the number of edges is not equal to `n - 1`, return `False`.
     2.  Initialize the `parent` array where each node is its own parent.
     3.  Initialize the `rank` array to store the rank (height) of each tree.
     4.  Define the `find(x)` function to find the root of `x`.
     5.  Define the `union(n1, n2)` function to unite the sets containing `n1` and `n2`.
         -   Find the roots (parents) of `n1` and `n2`.
-        -   If they have the same root, a cycle exists, so return `false`.
+        -   If they have the same root, a cycle exists, so return `False`.
         -   Otherwise, unite the sets based on rank and update the parent and rank arrays.
     6.  Iterate through the edges, applying `union` on each pair.
-    7.  If no cycle is detected, return `true`.
+    7.  If no cycle is detected, return `True`.
 
-```pseudo
-function validTree(n, edges):
+```python
+def valid_tree(n: int, edges: List[List[int]]) -> bool:
 	if len(edges) != n - 1:
-		return false
+		return False
 
-	parent = an array of size n initialized by index
-	rank = an array of size n initialized to 1
+	parent = list(range(n))
+    rank = [1] * n
 
-	function find(x):
+	def find(x: int) -> int:
 		if parent[x] != x:
 			parent[x] = find(parent[x])
+
 		return parent[x]
 
-	function union(n1, n2):
+	def union(n1: int, n2: int) -> bool:
 		p1 = find(n1)
 		p2 = find(n2)
+
 		if p1 == p2:
-			return false
+			return False
 
 		if rank[p1] > rank[p2]:
 			parent[p2] = p1
@@ -72,13 +74,13 @@ function validTree(n, edges):
 			parent[p2] = p1
 			rank[p1] += 1
 
-		return true
+		return True
 
 	for x, y in edges:
 		if not union(x, y):
-			return false
+			return False
 
-	return true
+	return True
 ```
 
 ---
@@ -90,39 +92,42 @@ function validTree(n, edges):
 -   **Description**: Using DFS, we can explore the graph and ensure that it is fully connected and acyclic. We use a visited set to track visited nodes and avoid revisiting them.
 -   **Algorithm**:
 
-    1.  If the number of edges is not equal to `n - 1`, return `false`.
+    1.  If the number of edges is not equal to `n - 1`, return `False`.
     2.  Build the adjacency list from the edges.
     3.  Define a recursive `dfs(node, parent)` function:
         -   Mark `node` as visited.
         -   Recursively visit all its neighbors.
-        -   If a visited neighbor is not the parent, a cycle is detected, so return `false`.
+        -   If a visited neighbor is not the parent, a cycle is detected, so return `False`.
     4.  Start DFS from node `0`.
     5.  After the DFS, check if all nodes are visited.
-    6.  If all nodes are visited and no cycles were detected, return `true`.
+    6.  If all nodes are visited and no cycles were detected, return `True`.
 
-```pseudo
-function validTree(n, edges):
+```python
+def valid_tree(n: int, edges: List[List[int]]) -> bool:
 	if len(edges) != n - 1:
-		return false
+		return False
 
-	adj = a map of keys from 0 to n - 1 initialized to []
+	adj = {i: [] for i in range(n)}
 	visited = set()
 
 	for x, y in edges:
 		adj[x].append(y)
 		adj[y].append(x)
 
-	function dfs(node, parent):
+	def dfs(node: int, parent: int) -> bool:
 		visited.add(node)
+
 		for neighbor in adj[node]:
 			if neighbor == parent:
 				continue
+
 			if neighbor in visited or not dfs(neighbor, node):
-				return false
-		return true
+				return False
+
+		return True
 
 	if not dfs(0, -1):
-		return false
+		return False
 
 	return len(visited) == n
 ```

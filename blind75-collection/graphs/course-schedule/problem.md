@@ -103,6 +103,7 @@ def can_finish(num_courses: int, prerequisites: List[List[int]]) -> bool:
 	def dfs(node: int) -> bool:
 		if visited[node] == 1:
 			return True
+
 		if visited[node] == 2:
 			return False
 
