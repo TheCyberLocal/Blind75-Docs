@@ -8,25 +8,25 @@ You are given an array `prerequisites` where `prerequisites[i] = [a, b]` indicat
 
 The pair `[0, 1]` indicates that you must take course `1` before taking course `0`.
 
-There are a total of `numCourses` courses you are required to take, labeled from `0` to `numCourses - 1`.
+There are a total of `num_courses` courses you are required to take, labeled from `0` to `num_courses - 1`.
 
-Return `true` if it is possible to finish all courses, otherwise return `false`.
+Return `True` if it is possible to finish all courses, otherwise return `False`.
 
 **Example 1:**
 
--   **Input**: `numCourses = 2`, `prerequisites = [[0,1]]`
--   **Output**: `true`
+-   **Input**: `num_courses = 2`, `prerequisites = [[0,1]]`
+-   **Output**: `True`
 -   **Explanation**: First take course `1` (no prerequisites) and then take course `0`.
 
 **Example 2:**
 
--   **Input**: `numCourses = 2`, `prerequisites = [[0,1],[1,0]]`
--   **Output**: `false`
+-   **Input**: `num_courses = 2`, `prerequisites = [[0,1],[1,0]]`
+-   **Output**: `False`
 -   **Explanation**: In order to take course `1`, you must take course `0`, and to take course `0`, you must take course `1`. This forms a cycle, making it impossible.
 
 ### Constraints
 
--   `1 <= numCourses <= 1000`
+-   `1 <= num_courses <= 1000`
 -   `0 <= len(prerequisites) <= 1000`
 -   All prerequisite pairs are unique.
 
@@ -45,34 +45,31 @@ Return `true` if it is possible to finish all courses, otherwise return `false`.
         -   Removing the node from the queue.
         -   Decreasing the indegree of its neighbors.
         -   Adding neighbors with indegree 0 to the queue.
-    4.  After processing all nodes, if the number of nodes processed equals `numCourses`, return `true` (no cycle exists); otherwise, return `false` (a cycle exists).
+    4.  After processing all nodes, if the number of nodes processed equals `num_courses`, return `True` (no cycle exists); otherwise, return `False` (a cycle exists).
 
-```pseudo
-function canFinish(numCourses, prerequisites):
-    graph = a map of keys from 0 to numCourses - 1 initialized to []
-	indegree = an array of size numCourses initialized to 0
+```python
+def can_finish(num_courses: int, prerequisites: List[List[int]]) -> bool:
+    graph = {i: [] for i in range(num_courses)}
+        indegree = [0] * num_courses
 
 	for course, prereq in prerequisites:
 		graph[prereq].append(course)
 		indegree[course] += 1
 
-	queue = []
-	for i from 0 to numCourses - 1:
-		if indegree[i] == 0:
-			queue.append(i)
-
-	processedCourses = 0
+	queue = [i for i in range(num_courses) if indegree[i] == 0]
+    processedCourses = 0
 
 	while queue:
 		node = queue.pop(0)
-		processedCourses += 1
+		processed_courses += 1
 
 		for neighbor in graph[node]:
 			indegree[neighbor] -= 1
+
 			if indegree[neighbor] == 0:
 				queue.append(neighbor)
 
-	return processedCourses == numCourses
+	return processed_courses == num_courses
 ```
 
 ---
@@ -87,39 +84,40 @@ function canFinish(numCourses, prerequisites):
     1.  Create an adjacency list to represent the graph.
     2.  Initialize a visited array with states `0` (unvisited), `1` (visiting), and `2` (visited).
     3.  Define a recursive function `dfs(node)`:
-        -   If the node is visiting, return `true` (a cycle is detected).
-        -   If the node is visited, return `false`.
+        -   If the node is visiting, return `True` (a cycle is detected).
+        -   If the node is visited, return `False`.
         -   Mark the node as visiting.
         -   Recursively visit all its neighbors.
-        -   After visiting all neighbors, mark the node as visited and return `false`.
+        -   After visiting all neighbors, mark the node as visited and return `False`.
     4.  Iterate over all nodes and call `dfs(node)` for unvisited nodes.
-    5.  If any call to `dfs` returns `true`, return `false`. Otherwise, return `true`.
+    5.  If any call to `dfs` returns `True`, return `False`. Otherwise, return `True`.
 
-```pseudo
-function canFinish(numCourses, prerequisites):
-    graph = a map of keys from 0 to numCourses - 1 initialized to []
-	visited = an array of size numCourses initialized to 0
+```python
+def can_finish(num_courses: int, prerequisites: List[List[int]]) -> bool:
+    graph = {i: [] for i in range(num_courses)}
+    visited = [0] * num_courses
 
 	for course, prereq in prerequisites:
 		graph[prereq].append(course)
 
-	function dfs(node):
+	def dfs(node: int) -> bool:
 		if visited[node] == 1:
-			return true
+			return True
 		if visited[node] == 2:
-			return false
+			return False
 
 		visited[node] = 1
+
 		for neighbor in graph[node]:
 			if dfs(neighbor):
-				return true
+				return True
 
 		visited[node] = 2
-		return false
+		return False
 
-	for i from 0 to numCourses - 1:
+	for i in range(num_courses):
 		if visited[i] == 0 and dfs(i):
-			return false
+			return False
 
-	return true
+	return True
 ```
