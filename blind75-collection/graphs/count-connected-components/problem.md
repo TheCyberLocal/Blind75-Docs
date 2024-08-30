@@ -53,7 +53,7 @@ def count_components(n: int, edges: List[List[int]]) -> int:
 		graph[x].append(y)
 		graph[y].append(x)
 
-	def dfs(node):
+	def dfs(node: Node) -> None:
 		visited.add(node)
 
 		for neighbor in graph[node]:
@@ -97,7 +97,7 @@ def count_components(n: int, edges: List[List[int]]) -> int:
 
 		return parent[x]
 
-	def union(x: int, y: int):
+	def union(x: int, y: int) -> None:
 		rootX = find(x)
 		rootY = find(y)
 

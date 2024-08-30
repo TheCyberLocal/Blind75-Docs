@@ -68,7 +68,7 @@ def clone_graph(node: Optional[Node]) -> Optional[Node]:
 
     visited = {}
 
-    def clone(node):
+    def clone(node: Node) -> Node:
         if node in visited:
             return visited[node]
 
