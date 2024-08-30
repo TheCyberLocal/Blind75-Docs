@@ -69,83 +69,32 @@ An island is formed by connecting adjacent lands horizontally or vertically and 
         -   Increment the island counter.
     3.  Return the total number of islands.
 
-```pseudo
-function numIslands(grid):
+```python
+def num_islands(grid: List[List[str]]) -> int:
 	if not grid:
 		return 0
 
-	function bfs(startX, startY):
+	def bfs(startX: int, startY: int) -> None:
 		queue = [(startX, startY)]
-		grid[startX][startY] = '0'  # Mark the cell as visited
+		grid[startX][startY] = '0'
+
 		while queue is not empty:
 			x, y = queue.pop(0)
+
 			for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
 				newX, newY = x + dx, y + dy
+
 				if newX >= 0 and newY >= 0 and newX < len(grid) and newY < len(grid[0]) and grid[newX][newY] == '1':
-					grid[newX][newY] = '0'  # Mark the cell as visited
+					grid[newX][newY] = '0'
 					queue.append((newX, newY))
 
-	islandCount = 0
-	for i from 0 to len(grid) - 1:
-		for j from 0 to len(grid[0]) - 1:
+	island_count = 0
+
+	for i in range(len(grid)):
+		for j in range(len(grid[0])):
 			if grid[i][j] == '1':
 				bfs(i, j)
-				islandCount += 1
+				island_count += 1
 
-	return islandCount
-```
-
----
-
-### Approach 2: Union-Find (Disjoint Set)
-
--   **Time Complexity**: `O(m * n)` for processing all cells.
--   **Space Complexity**: `O(m * n)` for the parent and rank arrays.
--   **Description**: Union-Find is used to dynamically connect cells that are part of the same island. The number of unique roots at the end represents the number of islands.
--   **Algorithm**:
-
-    1.  Initialize an array `parent` where each cell is its own parent.
-    2.  Initialize an array `rank` to keep track of the tree height for each node.
-    3.  Define the `find(x)` function to find the root of `x`.
-    4.  Define the `union(x, y)` function to unite the sets containing `x` and `y`.
-    5.  Iterate over the grid and for each cell that is `'1'`, union it with its adjacent `'1'`s.
-    6.  Count the number of unique roots representing distinct islands.
-
-```pseudo
-function numIslands(grid):
-	if not grid:
-		return 0
-
-	rows = len(grid)
-	cols = len(grid[0])
-	parent = a map of keys from 0 to rows * cols - 1 where grid[i][j] == '1' initialized to its own index
-	rank = an array of size rows * cols initialized to 1 for each index where grid[i][j] == '1'
-
-	function find(x):
-		if parent[x] != x:
-			parent[x] = find(parent[x])
-		return parent[x]
-
-	function union(x, y):
-		rootX = find(x)
-		rootY = find(y)
-		if rootX != rootY:
-			if rank[rootX] > rank[rootY]:
-				parent[rootY] = rootX
-			else if rank[rootX] < rank[rootY]:
-				parent[rootX] = rootY
-			else:
-				parent[rootY] = rootX
-				rank[rootX] += 1
-
-	for i from 0 to rows - 1:
-		for j from 0 to cols - 1:
-			if grid[i][j] == '1':
-				for dx, dy in [(1, 0), (0, 1)]:
-					newX = i + dx
-					newY = j + dy
-					if newX >= 0 and newY >= 0 and newX < rows and newY < cols and grid[newX][newY] == '1':
-						union(i * cols + j, newX * cols + newY)
-
-	return len(set(find(x) for x in parent))
+	return island_count
 ```
