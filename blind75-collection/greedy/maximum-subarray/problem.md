@@ -33,18 +33,20 @@ A subarray is a contiguous non-empty sequence of elements within an array.
 -   **Description:** Kadane's algorithm is a dynamic programming approach to solve this problem in linear time. It iterates through the array, and at each position, it calculates the maximum subarray sum that ends at that position by taking the maximum of the current element or the sum of the current element and the maximum subarray sum ending at the previous position. The global maximum is updated accordingly.
 -   **Algorithm:**
 
-    1. Initialize two variables: `maxSum` to hold the global maximum sum and `currentSum` to hold the current subarray sum. Set both to the first element of the array.
+    1. Initialize two variables: `max_sum` to hold the global maximum sum and `current_sum` to hold the current subarray sum. Set both to the first element of the array.
     2. Iterate through the array starting from the second element:
-        - Update `currentSum` to the maximum of the current element and `currentSum + nums[i]`.
-        - Update `maxSum` to the maximum of `maxSum` and `currentSum`.
-    3. Return `maxSum` after the loop.
+        - Update `current_sum` to the maximum of the current element and `current_sum + nums[i]`.
+        - Update `max_sum` to the maximum of `max_sum` and `current_sum`.
+    3. Return `max_sum` after the loop.
 
 ```python
-function max_subarray(nums):
-	maxSum = nums[0]
-	currentSum = nums[0]
-	for i in initialize range from 1 to len(nums):
-		currentSum = max(nums[i], currentSum + nums[i])
-		maxSum = max(maxSum, currentSum)
-	return maxSum
+def max_subarray(nums: List[int]) -> int:
+	max_sum = nums[0]
+	current_sum = nums[0]
+
+	for i in range(1, len(nums)):
+		current_sum = max(nums[i], current_sum + nums[i])
+		max_sum = max(max_sum, current_sum)
+
+	return max_sum
 ```
