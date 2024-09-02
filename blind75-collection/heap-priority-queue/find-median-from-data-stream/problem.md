@@ -100,7 +100,7 @@ class MedianFinder:
 
 ```python
 class MedianFinder:
-    def __init__(self):
+    def __init__(self) -> None:
         self.sorted_nums = []
 
     def add_num(self, num: int) -> None:
