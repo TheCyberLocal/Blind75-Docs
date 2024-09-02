@@ -39,53 +39,12 @@ A subarray is a contiguous non-empty sequence of elements within an array.
         - Update `maxSum` to the maximum of `maxSum` and `currentSum`.
     3. Return `maxSum` after the loop.
 
-```pseudo
-function maxSubArray(nums):
+```python
+function max_subarray(nums):
 	maxSum = nums[0]
 	currentSum = nums[0]
 	for i in initialize range from 1 to len(nums):
 		currentSum = max(nums[i], currentSum + nums[i])
 		maxSum = max(maxSum, currentSum)
 	return maxSum
-```
-
----
-
-### Approach 2: Divide and Conquer
-
--   **Time Complexity:** `O(n log n)` where `n` is the length of the array.
--   **Space Complexity:** `O(log n)` due to recursion stack space.
--   **Description:** This approach divides the array into two halves and finds the maximum subarray sum for the left half, right half, and a subarray that crosses the midpoint. The final result is the maximum of these three sums.
--   **Algorithm:**
-
-    1. If the array contains only one element, return that element.
-    2. Find the midpoint of the array and recursively find the maximum subarray sum for the left and right halves.
-    3. Find the maximum sum of a subarray that crosses the midpoint.
-    4. Return the maximum of the left half, right half, and crossing subarray sums.
-
-```pseudo
-function maxSubArray(nums):
-	function helper(left, right):
-		if left == right:
-		 return nums[left]
-		mid = (left + right) // 2
-		leftSum = helper(left, mid)
-		rightSum = helper(mid + 1, right)
-		crossSum = findCrossSum(nums, left, mid, right)
-		return max(leftSum, rightSum, crossSum)
-
-	function findCrossSum(nums, left, mid, right):
-		leftMax = float('-inf')
-		rightMax = float('-inf')
-		currentSum = 0
-		for i from mid to left - 2 by -1:
-			currentSum += nums[i]
-			leftMax = max(leftMax, currentSum)
-		currentSum = 0
-		for i from mid + 1 to right:
-			currentSum += nums[i]
-			rightMax = max(rightMax, currentSum)
-		return leftMax + rightMax
-
-	return helper(0, len(nums) - 1)
 ```
