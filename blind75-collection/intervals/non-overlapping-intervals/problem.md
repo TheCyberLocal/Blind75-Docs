@@ -35,21 +35,24 @@ Given an array of intervals `intervals` where `intervals[i] = [start_i, end_i]`,
 -   **Algorithm:**
 
     1. Sort `intervals` by end times.
-    2. Initialize `prevEnd` with the end time of the first interval and `removalCount` as `0`.
+    2. Initialize `prev_end` with the end time of the first interval and `removal_count` as `0`.
     3. For each interval starting from the second one:
-        - If the start time of the current interval is less than `prevEnd`, increment `removalCount`.
-        - Otherwise, update `prevEnd` to the end time of the current interval.
-    4. Return `removalCount`.
+        - If the start time of the current interval is less than `prev_end`, increment `removal_count`.
+        - Otherwise, update `prev_end` to the end time of the current interval.
+    4. Return `removal_count`.
 
-```pseudo
-function eraseOverlapIntervals(intervals):
-	sort intervals by end time
-	removalCount = 0
-	prevEnd = intervals[0][1]
+```python
+def erase_overlap_intervals(intervals: List[List[int]]) -> int:
+	intervals.sort(key=lambda x: x[1])
+
+	removal_count = 0
+	prev_end = intervals[0][1]
+
 	for start, end in intervals[1:]:
-		if start < prevEnd:
-			removalCount += 1
+		if start < prev_end:
+			removal_count += 1
 		else:
-			prevEnd = end
-	return removalCount
+			prev_end = end
+
+	return removal_count
 ```
