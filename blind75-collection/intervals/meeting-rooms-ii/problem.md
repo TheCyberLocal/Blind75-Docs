@@ -41,15 +41,19 @@ Given an array of meeting time intervals consisting of start and end times `[[st
         - Push the end time of the current interval onto the heap.
     5. The size of the heap at the end of iteration is the minimum number of rooms required.
 
-```pseudo
-function minMeetingRooms(intervals):
+```python
+def min_meeting_rooms(intervals: List[Interval]) -> int:
 	if len(intervals) == 0:
 		return 0
-	sort intervals by start time
-    rooms = empty min-heap
-	for interval in intervals:
-		if len(rooms) > 0 and interval.start >= rooms.peek():
-			rooms.pop()
-		rooms.push(interval.end)
-	return rooms.size
+
+	intervals.sort(key=lambda x: x.start)
+    rooms = []
+
+    for interval in intervals:
+        if rooms and interval.start >= rooms[0]:
+            heapq.heappop(rooms)
+
+        heapq.heappush(rooms, interval.end)
+
+    return len(rooms)
 ```
