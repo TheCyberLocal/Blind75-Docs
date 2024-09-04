@@ -42,14 +42,16 @@ You may return the answer in any order.
         - Otherwise, merge the current interval with the last interval in `merged` by updating the end time.
     4. Return `merged`.
 
-```pseudo
-function mergeIntervals(intervals):
-	sort intervals by start time
-	merged = []
+```python
+def merge_intervals(intervals: List[List[int]]) -> List[List[int]]:
+	intervals.sort(key=lambda pair: pair[0])
+	merged = [intervals[0]]
+
 	for interval in intervals:
-		if len(merged) == 0 or interval[0] > merged[-1][1]:
+		if not merged or interval[0] > merged[-1][1]:
 			merged.append(interval)
 		else:
 			merged[-1][1] = max(merged[-1][1], interval[1])
+
 	return merged
 ```
