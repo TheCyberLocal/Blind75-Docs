@@ -30,20 +30,20 @@ Given the beginning of a singly linked list `head`, reverse the list, and return
 -   **Description:** This approach iteratively reverses the linked list by adjusting the `next` pointers of each node.
 -   **Algorithm:**
 
-    1. Start with `prev` as `null` and `curr` as `head`.
+    1. Start with `prev` as `None` and `curr` as `head`.
     2. Traverse the list, reversing the `next` pointer of each node to point to `prev`.
     3. After reversing the pointers, move `prev` and `curr` one step forward.
-    4. Once `curr` is `null`, `prev` will be the new head of the reversed list and you can return it.
+    4. Once `curr` is `None`, `prev` will be the new head of the reversed list and you can return it.
 
-```pseudo
-function reverseList(head):
-	prev, curr = null, head
+```python
+def reverse_list(head: ListNode) -> ListNode:
+	prev, curr = None, head
 
 	while curr:
-		nextNode = curr.next
+		next_node = curr.next
 		curr.next = prev
 		prev = curr
-		curr = nextNode
+		curr = next_node
 
 	return prev
 ```
@@ -62,15 +62,15 @@ function reverseList(head):
     3. After reversing the rest of the list, adjust the pointers so the second node points to the first node.
     4. The last node in the original list becomes the new head and you can return it.
 
-```pseudo
-function reverseList(head):
+```python
+def reverse_list(head: ListNode) -> ListNode:
 	if not head or not head.next:
 		return head
 
-	newHead = reverseList(head.next)
+	new_head = reverse_list(head.next)
 
 	head.next.next = head
-	head.next = null
+	head.next = None
 
-	return newHead
+	return new_head
 ```
