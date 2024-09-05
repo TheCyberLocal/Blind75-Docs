@@ -46,14 +46,14 @@ Remove the nth node from the end of the list and return the beginning of the lis
     5. The `second` pointer will now be at the node just before the target node. Update `second.next` to skip the target node.
     6. Return the list starting from `dummy.next`.
 
-```pseudo
-function removeNthFromEnd(head, n):
-	dummy = new ListNode(0)
+```python
+def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode]:
+	dummy = ListNode(0)
 	dummy.next = head
 	first = dummy
 	second = dummy
 
-	for _ from 0 to n:
+	for _ in range(n + 1):
 		first = first.next
 
 	while first:
@@ -61,6 +61,5 @@ function removeNthFromEnd(head, n):
 		second = second.next
 
 	second.next = second.next.next
-
 	return dummy.next
 ```
