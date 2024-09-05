@@ -15,7 +15,7 @@ Implement the `MedianFinder` class:
 **Example 1:**
 
 -   **Input:** `["MedianFinder", "add_num", "1", "find_median", "add_num", "3", "find_median", "add_num", "2", "find_median"]`
--   **Output:** `[null, null, 1.0, null, 2.0, null, 2.0]`
+-   **Output:** `[None, None, 1.0, None, 2.0, None, 2.0]`
 -   **Explanation:**
     -   `MedianFinder median_finder = new MedianFinder();`
     -   `median_finder.add_num(1);` // arr = [1]
