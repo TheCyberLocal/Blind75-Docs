@@ -47,9 +47,9 @@ The new list should be made up of nodes from `list1` and `list2`.
     3. After the loop, attach the remaining part of the non-empty list to `current.next`.
     4. Return the merged list starting from `dummy.next`.
 
-```pseudo
-function mergeTwoLists(list1, list2):
-	dummy = new ListNode(0)
+```python
+def merge_two_lists(list1: ListNode, list2: ListNode) -> ListNode:
+	dummy = ListNode(0)
 	current = dummy
 
 	while list1 and list2:
@@ -59,9 +59,9 @@ function mergeTwoLists(list1, list2):
 		else:
 			current.next = list2
 			list2 = list2.next
+
 		current = current.next
 
 	current.next = list1 if list1 else list2
-
 	return dummy.next
 ```
