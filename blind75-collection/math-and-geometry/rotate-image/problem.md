@@ -1,4 +1,4 @@
-# Blind75: Rotate Matrix
+# Blind75: Rotate Image
 
 ### [⇦ Back to Problem Index](../../index.md)
 
