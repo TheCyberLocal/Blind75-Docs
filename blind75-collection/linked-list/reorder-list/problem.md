@@ -39,37 +39,28 @@ For a list of length `n`, the positions should be reordered as:
     3. Reverse the second half of the list.
     4. Merge the two halves by alternating nodes from the first and second halves.
 
-```pseudo
-function reorderList(head):
-	if not head or not head.next:
-		return
+```python
+def reorder_list(head: Optional[ListNode]) -> None:
+	slow, fast = head, head.next
 
-	slow = head
-	fast = head
 	while fast and fast.next:
 		slow = slow.next
 		fast = fast.next.next
 
-	firstHalf = head
-	secondHalf = slow.next
-	slow.next = null
+	second = slow.next
+	prev = slow.next = None
 
-	prev = null
-	while not secondHalf:
-		nextNode = secondHalf.next
-		secondHalf.next = prev
-		prev = secondHalf
-		secondHalf = nextNode
+	while second:
+		tmp = second.next
+		second.next = prev
+		prev = second
+		second = tmp
 
-	secondHalf = prev
+	first, second = head, prev
 
-	while not secondHalf:
-		temp1 = firstHalf.next
-		temp2 = secondHalf.next
-
-		firstHalf.next = secondHalf
-		secondHalf.next = temp1
-
-		firstHalf = temp1
-		secondHalf = temp2
+	while second:
+		tmp1, tmp2 = first.next, second.next
+		first.next = second
+		second.next = tmp1
+		first, second = tmp1, tmp2
 ```
