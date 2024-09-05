@@ -38,30 +38,18 @@ Return the sorted linked list that is the result of merging all the individual l
 -   **Description:** This approach leverages the divide and conquer technique to efficiently merge `k` sorted linked lists. The idea is to pair up the lists and merge each pair. This process is repeated iteratively, halving the number of lists at each step until only one merged list remains. This method is efficient because it reduces the problem size by half in each iteration, leading to a logarithmic number of merge operations.
 -   **Algorithm:**
 
-    1. If the list of linked lists is empty, return `null`.
+    1. If the list of linked lists is empty, return `None`.
     2. While there are more than one list:
-        1. Initialize an empty list `mergedLists` to store the merged results of the current iteration.
+        1. Initialize an empty list `merged_lists` to store the merged results of the current iteration.
         2. For each pair of adjacent lists `l1` and `l2`:
-            - Merge `l1` and `l2` using a helper function `mergeList`.
-            - Append the merged list to `mergedLists`.
-        3. Replace the original list of lists with `mergedLists`.
+            - Merge `l1` and `l2` using a helper function `merge_list`.
+            - Append the merged list to `merged_lists`.
+        3. Replace the original list of lists with `merged_lists`.
     3. Once only one list remains, return it as the final merged linked list.
 
-```pseudo
-function mergeKLists(lists):
-        if not len(lists):
-            return null
-
-        while len(lists) > 1:
-            mergedLists = []
-            for i from 0 to len(lists) - 1 by 2's:
-                l1 = lists[i]
-                l2 = lists[i + 1] if (i + 1) < len(lists) else null
-                mergedLists.append(mergeList(l1, l2))
-            lists = mergedLists
-        return lists[0]
-
-    function mergeList(l1, l2):
+```python
+def merge_k_lists(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def merge_list(l1: Optional[ListNode], l2: Optional[ListNode]) -> ListNode:
         dummy = ListNode()
         tail = dummy
 
@@ -72,10 +60,29 @@ function mergeKLists(lists):
             else:
                 tail.next = l2
                 l2 = l2.next
+
             tail = tail.next
+
         if l1:
             tail.next = l1
+
         if l2:
             tail.next = l2
+
         return dummy.next
+
+    if not len(lists):
+        return None
+
+    while len(lists) > 1:
+        merged_lists = []
+
+        for i in range(0, len(lists), 2):
+            l1 = lists[i]
+            l2 = lists[i + 1] if (i + 1) < len(lists) else None
+            merged_lists.append(merge_list(l1, l2))
+
+        lists = merged_lists
+
+    return lists[0]
 ```
