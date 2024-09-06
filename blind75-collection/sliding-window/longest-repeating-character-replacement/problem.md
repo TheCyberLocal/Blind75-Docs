@@ -34,30 +34,30 @@ After performing at most `k` replacements, return the length of the longest subs
 -   **Description:** The sliding window approach keeps track of the frequency of characters within the window. The window is expanded by moving the right pointer, and when the number of characters that need to be replaced exceeds `k`, the left pointer is moved to shrink the window. The goal is to maximize the length of the window where the number of replacements does not exceed `k`.
 -   **Algorithm:**
 
-    1. Initialize variables `left` to 0, `maxCount` to 0, and `maxLength` to 0. Use a frequency array to keep track of character counts in the current window.
+    1. Initialize variables `left` to 0, `max_count` to 0, and `max_length` to 0. Use a frequency array to keep track of character counts in the current window.
     2. Iterate through the string with `right` pointer:
-        - Update the frequency of the current character and find the maximum frequency (`maxCount`) of any character in the current window.
-        - If the length of the window minus `maxCount` is greater than `k`, increment the `left` pointer to shrink the window.
-        - Update `maxLength` as the maximum of its current value and the window size.
-    3. Return `maxLength`.
+        - Update the frequency of the current character and find the maximum frequency (`max_count`) of any character in the current window.
+        - If the length of the window minus `max_count` is greater than `k`, increment the `left` pointer to shrink the window.
+        - Update `max_length` as the maximum of its current value and the window size.
+    3. Return `max_length`.
 
-```pseudo
-function characterReplacement(s, k):
+```python
+def character_replacement(s: str, k: int) -> int:
 	left = 0
-	maxCount = 0
-	maxLength = 0
-	freq = array of size 26 initialized to 0
+	max_count = 0
+	max_length = 0
+	freq = [0] * 26
 
-	for right from 0 to len(s) - 1:
-		charIndex = ascii(s[right]) - ascii('A')
-		freq[charIndex] += 1
-		maxCount = max(maxCount, freq[charIndex])
+	for right in range(len(s)):
+		char_key = ord(s[right]) - ord('A')
+		freq[char_key] += 1
+		max_count = max(max_count, freq[char_key])
 
-		while (right - left + 1) - maxCount > k:
-			freq[ascii(s[left]) - ascii('A')] -= 1
+		while (right - left + 1) - max_count > k:
+			freq[ord(s[left]) - ord('A')] -= 1
 			left += 1
 
-		maxLength = max(maxLength, right - left + 1)
+		max_length = max(max_length, right - left + 1)
 
-	return maxLength
+	return max_length
 ```
