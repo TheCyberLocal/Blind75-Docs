@@ -36,22 +36,21 @@ Return the maximum profit you can achieve. You may choose to not make any transa
 -   **Description:** This approach involves iterating through the price list while maintaining the minimum price observed so far and the maximum profit achievable. As we iterate, we continuously update the minimum price and calculate the potential profit if we were to sell on the current day, comparing it with the maximum profit observed so far.
 -   **Algorithm:**
 
-    1. Initialize `minPrice` to a very large value and `maxProfit` to 0.
+    1. Initialize `min_price` to a very large value and `max_profit` to 0.
     2. Iterate through each price in `prices`:
-        - Update `minPrice` to be the minimum of `minPrice` and the current price.
-        - Calculate the potential profit if selling at the current price, which is `current price - minPrice`.
-        - Update `maxProfit` to be the maximum of `maxProfit` and the potential profit.
-    3. Return `maxProfit`.
+        - Update `min_price` to be the minimum of `min_price` and the current price.
+        - Calculate the potential profit if selling at the current price, which is `current price - min_price`.
+        - Update `max_profit` to be the maximum of `max_profit` and the potential profit.
+    3. Return `max_profit`.
 
-```pseudo
-function maxProfit(prices):
-	minPrice = infinity
-	maxProfit = 0
+```python
+def max_profit(prices: List[int]) -> int:
+	min_price = float('inf')
+	max_profit = 0
 
 	for price in prices:
-		minPrice = min(minPrice, price)
-		profit = price - minPrice
-		maxProfit = max(maxProfit, profit)
+		min_price = min(min_price, price)
+		max_profit = max(max_profit, price - min_price)
 
-	return maxProfit
+	return max_profit
 ```
