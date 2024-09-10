@@ -39,7 +39,7 @@ The depth of a binary tree is defined as the number of nodes along the longest p
   5. Return the maximum of the left and right subtree depths, plus `1` for the current node.
 
 ```python
-def max_depth(root):
+def max_depth(root: Optional[TreeNode]) -> int:
 	if not root:
 		return 0
 
