@@ -71,31 +71,31 @@ def is_valid_bst(root: Optional[TreeNode]) -> bool:
 - **Description:** An in-order traversal of a BST produces a sorted sequence of values. This approach uses an iterative in-order traversal to ensure that the sequence of node values encountered is strictly increasing.
 - **Algorithm:**
 
-  1. Initialize an empty stack and set the `prevNode` to `None`.
+  1. Initialize an empty stack and set the `prev_node` to `None`.
   2. Traverse the tree in an in-order fashion:
      1. Push all left children onto the stack until a `None` node is reached.
      2. Pop the stack to visit a node.
-     3. Check if the current node’s value is greater than the value of `prevNode`. If not, return `False`.
-     4. Set `prevNode` to the current node.
+     3. Check if the current node’s value is greater than the value of `prev_node`. If not, return `False`.
+     4. Set `prev_node` to the current node.
      5. Move to the right child and repeat the process.
   3. If the traversal completes without violations, return `True`.
 
-```pseudo
-function isValidBST(root):
+```python
+def is_valid_bst(root: Optional[TreeNode]) -> bool:
     stack = []
-    prevNode = None
+    prev_node = None
 
-    while stack is not empty or root is not None:
+    while stack or root is not None:
         while root is not None:
             stack.push(root)
             root = root.left
 
         root = stack.pop()
 
-        if prevNode is not None and root.val <= prevNode.val:
+        if prev_node is not None and root.val <= prev_node.val:
             return False
 
-        prevNode = root
+        prev_node = root
         root = root.right
 
     return True
