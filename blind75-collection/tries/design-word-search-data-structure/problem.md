@@ -69,7 +69,7 @@ class WordDictionary:
     def __init__(self):
         self.trie = {}
 
-    def add_word(word: str) -> None:
+    def add_word(self, word: str) -> None:
         node = self.trie
 
         for char in word:
@@ -80,7 +80,7 @@ class WordDictionary:
 
         node['#'] = True
 
-    def search(word: str) -> bool:
+    def search(self, word: str) -> bool:
         def dfs(node, i):
             if i == len(word):
                 return '#' in node
