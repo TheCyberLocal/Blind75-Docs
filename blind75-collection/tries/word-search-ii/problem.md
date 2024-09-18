@@ -108,7 +108,7 @@ class Trie:
 
         return True
 
-def findWords(board, words):
+def find_words(board, words):
     def backtrack(node, i, j, path):
         if node.is_end_of_word:
             result.add(path)
@@ -152,45 +152,50 @@ def findWords(board, words):
      1. If the current cell is out of bounds, the character does not exist in the current Trie node's children, or the reference count is less than 1, terminate the current path.
      2. Add the current cell to the visited set to avoid revisiting.
      3. Traverse to the corresponding child node in the Trie and add the character to the current word path.
-     4. If a valid word is found (indicated by the `isWord` flag in the Trie node), mark the word as found, remove it from the Trie, and add it to the result set.
+     4. If a valid word is found (indicated by the `is_word` flag in the Trie node), mark the word as found, remove it from the Trie, and add it to the result set.
      5. Recursively explore all four possible directions (up, down, left, right) from the current cell.
      6. After exploring all possible directions, remove the current cell from the visited set to allow other DFS paths to use it.
   3. After exploring all cells and paths, convert the result set to a list and return it.
 
-```pseudo
+```python
 class TrieNode:
-    function constructor():
+    def __init__(self):
         self.children = {}
-        self.isWord = False
+        self.is_word = False
         self.refs = 0
 
-    function addWord(word):
+    def add_word(word):
         cur = self
         cur.refs += 1
+
         for c in word:
             if c not in cur.children:
                 cur.children[c] = TrieNode()
+
             cur = cur.children[c]
             cur.refs += 1
-        cur.isWord = True
 
-    function removeWord(word):
+        cur.is_word = True
+
+    def remove_word(word):
         cur = self
         cur.refs -= 1
+
         for c in word:
             if c in cur.children:
                 cur = cur.children[c]
                 cur.refs -= 1
 
-function findWords(board, words):
+def find_words(board, words):
     root = TrieNode()
+
     for w in words:
-        root.addWord(w)
+        root.add_word(w)
 
     rows, cols = len(board), len(board[0])
     res, visit = set(), set()
 
-    function dfs(r, c, node, word):
+    def dfs(r, c, node, word):
         if (
             0 > r or r >= len(rows)
             or 0 > c or c >= len(cols)
@@ -203,15 +208,17 @@ function findWords(board, words):
         visit.add((r, c))
         node = node.children[board[r][c]]
         word += board[r][c]
-        if node.isWord:
-            node.isWord = False
+
+        if node.is_word:
+            node.is_word = False
             res.add(word)
-            root.removeWord(word)
+            root.remove_word(word)
 
         dfs(r + 1, c, node, word)
         dfs(r - 1, c, node, word)
         dfs(r, c + 1, node, word)
         dfs(r, c - 1, node, word)
+
         visit.remove((r, c))
 
     for r from 0 to len(rows) - 1:
