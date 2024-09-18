@@ -159,12 +159,12 @@ def find_words(board, words):
 
 ```python
 class TrieNode:
-    def __init__(self):
+    def __init__(self) -> None:
         self.children = {}
         self.is_word = False
         self.refs = 0
 
-    def add_word(word):
+    def add_word(self, word) -> None:
         cur = self
         cur.refs += 1
 
@@ -177,7 +177,7 @@ class TrieNode:
 
         cur.is_word = True
 
-    def remove_word(word):
+    def remove_word(self, word) -> None:
         cur = self
         cur.refs -= 1
 
@@ -186,7 +186,7 @@ class TrieNode:
                 cur = cur.children[c]
                 cur.refs -= 1
 
-def find_words(board, words):
+def find_words(board: List[List[str]], words: List[str]) -> List[str]:
     root = TrieNode()
 
     for w in words:
@@ -221,8 +221,8 @@ def find_words(board, words):
 
         visit.remove((r, c))
 
-    for r from 0 to len(rows) - 1:
-        for c from 0 to len(cols) - 1:
+    for r in range(rows):
+        for c in range(cols):
             dfs(r, c, root, "")
 
     return list(res)
