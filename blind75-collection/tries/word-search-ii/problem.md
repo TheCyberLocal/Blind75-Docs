@@ -65,45 +65,45 @@ For a word to be present, it must be possible to form the word with a path in th
        4. Mark the cell as visited and backtrack to explore other paths.
      - Return the set of all found words.
 
-```pseudo
+```python
 class TrieNode:
-    function constructor():
+    def __init__(self) -> None:
         self.children = {}
-        self.isEndOfWord = False
+        self.is_end_of_word = False
 
 class Trie:
-    function constructor():
+    def __init__(self):
         self.root = TrieNode()
 
-    function insert(word):
+    def insert(self, word):
         node = self.root
         for char in word:
             if char not in node.children:
                 node.children[char] = TrieNode()
             node = node.children[char]
-        node.isEndOfWord = True
+        node.is_end_of_word = True
 
-    function search(word):
+    def search(self, word):
         node = self.root
         for char in word:
             if char not in node.children:
-                return false
+                return False
             node = node.children[char]
-        return node.isEndOfWord
+        return node.is_end_of_word
 
-    function startsWith(prefix):
+    def starts_with(self, prefix):
         node = self.root
         for char in prefix:
             if char not in node.children:
-                return false
+                return False
             node = node.children[char]
-        return true
+        return True
 
-function findWords(board, words):
-    function backtrack(node, i, j, path):
-        if node.isEndOfWord:
+def findWords(board, words):
+    def backtrack(node, i, j, path):
+        if node.is_end_of_word:
             result.add(path)
-            node.isEndOfWord = False  # Avoid duplicate entries
+            node.is_end_of_word = False  # Avoid duplicate entries
 
         if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
             return
