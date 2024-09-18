@@ -72,10 +72,10 @@ class TrieNode:
         self.is_end_of_word = False
 
 class Trie:
-    def __init__(self):
+    def __init__(self) -> None:
         self.root = TrieNode()
 
-    def insert(self, word):
+    def insert(self, word) -> None:
         node = self.root
 
         for char in word:
@@ -86,7 +86,7 @@ class Trie:
 
         node.is_end_of_word = True
 
-    def search(self, word):
+    def search(self, word) -> bool:
         node = self.root
 
         for char in word:
@@ -97,7 +97,7 @@ class Trie:
 
         return node.is_end_of_word
 
-    def starts_with(self, prefix):
+    def starts_with(self, prefix) -> bool:
         node = self.root
 
         for char in prefix:
@@ -108,7 +108,7 @@ class Trie:
 
         return True
 
-def find_words(board, words):
+def find_words(board: List[List[str]], words: List[str]) -> List[str]:
     def backtrack(node, i, j, path):
         if node.is_end_of_word:
             result.add(path)
@@ -125,6 +125,7 @@ def find_words(board, words):
         for x, y in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
             ni, nj = i + x, j + y
             backtrack(node.children[temp], ni, nj, path + temp)
+
         board[i][j] = temp  # Reset visited mark
 
     trie = Trie()
@@ -132,8 +133,8 @@ def find_words(board, words):
         trie.insert(word)
 
     result = set()
-    for i from 0 to len(board) - 1:
-        for j from 0 to len(board[0]) - 1:
+    for i in range(board):
+        for j in range(board[0]):
             backtrack(trie.root, i, j, "")
 
     return list(result)
